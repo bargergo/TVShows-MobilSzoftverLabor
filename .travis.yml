@@ -25,6 +25,8 @@ deploy:
   on:
     tags: true
 
+script: ./gradlew :app:build
+
 notifications:
   email:
     recipients:
