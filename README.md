@@ -1,5 +1,5 @@
 # TVShows-MobilSzoftverLabor
-Home assignment for Mobil Software Laboratory class
+Home assignment for Mobile Software Laboratory class
 
 Work in progress
 
