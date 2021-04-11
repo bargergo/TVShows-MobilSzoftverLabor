@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="hu.bme.aut.tvshows.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_favouritetvshows"
+        android:name="hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsFragment"
+        android:label="@string/menu_favouritetvshows"
+        tools:layout="@layout/fragment_favouritetvshows" />
+
+    <fragment
+        android:id="@+id/nav_searchtvshows"
+        android:name="hu.bme.aut.tvshows.ui.searchtvshows.SearchTvShowsFragment"
+        android:label="@string/menu_searchtvshows"
+        tools:layout="@layout/fragment_searchtvshows" />
+
+    <fragment
+        android:id="@+id/nav_createtvshow"
+        android:name="hu.bme.aut.tvshows.ui.createtvshow.CreateTvShowFragment"
+        android:label="@string/menu_createtvshow"
+        tools:layout="@layout/fragment_createtvshow" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="hu.bme.aut.tvshows.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>

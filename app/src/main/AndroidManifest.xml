@@ -8,8 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".TvShowsApplication"
         android:theme="@style/Theme.TVShows">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.TVShows.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
