@@ -1,6 +1,8 @@
 # TVShows-MobilSzoftverLabor
 Home assignment for Mobile Software Laboratory class
 
+Chosen MVP for architecture and Hilt for DI
+
 Work in progress
 
 ## Tasks:
