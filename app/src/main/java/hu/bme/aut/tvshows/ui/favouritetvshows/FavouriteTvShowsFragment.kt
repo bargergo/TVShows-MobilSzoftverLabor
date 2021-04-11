@@ -4,20 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import hu.bme.aut.tvshows.R
+import hu.bme.aut.tvshows.databinding.FragmentFavouritetvshowsBinding
 
 class FavouriteTvShowsFragment : Fragment() {
+
+    private var _binding: FragmentFavouritetvshowsBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_favouritetvshows, container, false)
-        val textView: TextView = root.findViewById(R.id.text_favouritetvshows)
-        textView.text = "This is favourite TV Shows Fragment"
-        return root
+    ): View {
+        _binding = FragmentFavouritetvshowsBinding.inflate(inflater, container, false)
+        val view = binding.root
+        binding.textFavouritetvshows.text = "This is favourite TV Show Fragment"
+        return view
     }
 }
