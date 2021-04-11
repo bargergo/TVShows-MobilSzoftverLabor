@@ -35,3 +35,8 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+
+notifications:
+  email:
+    on_success: always
+    on_failure: always
