@@ -18,6 +18,18 @@
         tools:layout="@layout/fragment_favouritetvshows" />
 
     <fragment
+        android:id="@+id/nav_searchtvshows"
+        android:name="hu.bme.aut.tvshows.ui.searchtvshows.SearchTvShowsFragment"
+        android:label="@string/menu_searchtvshows"
+        tools:layout="@layout/fragment_searchtvshows" />
+
+    <fragment
+        android:id="@+id/nav_createtvshow"
+        android:name="hu.bme.aut.tvshows.ui.createtvshow.CreateTvShowFragment"
+        android:label="@string/menu_createtvshow"
+        tools:layout="@layout/fragment_createtvshow" />
+
+    <fragment
         android:id="@+id/nav_about"
         android:name="hu.bme.aut.tvshows.ui.about.AboutFragment"
         android:label="@string/menu_about"

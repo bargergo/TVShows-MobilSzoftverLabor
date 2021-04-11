@@ -13,6 +13,14 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_favouritetvshows" />
         <item
+            android:id="@+id/nav_searchtvshows"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_searchtvshows" />
+        <item
+            android:id="@+id/nav_createtvshow"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_createtvshow" />
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_about" />

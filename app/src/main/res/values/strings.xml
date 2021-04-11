@@ -9,5 +9,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_favouritetvshows">Favourite TV Shows</string>
+    <string name="menu_searchtvshows">Search TV Shows</string>
+    <string name="menu_createtvshow">Create TV Show</string>
     <string name="menu_about">About</string>
 </resources>
