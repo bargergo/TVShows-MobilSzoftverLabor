@@ -11,16 +11,31 @@ import hu.bme.aut.tvshows.interactor.DbInteractorImpl
 import hu.bme.aut.tvshows.ui.createtvshow.CreateTvShowContract
 import hu.bme.aut.tvshows.ui.createtvshow.CreateTvShowFragment
 import hu.bme.aut.tvshows.ui.createtvshow.CreateTvShowPresenter
+import hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsContract
+import hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsPresenter
+import hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsFragment
 
 @InstallIn(FragmentComponent::class)
 @Module
 abstract class CreateTvShowModule {
 
     @Binds
-    abstract fun bindFragment(fragment: CreateTvShowFragment): CreateTvShowContract.View
+    abstract fun provideCreateTvShowView(impl: CreateTvShowFragment): CreateTvShowContract.View
 
     @Binds
-    abstract fun bindPresenter(impl: CreateTvShowPresenter): CreateTvShowContract.Presenter
+    abstract fun provideCreateTvShowPresenter(impl: CreateTvShowPresenter): CreateTvShowContract.Presenter
+
+}
+
+@InstallIn(FragmentComponent::class)
+@Module
+abstract class FavouriteTvShowsModule {
+
+    @Binds
+    abstract fun provideFavouriteTvShowsView(impl: FavouriteTvShowsFragment): FavouriteTvShowsContract.View
+
+    @Binds
+    abstract fun provideFavouriteTvShowsPresenter(impl: FavouriteTvShowsPresenter): FavouriteTvShowsContract.Presenter
 
 }
 
@@ -35,12 +50,20 @@ abstract class DbModule {
 
 }
 
-@InstallIn(FragmentComponent::class)
 @Module
-object CreateTvShowFragmentModule {
-
+@InstallIn(FragmentComponent::class)
+object FavouriteTvShowsFragmentModule {
     @Provides
-    fun bindFragment(fragment: Fragment): CreateTvShowFragment {
-        return fragment as CreateTvShowFragment
-    }
+    fun provideFragment(fragment: Fragment) =
+        fragment as FavouriteTvShowsFragment
+}
+
+
+
+@Module
+@InstallIn(FragmentComponent::class)
+object CreateTvShowFragmentModule {
+    @Provides
+    fun provideFragment(fragment: Fragment) =
+        fragment as CreateTvShowFragment
 }
