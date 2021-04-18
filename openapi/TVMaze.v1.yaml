@@ -1372,6 +1372,61 @@ paths:
         in: path
         required: true
         description: The ID of the season
+    post:
+      summary: Create episode
+      operationId: post-seasons-seasonId-episodes
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    id: 40646
+                    url: 'https://www.tvmaze.com/episodes/40646/friends-1x01-the-one-where-monica-gets-a-roommate'
+                    name: The One Where Monica Gets a Roommate
+                    season: 1
+                    number: 1
+                    type: regular
+                    airdate: '1994-09-22'
+                    airtime: '20:00'
+                    airstamp: '1994-09-23T00:00:00+00:00'
+                    runtime: 30
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                    summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/episodes/40646'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EpisodeData'
+            examples:
+              example-1:
+                value:
+                  name: The One Where Monica Gets a Roommate
+                  season: 1
+                  number: 1
+                  type: regular
+                  airdate: '1994-09-22'
+                  airtime: '20:00'
+                  airstamp: '1994-09-23T00:00:00+00:00'
+                  runtime: 30
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                  summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+        description: ''
   '/shows/{showId}/seasons':
     get:
       summary: Get seasons for show
@@ -2120,6 +2175,68 @@ paths:
           description: Not Found
       operationId: get-episodes-episodeId
       description: Retrieve all primary information for a given episode.
+    put:
+      summary: Update episode
+      operationId: put-episodes-episodeId
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    id: 40646
+                    url: 'https://www.tvmaze.com/episodes/40646/friends-1x01-the-one-where-monica-gets-a-roommate'
+                    name: The One Where Monica Gets a Roommate
+                    season: 1
+                    number: 1
+                    type: regular
+                    airdate: '1994-09-22'
+                    airtime: '20:00'
+                    airstamp: '1994-09-23T00:00:00+00:00'
+                    runtime: 30
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                    summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/episodes/40646'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EpisodeData'
+            examples:
+              example-1:
+                value:
+                  name: The One Where Monica Gets a Roommate
+                  season: 1
+                  number: 1
+                  type: regular
+                  airdate: '1994-09-22'
+                  airtime: '20:00'
+                  airstamp: '1994-09-23T00:00:00+00:00'
+                  runtime: 30
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                  summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+    delete:
+      summary: Delete episode
+      operationId: delete-episodes-episodeId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
   '/people/{personId}':
     parameters:
       - schema:
@@ -2161,7 +2278,7 @@ paths:
       operationId: get-people-personId
       description: Retrieve all primary information for a given person.
     put:
-      summary: ''
+      summary: Update person
       operationId: put-people-personId
       responses:
         '204':
@@ -2190,7 +2307,7 @@ paths:
                     medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
     delete:
-      summary: ''
+      summary: Delete person
       operationId: delete-people-personId
       responses:
         '204':
@@ -3093,5 +3210,46 @@ components:
         - premiereDate
         - endDate
         - network
+        - image
+        - summary
+    EpisodeData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        season:
+          type: number
+        number:
+          type: number
+        type:
+          type: string
+          minLength: 1
+        airdate:
+          type: string
+          minLength: 1
+        airtime:
+          type: string
+          minLength: 1
+        airstamp:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - season
+        - number
+        - type
+        - airdate
+        - airtime
+        - airstamp
+        - runtime
         - image
         - summary
