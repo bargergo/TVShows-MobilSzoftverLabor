@@ -1,5 +1,7 @@
 package hu.bme.aut.tvshows.ui.createtvshow
 
+import android.util.Log
+import hu.bme.aut.tvshows.data.Show
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.model.*
@@ -21,13 +23,19 @@ class CreateTvShowPresenter @Inject constructor(
         launch {
 
             try {
-                dbInteractor.insertTvShow(data.toString())
-                networkInteractor.createShow(data)
+                //networkInteractor.createShow(data)
                 withContext(Dispatchers.Main) {
                     view.showMessage("Successfully created TV Show")
                 }
+                dbInteractor.insertTvShow(Show(
+                    null,
+                    data.name,
+                    data.summary,
+                    data.image?.medium ?: ""
+                ))
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
+                    Log.d("CreateTVP", "Exception", e)
                     view.showMessage("Something went wrong")
                 }
             }

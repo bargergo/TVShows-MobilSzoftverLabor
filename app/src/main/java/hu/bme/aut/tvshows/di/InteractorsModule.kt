@@ -11,7 +11,7 @@ import hu.bme.aut.tvshows.interactor.NetworkInteractorImpl
 
 @InstallIn(FragmentComponent::class)
 @Module
-abstract class DbModule {
+abstract class DbInteractorModule {
 
     @Binds
     abstract fun bindDataSource(

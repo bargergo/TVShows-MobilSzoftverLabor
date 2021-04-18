@@ -1,7 +1,9 @@
 package hu.bme.aut.tvshows.interactor
 
+import hu.bme.aut.tvshows.data.Show
+
 interface DbInteractor {
 
-    fun insertTvShow(data: String)
-    fun getFavouriteTvShows(): String
+    suspend fun insertTvShow(data: Show)
+    suspend fun getFavouriteTvShows(): List<Show>
 }
