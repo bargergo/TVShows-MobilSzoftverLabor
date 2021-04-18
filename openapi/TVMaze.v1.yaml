@@ -10,7 +10,6 @@ paths:
     parameters: []
     get:
       summary: Search for TV Shows
-      tags: []
       responses:
         '200':
           description: TV shows found
@@ -472,10 +471,13 @@ paths:
           in: query
           name: q
           description: search text
+      tags:
+        - Shows
   '/shows/{showId}':
     get:
       summary: Show Lookup
-      tags: []
+      tags:
+        - Shows
       responses:
         '200':
           description: OK
@@ -928,6 +930,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ShowData'
+      tags:
+        - Shows
     delete:
       summary: Delete show
       operationId: delete-shows-showId
@@ -937,10 +941,13 @@ paths:
         '404':
           description: Not Found
       description: ''
+      tags:
+        - Shows
   '/seasons/{seasonId}/episodes':
     get:
       summary: Get episodes for season
-      tags: []
+      tags:
+        - Episodes
       responses:
         '200':
           description: OK
@@ -1427,10 +1434,13 @@ paths:
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
                   summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
         description: ''
+      tags:
+        - Episodes
   '/shows/{showId}/seasons':
     get:
       summary: Get seasons for show
-      tags: []
+      tags:
+        - Seasons
       responses:
         '200':
           description: OK
@@ -1584,10 +1594,13 @@ paths:
                     medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
                   summary: ''
+      tags:
+        - Seasons
   '/shows/{showId}/cast':
     get:
       summary: Get cast for show
-      tags: []
+      tags:
+        - Cast
       responses:
         '200':
           description: OK
@@ -2044,6 +2057,25 @@ paths:
         in: path
         required: true
         description: The ID of the show
+    post:
+      summary: Add or Update cast
+      operationId: post-shows-showId-cast
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacterData'
+      tags:
+        - Cast
   '/seasons/{seasonId}':
     parameters:
       - schema:
@@ -2054,7 +2086,8 @@ paths:
         description: The ID of the season
     get:
       summary: Get season by ID
-      tags: []
+      tags:
+        - Seasons
       responses:
         '200':
           description: OK
@@ -2125,6 +2158,8 @@ paths:
                     medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
                   summary: ''
+      tags:
+        - Seasons
     delete:
       summary: Delete season
       operationId: delete-seasons-seasonId
@@ -2133,6 +2168,8 @@ paths:
           description: No Content
         '404':
           description: Not Found
+      tags:
+        - Seasons
   '/episodes/{episodeId}':
     parameters:
       - schema:
@@ -2143,7 +2180,8 @@ paths:
         description: The ID of the episode
     get:
       summary: Get episode by ID
-      tags: []
+      tags:
+        - Episodes
       responses:
         '200':
           description: OK
@@ -2229,6 +2267,8 @@ paths:
                     medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
                   summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+      tags:
+        - Episodes
     delete:
       summary: Delete episode
       operationId: delete-episodes-episodeId
@@ -2237,6 +2277,8 @@ paths:
           description: No Content
         '404':
           description: Not Found
+      tags:
+        - Episodes
   '/people/{personId}':
     parameters:
       - schema:
@@ -2246,7 +2288,8 @@ paths:
         required: true
     get:
       summary: Get person by ID
-      tags: []
+      tags:
+        - People
       responses:
         '200':
           description: OK
@@ -2306,6 +2349,8 @@ paths:
                   image:
                     medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+      tags:
+        - People
     delete:
       summary: Delete person
       operationId: delete-people-personId
@@ -2314,6 +2359,8 @@ paths:
           description: No Content
         '404':
           description: Not Found
+      tags:
+        - People
   /people:
     post:
       summary: Create person
@@ -2344,10 +2391,13 @@ paths:
                   image:
                     medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+      tags:
+        - People
   /search/people:
     get:
       summary: Search people
-      tags: []
+      tags:
+        - People
       responses:
         '200':
           description: OK
@@ -2637,6 +2687,8 @@ paths:
                     original: 'https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg'
                   summary: '<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town''s inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>'
                   updated: 1617697381
+      tags:
+        - Shows
 components:
   schemas:
     ShowSearchResult:
@@ -3021,6 +3073,19 @@ components:
         - url
         - name
         - _links
+      x-examples:
+        example-1:
+          id: 0
+          url: string
+          name: string
+          image:
+            medium: string
+            original: string
+          _links:
+            self:
+              href: string
+            previousepisode:
+              href: string
     Episode:
       description: ''
       type: object
@@ -3253,3 +3318,27 @@ components:
         - runtime
         - image
         - summary
+    CastData:
+      title: CastData
+      type: object
+      properties:
+        personId:
+          type: integer
+        character:
+          $ref: '#/components/schemas/CharacterData'
+        self:
+          type: boolean
+        voice:
+          type: boolean
+    CharacterData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        image:
+          $ref: '#/components/schemas/Image'
+      required:
+        - name
+        - image
