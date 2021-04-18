@@ -1901,6 +1901,134 @@ paths:
         in: path
         required: true
         description: The ID of the show
+  '/seasons/{seasonId}':
+    parameters:
+      - schema:
+          type: integer
+        name: seasonId
+        in: path
+        required: true
+        description: The ID of the season
+    get:
+      summary: Get season by ID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/seasons/1/under-the-dome-season-1'
+                    number: 1
+                    name: ''
+                    episodeOrder: 13
+                    premiereDate: '2013-06-24'
+                    endDate: '2013-09-16'
+                    network:
+                      id: 2
+                      name: CBS
+                      country:
+                        name: United States
+                        code: US
+                        timezone: America/New_York
+                    webChannel: null
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                    summary: ''
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/seasons/1'
+        '404':
+          description: Not Found
+      operationId: get-seasons-showId
+  '/episodes/{episodeId}':
+    parameters:
+      - schema:
+          type: integer
+        name: episodeId
+        in: path
+        required: true
+        description: The ID of the episode
+    get:
+      summary: Get episode by ID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/episodes/1/under-the-dome-1x01-pilot'
+                    name: Pilot
+                    season: 1
+                    number: 1
+                    type: regular
+                    airdate: '2013-06-24'
+                    airtime: '22:00'
+                    airstamp: '2013-06-25T02:00:00+00:00'
+                    runtime: 60
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/1/4388.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/1/4388.jpg'
+                    summary: '<p>When the residents of Chester''s Mill find themselves trapped under a massive transparent dome with no way out, they struggle to survive as resources rapidly dwindle and panic quickly escalates.</p>'
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/episodes/1'
+        '404':
+          description: Not Found
+      operationId: get-episodes-episodeId
+      description: Retrieve all primary information for a given episode.
+  '/people/{personId}':
+    parameters:
+      - schema:
+          type: string
+        name: personId
+        in: path
+        required: true
+    get:
+      summary: Get person by ID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/people/1/mike-vogel'
+                    name: Mike Vogel
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                    birthday: '1979-07-17'
+                    deathday: null
+                    gender: Male
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/people/1'
+        '404':
+          description: Not Found
+      operationId: get-people-personId
+      description: Retrieve all primary information for a given person.
 components:
   schemas:
     ShowSearchResult:
