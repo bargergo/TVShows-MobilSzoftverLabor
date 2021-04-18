@@ -891,6 +891,8 @@ paths:
                                 href: 'https://api.tvmaze.com/characters/37030'
                           self: false
                           voice: false
+        '404':
+          description: Not Found
       operationId: get-shows-with-seasons-and-cast
     parameters:
       - schema:
@@ -899,6 +901,441 @@ paths:
         in: path
         required: true
         description: The ID of the the TV Show
+  '/seasons/{seasonId}/episodes':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    - id: 40646
+                      url: 'https://www.tvmaze.com/episodes/40646/friends-1x01-the-one-where-monica-gets-a-roommate'
+                      name: The One Where Monica Gets a Roommate
+                      season: 1
+                      number: 1
+                      type: regular
+                      airdate: '1994-09-22'
+                      airtime: '20:00'
+                      airstamp: '1994-09-23T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                      summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40646'
+                    - id: 40647
+                      url: 'https://www.tvmaze.com/episodes/40647/friends-1x02-the-one-with-the-sonogram-at-the-end'
+                      name: The One With the Sonogram at the End
+                      season: 1
+                      number: 2
+                      type: regular
+                      airdate: '1994-09-29'
+                      airtime: '20:00'
+                      airstamp: '1994-09-30T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59020.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59020.jpg'
+                      summary: <p>Rachel returns her engagement ring; Ross's ex-wife has a revelation for him.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40647'
+                    - id: 40648
+                      url: 'https://www.tvmaze.com/episodes/40648/friends-1x03-the-one-with-the-thumb'
+                      name: The One With the Thumb
+                      season: 1
+                      number: 3
+                      type: regular
+                      airdate: '1994-10-06'
+                      airtime: '20:00'
+                      airstamp: '1994-10-07T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59021.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59021.jpg'
+                      summary: <p>Monica's friends find her new beau appealing; Phoebe finds a little something extra in her soda.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40648'
+                    - id: 40649
+                      url: 'https://www.tvmaze.com/episodes/40649/friends-1x04-the-one-with-george-stephanopoulos'
+                      name: The One With George Stephanopoulos
+                      season: 1
+                      number: 4
+                      type: regular
+                      airdate: '1994-10-13'
+                      airtime: '20:00'
+                      airstamp: '1994-10-14T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59022.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59022.jpg'
+                      summary: <p>Chandler and Joey take Ross to a hockey game -- with painful results; the ladies get someone else's pizza.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40649'
+                    - id: 40650
+                      url: 'https://www.tvmaze.com/episodes/40650/friends-1x05-the-one-with-the-east-german-laundry-detergent'
+                      name: The One With the East German Laundry Detergent
+                      season: 1
+                      number: 5
+                      type: regular
+                      airdate: '1994-10-20'
+                      airtime: '20:00'
+                      airstamp: '1994-10-21T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59023.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59023.jpg'
+                      summary: <p>Ross does laundry with Rachel; Joey uses Monica to get his old girlfriend back.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40650'
+                    - id: 40651
+                      url: 'https://www.tvmaze.com/episodes/40651/friends-1x06-the-one-with-the-butt'
+                      name: The One With the Butt
+                      season: 1
+                      number: 6
+                      type: regular
+                      airdate: '1994-10-27'
+                      airtime: '20:00'
+                      airstamp: '1994-10-28T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59024.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59024.jpg'
+                      summary: <p>Joey's new agent gets him a cheeky role in a movie; Chandler dates a woman with lots of baggage.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40651'
+                    - id: 40652
+                      url: 'https://www.tvmaze.com/episodes/40652/friends-1x07-the-one-with-the-blackout'
+                      name: The One With the Blackout
+                      season: 1
+                      number: 7
+                      type: regular
+                      airdate: '1994-11-03'
+                      airtime: '20:00'
+                      airstamp: '1994-11-04T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59025.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59025.jpg'
+                      summary: <p>A blackout traps Chandler in an ATM vestibule with model Jill Goodacre; a cat comes between Ross and Rachel.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40652'
+                    - id: 40653
+                      url: 'https://www.tvmaze.com/episodes/40653/friends-1x08-the-one-where-nana-dies-twice'
+                      name: The One Where Nana Dies Twice
+                      season: 1
+                      number: 8
+                      type: regular
+                      airdate: '1994-11-10'
+                      airtime: '20:00'
+                      airstamp: '1994-11-11T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59026.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59026.jpg'
+                      summary: <p>Monica and Ross mourn the loss of their grandmother.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40653'
+                    - id: 40654
+                      url: 'https://www.tvmaze.com/episodes/40654/friends-1x09-the-one-where-underdog-gets-away'
+                      name: The One Where Underdog Gets Away
+                      season: 1
+                      number: 9
+                      type: regular
+                      airdate: '1994-11-17'
+                      airtime: '20:00'
+                      airstamp: '1994-11-18T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59116.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59116.jpg'
+                      summary: <p>Monica tries to cook Thanksgiving dinner for the gang; Ross relishes the chance to talk to his unborn child.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40654'
+                    - id: 40655
+                      url: 'https://www.tvmaze.com/episodes/40655/friends-1x10-the-one-with-the-monkey'
+                      name: The One With the Monkey
+                      season: 1
+                      number: 10
+                      type: regular
+                      airdate: '1994-12-15'
+                      airtime: '20:00'
+                      airstamp: '1994-12-16T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59027.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59027.jpg'
+                      summary: <p>A new pet monkeys around with Ross's ego during the holidays; Phoebe falls for a scientist .</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40655'
+                    - id: 40656
+                      url: 'https://www.tvmaze.com/episodes/40656/friends-1x11-the-one-with-mrs-bing'
+                      name: The One With Mrs. Bing
+                      season: 1
+                      number: 11
+                      type: regular
+                      airdate: '1995-01-05'
+                      airtime: '20:00'
+                      airstamp: '1995-01-06T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59029.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59029.jpg'
+                      summary: <p>Chandler's novelist mother visits -- and hits on Ross; Phoebe and Monica fall for the same guy.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40656'
+                    - id: 40657
+                      url: 'https://www.tvmaze.com/episodes/40657/friends-1x12-the-one-with-the-dozen-lasagnas'
+                      name: The One With the Dozen Lasagnas
+                      season: 1
+                      number: 12
+                      type: regular
+                      airdate: '1995-01-12'
+                      airtime: '20:00'
+                      airstamp: '1995-01-13T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59117.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59117.jpg'
+                      summary: <p>Phoebe has some bad news for Rachel about Paolo; Ross learns some of the results of his former wife's amniocentesis.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40657'
+                    - id: 40658
+                      url: 'https://www.tvmaze.com/episodes/40658/friends-1x13-the-one-with-the-boobies'
+                      name: The One With the Boobies
+                      season: 1
+                      number: 13
+                      type: regular
+                      airdate: '1995-01-19'
+                      airtime: '20:00'
+                      airstamp: '1995-01-20T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59118.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59118.jpg'
+                      summary: <p>Chandler sees Rachel naked; Joey learns his father is having an affair; Phoebe dates a psychiatrist.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40658'
+                    - id: 40659
+                      url: 'https://www.tvmaze.com/episodes/40659/friends-1x14-the-one-with-the-candy-hearts'
+                      name: The One With the Candy Hearts
+                      season: 1
+                      number: 14
+                      type: regular
+                      airdate: '1995-02-09'
+                      airtime: '20:00'
+                      airstamp: '1995-02-10T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59119.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59119.jpg'
+                      summary: <p>Chandler has a blind date with an ex-girlfriend -- whom he's broken up with twice before; the ladies light a "boyfriend bonfire"; Ross finds an unlikely Valentine's Day date.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40659'
+                    - id: 40660
+                      url: 'https://www.tvmaze.com/episodes/40660/friends-1x15-the-one-with-the-stoned-guy'
+                      name: The One With the Stoned Guy
+                      season: 1
+                      number: 15
+                      type: regular
+                      airdate: '1995-02-16'
+                      airtime: '20:00'
+                      airstamp: '1995-02-17T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59032.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59032.jpg'
+                      summary: '<p>Chandler and Monica plan big career moves, while Ross labors to hit it off with a date.</p>'
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40660'
+                    - id: 40661
+                      url: 'https://www.tvmaze.com/episodes/40661/friends-1x16-the-one-with-two-parts-1'
+                      name: The One With Two Parts (1)
+                      season: 1
+                      number: 16
+                      type: regular
+                      airdate: '1995-02-23'
+                      airtime: '20:00'
+                      airstamp: '1995-02-24T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59033.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59033.jpg'
+                      summary: <p>Ross attends Lamaze classes; Joey dates Phoebe's twin; and Chandler has the hots for a co-worker he's supposed to fire.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40661'
+                    - id: 40662
+                      url: 'https://www.tvmaze.com/episodes/40662/friends-1x17-the-one-with-two-parts-2'
+                      name: The One With Two Parts (2)
+                      season: 1
+                      number: 17
+                      type: regular
+                      airdate: '1995-02-23'
+                      airtime: '20:30'
+                      airstamp: '1995-02-24T01:30:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59036.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59036.jpg'
+                      summary: <p>Monica and Rachel meet two cute doctors; Ross looks to Jack for fatherly advice; Phoebe confronts her twin about Joey.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40662'
+                    - id: 40663
+                      url: 'https://www.tvmaze.com/episodes/40663/friends-1x18-the-one-with-all-the-poker'
+                      name: The One With All the Poker
+                      season: 1
+                      number: 18
+                      type: regular
+                      airdate: '1995-03-02'
+                      airtime: '20:00'
+                      airstamp: '1995-03-03T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59120.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59120.jpg'
+                      summary: '<p>The guys let the ladies in on a sacred ritual -- their poker game. Meanwhile, Rachel has an interview with Saks.</p>'
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40663'
+                    - id: 40664
+                      url: 'https://www.tvmaze.com/episodes/40664/friends-1x19-the-one-where-the-monkey-gets-away'
+                      name: The One Where the Monkey Gets Away
+                      season: 1
+                      number: 19
+                      type: regular
+                      airdate: '1995-03-09'
+                      airtime: '20:00'
+                      airstamp: '1995-03-10T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59122.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59122.jpg'
+                      summary: <p>Ross entrusts Rachel with his pet monkey for a day; Barry has a surprise for Rachel.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40664'
+                    - id: 40665
+                      url: 'https://www.tvmaze.com/episodes/40665/friends-1x20-the-one-with-the-evil-orthodontist'
+                      name: The One With the Evil Orthodontist
+                      season: 1
+                      number: 20
+                      type: regular
+                      airdate: '1995-04-06'
+                      airtime: '20:00'
+                      airstamp: '1995-04-07T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59123.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59123.jpg'
+                      summary: <p>Chandler's not a very smooth operator when it comes to calling a woman he went out with; Rachel gets involved with her ex-fiancé.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40665'
+                    - id: 40666
+                      url: 'https://www.tvmaze.com/episodes/40666/friends-1x21-the-one-with-the-fake-monica'
+                      name: The One With the Fake Monica
+                      season: 1
+                      number: 21
+                      type: regular
+                      airdate: '1995-04-27'
+                      airtime: '20:00'
+                      airstamp: '1995-04-28T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59268.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59268.jpg'
+                      summary: <p>Monica meets the woman who used her credit-card number; Ross realizes it's time to find a new home for Marcel.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40666'
+                    - id: 40667
+                      url: 'https://www.tvmaze.com/episodes/40667/friends-1x22-the-one-with-the-ick-factor'
+                      name: The One With the Ick Factor
+                      season: 1
+                      number: 22
+                      type: regular
+                      airdate: '1995-05-04'
+                      airtime: '20:00'
+                      airstamp: '1995-05-05T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59124.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59124.jpg'
+                      summary: <p>Phoebe gets temporary work as Chandler's secretary; Monica's new boyfriend is younger than she thinks.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40667'
+                    - id: 40668
+                      url: 'https://www.tvmaze.com/episodes/40668/friends-1x23-the-one-with-the-birth'
+                      name: The One With the Birth
+                      season: 1
+                      number: 23
+                      type: regular
+                      airdate: '1995-05-11'
+                      airtime: '20:00'
+                      airstamp: '1995-05-12T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59125.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59125.jpg'
+                      summary: <p>Ross quarrels with Susan in the delivery room as Carol prepares to give birth; Joey befriends a mother-to-be.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40668'
+                    - id: 40669
+                      url: 'https://www.tvmaze.com/episodes/40669/friends-1x24-the-one-where-rachel-finds-out'
+                      name: The One Where Rachel Finds Out
+                      season: 1
+                      number: 24
+                      type: regular
+                      airdate: '1995-05-18'
+                      airtime: '20:00'
+                      airstamp: '1995-05-19T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59126.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59126.jpg'
+                      summary: <p>Rachel finally realizes how much Ross likes her -- but not before he leaves for China on museum business.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40669'
+        '404':
+          description: Not Found
+      operationId: get-episodes-for-season
+      description: ''
+    parameters:
+      - schema:
+          type: integer
+        name: seasonId
+        in: path
+        required: true
+        description: The ID of the season
 components:
   schemas:
     ShowSearchResult:
@@ -1028,8 +1465,7 @@ components:
         days:
           type: array
           items:
-            required: []
-            properties: {}
+            type: string
       required:
         - time
         - days
@@ -1310,4 +1746,55 @@ components:
         - url
         - name
         - image
+        - _links
+    Episode:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        season:
+          type: number
+        number:
+          type: number
+        type:
+          type: string
+          minLength: 1
+        airdate:
+          type: string
+          minLength: 1
+        airtime:
+          type: string
+          minLength: 1
+        airstamp:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - name
+        - season
+        - number
+        - type
+        - airdate
+        - airtime
+        - airstamp
+        - runtime
+        - image
+        - summary
         - _links
