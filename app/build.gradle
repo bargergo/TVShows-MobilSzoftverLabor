@@ -25,6 +25,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "orm-type"
+    productFlavors {
+        mockedOrm {
+            dimension "orm-type"
+            applicationIdSuffix ".mocked"
+            versionNameSuffix "-mocked"
+        }
+
+        RealOrm {
+            dimension "orm-type"
+            applicationIdSuffix ".real"
+            versionNameSuffix "-real"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
