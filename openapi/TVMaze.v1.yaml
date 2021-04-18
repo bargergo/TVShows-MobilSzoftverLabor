@@ -2978,18 +2978,7 @@ components:
           $ref: '#/components/schemas/Image'
         summary: {}
         _links:
-          type: object
-          required:
-            - self
-          properties:
-            self:
-              type: object
-              required:
-                - href
-              properties:
-                href:
-                  type: string
-                  minLength: 1
+          $ref: '#/components/schemas/Links'
       required:
         - id
         - url
@@ -3160,7 +3149,8 @@ components:
         birthday:
           type: string
           minLength: 1
-        deathday: {}
+        deathday:
+          type: string
         gender:
           type: string
           minLength: 1
