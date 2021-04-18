@@ -17,7 +17,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ShowInfos'
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShowSearchResult'
               examples:
                 example-1:
                   value:
@@ -472,174 +474,194 @@ paths:
           description: search text
 components:
   schemas:
-    ShowInfo:
+    ShowSearchResult:
       description: ''
       type: object
       properties:
         score:
           type: number
         show:
-          type: object
-          required:
-            - id
-            - url
-            - name
-            - type
-            - language
-            - genres
-            - status
-            - runtime
-            - premiered
-            - officialSite
-            - schedule
-            - rating
-            - weight
-            - network
-            - externals
-            - image
-            - summary
-            - updated
-            - _links
-          properties:
-            id:
-              type: number
-            url:
-              type: string
-              minLength: 1
-            name:
-              type: string
-              minLength: 1
-            type:
-              type: string
-              minLength: 1
-            language:
-              type: string
-              minLength: 1
-            genres:
-              type: array
-              items:
-                type: string
-            status:
-              type: string
-              minLength: 1
-            runtime:
-              type: number
-            premiered:
-              type: string
-              minLength: 1
-            officialSite:
-              type: string
-              minLength: 1
-            schedule:
-              type: object
-              required:
-                - time
-                - days
-              properties:
-                time:
-                  type: string
-                  minLength: 1
-                days:
-                  type: array
-                  items:
-                    type: string
-            rating:
-              type: object
-              required:
-                - average
-              properties:
-                average:
-                  type: number
-            weight:
-              type: number
-            network:
-              type: object
-              required:
-                - id
-                - name
-                - country
-              properties:
-                id:
-                  type: number
-                name:
-                  type: string
-                  minLength: 1
-                country:
-                  type: object
-                  required:
-                    - name
-                    - code
-                    - timezone
-                  properties:
-                    name:
-                      type: string
-                      minLength: 1
-                    code:
-                      type: string
-                      minLength: 1
-                    timezone:
-                      type: string
-                      minLength: 1
-            webChannel: {}
-            dvdCountry: {}
-            externals:
-              type: object
-              required:
-                - tvrage
-                - thetvdb
-                - imdb
-              properties:
-                tvrage:
-                  type: number
-                thetvdb:
-                  type: number
-                imdb:
-                  type: string
-                  minLength: 1
-            image:
-              type: object
-              required:
-                - medium
-                - original
-              properties:
-                medium:
-                  type: string
-                  minLength: 1
-                original:
-                  type: string
-                  minLength: 1
-            summary:
-              type: string
-              minLength: 1
-            updated:
-              type: number
-            _links:
-              type: object
-              required:
-                - self
-                - previousepisode
-              properties:
-                self:
-                  type: object
-                  required:
-                    - href
-                  properties:
-                    href:
-                      type: string
-                      minLength: 1
-                previousepisode:
-                  type: object
-                  required:
-                    - href
-                  properties:
-                    href:
-                      type: string
-                      minLength: 1
+          $ref: '#/components/schemas/ShowSummary'
       required:
         - score
         - show
-    ShowInfos:
-      title: ShowInfos
-      type: array
-      items:
-        $ref: '#/components/schemas/ShowInfo'
+    ShowSummary:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        language:
+          type: string
+          minLength: 1
+        genres:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        premiered:
+          type: string
+          minLength: 1
+        officialSite:
+          type: string
+          minLength: 1
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        rating:
+          $ref: '#/components/schemas/Rating'
+        weight:
+          type: number
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        dvdCountry: {}
+        externals:
+          $ref: '#/components/schemas/Externals'
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+        updated:
+          type: number
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - name
+        - type
+        - language
+        - genres
+        - status
+        - runtime
+        - premiered
+        - officialSite
+        - schedule
+        - rating
+        - weight
+        - network
+        - externals
+        - image
+        - summary
+        - updated
+        - _links
+    Country:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        code:
+          type: string
+          minLength: 1
+        timezone:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - code
+        - timezone
+    Network:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+          minLength: 1
+        country:
+          $ref: '#/components/schemas/Country'
+      required:
+        - id
+        - name
+        - country
+    Schedule:
+      description: ''
+      type: object
+      properties:
+        time:
+          type: string
+          minLength: 1
+        days:
+          type: array
+          items:
+            required: []
+            properties: {}
+      required:
+        - time
+        - days
+    Rating:
+      description: ''
+      type: object
+      properties:
+        average:
+          type: number
+      required:
+        - average
+    Externals:
+      description: ''
+      type: object
+      properties:
+        tvrage:
+          type: number
+        thetvdb:
+          type: number
+        imdb:
+          type: string
+          minLength: 1
+      required:
+        - tvrage
+        - thetvdb
+        - imdb
+    Image:
+      description: ''
+      type: object
+      properties:
+        medium:
+          type: string
+          minLength: 1
+        original:
+          type: string
+          minLength: 1
+      required:
+        - medium
+        - original
+    Links:
+      description: ''
+      type: object
+      properties:
+        self:
+          type: object
+          properties:
+            href:
+              type: string
+              minLength: 1
+          required:
+            - href
+        previousepisode:
+          type: object
+          properties:
+            href:
+              type: string
+              minLength: 1
+          required:
+            - href
+      required:
+        - self
+        - previousepisode
