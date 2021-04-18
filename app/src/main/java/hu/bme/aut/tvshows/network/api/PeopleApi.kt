@@ -16,8 +16,8 @@ interface PeopleApi {
      */
     @DELETE("people/{personId}")
     fun deletePeoplePersonId(
-        @Path("personId") personId: Int?
-    ): Call<Void?>?
+        @Path("personId") personId: Int
+    ): Call<Void>
 
     /**
      * Get person by ID
@@ -27,8 +27,8 @@ interface PeopleApi {
      */
     @GET("people/{personId}")
     fun getPeoplePersonId(
-        @Path("personId") personId: Int?
-    ): Call<Person?>?
+        @Path("personId") personId: Int
+    ): Call<Person>
 
     /**
      * Search people
@@ -38,8 +38,8 @@ interface PeopleApi {
      */
     @GET("search/people")
     fun getSearchPeople(
-        @Query("q") q: String?
-    ): Call<List<PersonSearchResult?>?>?
+        @Query("q") q: String
+    ): Call<List<PersonSearchResult>>
 
     /**
      * Create person
@@ -50,8 +50,8 @@ interface PeopleApi {
     @Headers("Content-Type:application/json")
     @POST("people")
     fun postPeople(
-        @Body body: PersonData?
-    ): Call<Person?>?
+        @Body body: PersonData
+    ): Call<Person>
 
     /**
      * Update person
@@ -63,6 +63,6 @@ interface PeopleApi {
     @Headers("Content-Type:application/json")
     @PUT("people/{personId}")
     fun putPeoplePersonId(
-        @Path("personId") personId: Int?, @Body body: PersonData?
-    ): Call<Void?>?
+        @Path("personId") personId: Int, @Body body: PersonData
+    ): Call<Void>
 }

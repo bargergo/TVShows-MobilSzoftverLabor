@@ -17,8 +17,8 @@ interface ShowsApi {
      */
     @DELETE("shows/{showId}")
     fun deleteShowsShowId(
-        @Path("showId") showId: Int?
-    ): Call<Void?>?
+        @Path("showId") showId: Int
+    ): Call<Void>
 
     /**
      * Search for TV Shows
@@ -28,8 +28,8 @@ interface ShowsApi {
      */
     @GET("search/shows")
     fun getSearchShows(
-        @Query("q") q: String?
-    ): Call<List<ShowSearchResult?>?>?
+        @Query("q") q: String
+    ): Call<List<ShowSearchResult>>
 
     /**
      * Show Lookup
@@ -41,10 +41,10 @@ interface ShowsApi {
      */
     @GET("shows/{showId}")
     fun getShowsWithSeasonsAndCast(
-        @Path("showId") showId: Int?,
+        @Path("showId") showId: Int,
         @Query("embed[1]") embed1: String?,
         @Query("embed[2]") embed2: String?
-    ): Call<ShowDetails?>?
+    ): Call<ShowDetails>
 
     /**
      * Create show
@@ -55,8 +55,8 @@ interface ShowsApi {
     @Headers("Content-Type:application/json")
     @POST("shows")
     fun postShows(
-        @Body body: ShowData?
-    ): Call<ShowSummary?>?
+        @Body body: ShowData
+    ): Call<ShowSummary>
 
     /**
      * Update show
@@ -68,6 +68,6 @@ interface ShowsApi {
     @Headers("Content-Type:application/json")
     @PUT("shows/{showId}")
     fun putShowsShowId(
-        @Path("showId") showId: Int?, @Body body: ShowData?
-    ): Call<Void?>?
+        @Path("showId") showId: Int, @Body body: ShowData
+    ): Call<Void>
 }

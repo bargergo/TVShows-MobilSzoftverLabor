@@ -15,8 +15,8 @@ interface SeasonsApi {
      */
     @DELETE("seasons/{seasonId}")
     fun deleteSeasonsSeasonId(
-        @Path("seasonId") seasonId: Int?
-    ): Call<Void?>?
+        @Path("seasonId") seasonId: Int
+    ): Call<Void>
 
     /**
      * Get seasons for show
@@ -26,8 +26,8 @@ interface SeasonsApi {
      */
     @GET("shows/{showId}/seasons")
     fun getSeasonsForShow(
-        @Path("showId") showId: Int?
-    ): Call<List<Season?>?>?
+        @Path("showId") showId: Int
+    ): Call<List<Season>>
 
     /**
      * Get season by ID
@@ -37,8 +37,8 @@ interface SeasonsApi {
      */
     @GET("seasons/{seasonId}")
     fun getSeasonsShowId(
-        @Path("seasonId") seasonId: Int?
-    ): Call<Season?>?
+        @Path("seasonId") seasonId: Int
+    ): Call<Season>
 
     /**
      * Create season
@@ -50,8 +50,8 @@ interface SeasonsApi {
     @Headers("Content-Type:application/json")
     @POST("shows/{showId}/seasons")
     fun postShowsShowIdSeasons(
-        @Path("showId") showId: Int?, @Body body: SeasonData?
-    ): Call<Season?>?
+        @Path("showId") showId: Int, @Body body: SeasonData
+    ): Call<Season>
 
     /**
      * Update season
@@ -63,6 +63,6 @@ interface SeasonsApi {
     @Headers("Content-Type:application/json")
     @PUT("seasons/{seasonId}")
     fun putSeasonsSeasonId(
-        @Path("seasonId") seasonId: Int?, @Body body: SeasonData?
-    ): Call<Void?>?
+        @Path("seasonId") seasonId: Int, @Body body: SeasonData
+    ): Call<Void>
 }
