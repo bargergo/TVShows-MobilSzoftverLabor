@@ -38,4 +38,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     override fun onSearchResults(results: String) {
         Toast.makeText(activity, results, Toast.LENGTH_SHORT).show()
     }
+
+    override fun onDestroy() {
+        presenter.cleanup()
+        super.onDestroy()
+    }
 }
