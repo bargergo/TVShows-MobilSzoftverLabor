@@ -14,9 +14,9 @@ interface CastApi {
      * @return Call&lt;List&lt;Cast&gt;&gt;
      */
     @GET("shows/{showId}/cast")
-    fun getCastForShow(
+    suspend fun getCastForShow(
         @Path("showId") showId: Int?
-    ): Call<List<Cast>>
+    ): List<Cast>
 
     /**
      * Add or Update cast
@@ -27,7 +27,7 @@ interface CastApi {
      */
     @Headers("Content-Type:application/json")
     @POST("shows/{showId}/cast")
-    fun postShowsShowIdCast(
+    suspend fun postShowsShowIdCast(
         @Path("showId") showId: Int, @Body body: List<CharacterData>
-    ): Call<Void?>?
+    )
 }

@@ -22,7 +22,7 @@ abstract class DbModule {
 
 @InstallIn(FragmentComponent::class)
 @Module
-abstract class NetworkModule {
+abstract class NetworkInteractorModule {
 
     @Binds
     abstract fun bindDataSource(
