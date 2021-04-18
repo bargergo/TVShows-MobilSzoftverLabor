@@ -1,6 +1,7 @@
 package hu.bme.aut.tvshows.ui.createtvshow
 
 import android.util.Log
+import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.data.Show
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
@@ -19,7 +20,7 @@ class CreateTvShowPresenter @Inject constructor(
     private val job = Job()
     override val coroutineContext: CoroutineContext = job + Dispatchers.IO
 
-    override fun onCreateTvShow(data: ShowData) {
+    override fun onCreateTvShow(data: ShowData, seasons: List<Season>) {
         launch {
 
             try {
@@ -32,7 +33,7 @@ class CreateTvShowPresenter @Inject constructor(
                     data.name,
                     data.summary,
                     data.image?.medium ?: ""
-                ))
+                ), seasons)
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Log.d("CreateTVP", "Exception", e)

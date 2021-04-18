@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
+import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.databinding.FragmentCreatetvshowBinding
 import hu.bme.aut.tvshows.model.*
 import javax.inject.Inject
@@ -54,8 +55,14 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 null,
                 "It's a good a show",
                 8545410
-                )
+                ),
+                listOf(Season(
+                    null,
+                    1,
+                    null
+                ))
             )
+
         }
         return view
     }

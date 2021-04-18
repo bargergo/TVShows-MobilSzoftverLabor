@@ -1,9 +1,6 @@
 package hu.bme.aut.tvshows.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ShowDAO {
@@ -11,11 +8,16 @@ interface ShowDAO {
     suspend fun getShows(): List<Show>
 
     @Insert
-    suspend fun insertShow(show: Show)
+    suspend fun insertShow(show: Show): Long
 
     @Delete
     suspend fun deleteShow(show: Show)
 
     @Query("DELETE FROM show")
     suspend fun deleteAllShows()
+
+    @Transaction
+    @Query("SELECT * FROM show")
+    fun getShowsWithSeasons(): List<ShowWithSeasons>
+
 }

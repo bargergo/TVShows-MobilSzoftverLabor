@@ -1,5 +1,6 @@
 package hu.bme.aut.tvshows.ui.favouritetvshows
 
+import android.util.Log
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -22,6 +23,7 @@ class FavouriteTvShowsPresenter @Inject constructor(
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
+                    Log.d("Favourite", "Exception", e)
                     view.showMessage("Something went wrong")
                 }
             }
