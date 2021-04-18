@@ -57,7 +57,91 @@ class FakeNetworkInteractor : NetworkInteractor {
         )
     }
 
+    override suspend fun getShow(
+        id: Int,
+        includeSeasons: Boolean,
+        includeCast: Boolean
+    ): ShowDetails {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateShow(id: Int, data: ShowData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteShow(id: Int) {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun createShow(data: ShowData) {
 
+    }
+
+    override suspend fun getEpisodes(seasonId: Int): List<Episode> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun createEpisode(seasonId: Int, data: EpisodeData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getEpisode(episodeId: Int): Episode {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateEpisode(id: Int, data: EpisodeData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteEpisode(id: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getSeasons(showId: Int): List<Season> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun createSeason(showId: Int, data: SeasonData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getSeason(seasonId: Int): Season {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateSeason(seasonId: Int, data: SeasonData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteSeason(seasonId: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getCast(showId: Int): List<Cast> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateCast(showId: Int, data: List<CastData>) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getPerson(id: Int): Person {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updatePerson(id: Int, data: PersonData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deletePerson(id: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun createPerson(data: PersonData) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun searchPeople(keywords: String): List<PersonSearchResult> {
+        TODO("Not yet implemented")
     }
 }

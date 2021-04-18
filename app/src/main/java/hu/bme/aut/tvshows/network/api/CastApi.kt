@@ -1,8 +1,7 @@
 package hu.bme.aut.tvshows.network.api
 
 import hu.bme.aut.tvshows.model.Cast
-import hu.bme.aut.tvshows.model.CharacterData
-import retrofit2.Call
+import hu.bme.aut.tvshows.model.CastData
 import retrofit2.http.*
 
 //retrofit2
@@ -28,6 +27,6 @@ interface CastApi {
     @Headers("Content-Type:application/json")
     @POST("shows/{showId}/cast")
     suspend fun postShowsShowIdCast(
-        @Path("showId") showId: Int, @Body body: List<CharacterData>
+        @Path("showId") showId: Int, @Body body: List<CastData>
     )
 }

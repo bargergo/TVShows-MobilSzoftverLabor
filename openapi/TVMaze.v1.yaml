@@ -2073,7 +2073,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/CharacterData'
+                $ref: '#/components/schemas/CastData'
       tags:
         - Cast
   '/seasons/{seasonId}':
