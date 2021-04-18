@@ -29,14 +29,14 @@ android {
     productFlavors {
         mockedOrm {
             dimension "orm-type"
-            applicationIdSuffix ".mocked"
-            versionNameSuffix "-mocked"
+            applicationIdSuffix ".mockedOrm"
+            versionNameSuffix "-mockedOrm"
         }
 
-        RealOrm {
+        realOrm {
             dimension "orm-type"
-            applicationIdSuffix ".real"
-            versionNameSuffix "-real"
+            applicationIdSuffix ".RealOrm"
+            versionNameSuffix "-RealOrm"
         }
     }
 
