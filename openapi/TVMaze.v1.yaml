@@ -1465,6 +1465,70 @@ paths:
         in: path
         required: true
         description: The ID of the show
+    post:
+      summary: Create season
+      operationId: post-shows-showId-seasons
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/seasons/1/under-the-dome-season-1'
+                    number: 1
+                    name: ''
+                    episodeOrder: 13
+                    premiereDate: '2013-06-24'
+                    endDate: '2013-09-16'
+                    network:
+                      id: 2
+                      name: CBS
+                      country:
+                        name: United States
+                        code: US
+                        timezone: America/New_York
+                    webChannel: null
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                    summary: ''
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/seasons/1'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonData'
+            examples:
+              example-1:
+                value:
+                  number: 1
+                  name: ''
+                  episodeOrder: 13
+                  premiereDate: '2013-06-24'
+                  endDate: '2013-09-16'
+                  network:
+                    id: 2
+                    name: CBS
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                  webChannel: null
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                  summary: ''
   '/shows/{showId}/cast':
     get:
       summary: Get cast for show
@@ -1971,6 +2035,49 @@ paths:
         '404':
           description: Not Found
       operationId: get-seasons-showId
+    put:
+      summary: Update season
+      operationId: put-seasons-seasonId
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonData'
+            examples:
+              example-1:
+                value:
+                  number: 1
+                  name: ''
+                  episodeOrder: 13
+                  premiereDate: '2013-06-24'
+                  endDate: '2013-09-16'
+                  network:
+                    id: 2
+                    name: CBS
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                  webChannel: null
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                  summary: ''
+    delete:
+      summary: Delete season
+      operationId: delete-seasons-seasonId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
   '/episodes/{episodeId}':
     parameters:
       - schema:
@@ -2956,3 +3063,35 @@ components:
         - externals
         - summary
         - updated
+    SeasonData:
+      description: ''
+      type: object
+      properties:
+        number:
+          type: number
+        name:
+          type: string
+        episodeOrder:
+          type: number
+        premiereDate:
+          type: string
+          minLength: 1
+        endDate:
+          type: string
+          minLength: 1
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+      required:
+        - number
+        - name
+        - episodeOrder
+        - premiereDate
+        - endDate
+        - network
+        - image
+        - summary
