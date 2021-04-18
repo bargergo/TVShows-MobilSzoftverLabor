@@ -15,7 +15,7 @@ class SearchTvShowsPresenter @Inject constructor(
 
     override fun search(keywords: String) {
         launch {
-            val result = networkInteractor.search(keywords)
+            val result = networkInteractor.searchShows(keywords)
             withContext(Dispatchers.Main) {
                 view.onSearchResults(result)
             }
