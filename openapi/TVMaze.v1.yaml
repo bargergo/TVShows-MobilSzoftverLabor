@@ -1992,7 +1992,7 @@ paths:
   '/people/{personId}':
     parameters:
       - schema:
-          type: string
+          type: integer
         name: personId
         in: path
         required: true
@@ -2029,6 +2029,265 @@ paths:
           description: Not Found
       operationId: get-people-personId
       description: Retrieve all primary information for a given person.
+    put:
+      summary: ''
+      operationId: put-people-personId
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonData'
+            examples:
+              example-1:
+                value:
+                  name: Mike Vogel
+                  country:
+                    name: United States
+                    code: US
+                    timezone: America/New_York
+                  birthday: '1979-07-17'
+                  deathday: null
+                  gender: Male
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+    delete:
+      summary: ''
+      operationId: delete-people-personId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+  /people:
+    post:
+      summary: Create person
+      operationId: post-people
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonData'
+            examples:
+              example-1:
+                value:
+                  name: Mike Vogel
+                  country:
+                    name: United States
+                    code: US
+                    timezone: America/New_York
+                  birthday: '1979-07-17'
+                  deathday: null
+                  gender: Male
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+  /search/people:
+    get:
+      summary: Search people
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PersonSearchResult'
+              examples:
+                example-1:
+                  value:
+                    - score: 39.013103
+                      person:
+                        id: 172658
+                        url: 'https://www.tvmaze.com/people/172658/lauren-bush-lauren'
+                        name: Lauren Bush Lauren
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1984-06-25'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/108/272410.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/108/272410.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/172658'
+                    - score: 32.443718
+                      person:
+                        id: 2012
+                        url: 'https://www.tvmaze.com/people/2012/lauren-luiz'
+                        name: Lauren Luiz
+                        country: null
+                        birthday: null
+                        deathday: null
+                        gender: null
+                        image: null
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/2012'
+                    - score: 32.443718
+                      person:
+                        id: 2933
+                        url: 'https://www.tvmaze.com/people/2933/lauren-gussis'
+                        name: Lauren Gussis
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: null
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/214/537301.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/214/537301.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/2933'
+                    - score: 32.443718
+                      person:
+                        id: 4435
+                        url: 'https://www.tvmaze.com/people/4435/lauren-tom'
+                        name: Lauren Tom
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1959-08-04'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/117/294630.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/117/294630.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/4435'
+                    - score: 32.443718
+                      person:
+                        id: 5308
+                        url: 'https://www.tvmaze.com/people/5308/val-lauren'
+                        name: Val Lauren
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: null
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/191/479296.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/191/479296.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/5308'
+                    - score: 32.443718
+                      person:
+                        id: 6486
+                        url: 'https://www.tvmaze.com/people/6486/hope-lauren'
+                        name: Hope Lauren
+                        country: null
+                        birthday: null
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/144/361826.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/144/361826.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/6486'
+                    - score: 32.443718
+                      person:
+                        id: 7426
+                        url: 'https://www.tvmaze.com/people/7426/lauren-jones'
+                        name: Lauren Jones
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1982-08-27'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/75/189366.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/75/189366.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/7426'
+                    - score: 32.443718
+                      person:
+                        id: 8140
+                        url: 'https://www.tvmaze.com/people/8140/lauren-weedman'
+                        name: Lauren Weedman
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1969-03-05'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/84/211953.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/84/211953.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/8140'
+                    - score: 32.443718
+                      person:
+                        id: 9785
+                        url: 'https://www.tvmaze.com/people/9785/lauren-sanchez'
+                        name: Lauren Sánchez
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1969-12-19'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/195/489995.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/195/489995.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/9785'
+                    - score: 32.443718
+                      person:
+                        id: 9809
+                        url: 'https://www.tvmaze.com/people/9809/lauren-pritchard'
+                        name: Lauren Pritchard
+                        country: null
+                        birthday: null
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/222/555634.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/222/555634.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/9809'
+      operationId: get-search-people
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: search text
 components:
   schemas:
     ShowSearchResult:
@@ -2484,3 +2743,62 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cast'
+    PersonData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        country:
+          type: object
+          required:
+            - name
+            - code
+            - timezone
+          properties:
+            name:
+              type: string
+              minLength: 1
+            code:
+              type: string
+              minLength: 1
+            timezone:
+              type: string
+              minLength: 1
+        birthday:
+          type: string
+          minLength: 1
+        deathday: {}
+        gender:
+          type: string
+          minLength: 1
+        image:
+          type: object
+          required:
+            - medium
+            - original
+          properties:
+            medium:
+              type: string
+              minLength: 1
+            original:
+              type: string
+              minLength: 1
+      required:
+        - name
+        - country
+        - birthday
+        - gender
+        - image
+    PersonSearchResult:
+      description: ''
+      type: object
+      properties:
+        score:
+          type: number
+        person:
+          $ref: '#/components/schemas/Person'
+      required:
+        - score
+        - person
