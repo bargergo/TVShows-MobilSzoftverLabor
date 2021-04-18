@@ -8,5 +8,6 @@ interface SearchTvShowsContract {
 
     interface Presenter {
         fun search(keywords: String)
+        fun cleanup()
     }
 }

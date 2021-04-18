@@ -1,0 +1,3334 @@
+openapi: 3.0.0
+info:
+  title: TVMaze
+  version: '1.0'
+servers:
+  - url: 'https://api.tvmaze.com'
+    description: TVMaze
+paths:
+  /search/shows:
+    parameters: []
+    get:
+      summary: Search for TV Shows
+      responses:
+        '200':
+          description: TV shows found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShowSearchResult'
+              examples:
+                example-1:
+                  value:
+                    - score: 17.862923
+                      show:
+                        id: 139
+                        url: 'https://www.tvmaze.com/shows/139/girls'
+                        name: Girls
+                        type: Scripted
+                        language: English
+                        genres:
+                          - Drama
+                          - Romance
+                        status: Ended
+                        runtime: 30
+                        premiered: '2012-04-15'
+                        officialSite: 'http://www.hbo.com/girls'
+                        schedule:
+                          time: '22:00'
+                          days:
+                            - Sunday
+                        rating:
+                          average: 6.6
+                        weight: 92
+                        network:
+                          id: 8
+                          name: HBO
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: 30124
+                          thetvdb: 220411
+                          imdb: tt1723816
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg'
+                        summary: <p>This Emmy winning series is a comic look at the assorted humiliations and rare triumphs of a group of girls in their 20s.</p>
+                        updated: 1611310521
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/139'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/1079686'
+                    - score: 15.115905
+                      show:
+                        id: 23542
+                        url: 'https://www.tvmaze.com/shows/23542/good-girls'
+                        name: Good Girls
+                        type: Scripted
+                        language: English
+                        genres:
+                          - Drama
+                          - Comedy
+                          - Crime
+                        status: Running
+                        runtime: 60
+                        premiered: '2018-02-26'
+                        officialSite: 'https://www.nbc.com/good-girls'
+                        schedule:
+                          time: '22:00'
+                          days:
+                            - Sunday
+                        rating:
+                          average: 7.4
+                        weight: 99
+                        network:
+                          id: 1
+                          name: NBC
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: null
+                          thetvdb: 328577
+                          imdb: tt6474378
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/297/744253.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/297/744253.jpg'
+                        summary: '<p><b>Good Girls</b> follows three "good girl" suburban wives and mothers who suddenly find themselves in desperate circumstances and decide to stop playing it safe, and risk everything to take their power back.</p>'
+                        updated: 1618390831
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/23542'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/2051665'
+                          nextepisode:
+                            href: 'https://api.tvmaze.com/episodes/2055894'
+                    - score: 14.9460745
+                      show:
+                        id: 49892
+                        url: 'https://www.tvmaze.com/shows/49892/the-powerpuff-girls'
+                        name: The Powerpuff Girls
+                        type: Scripted
+                        language: English
+                        genres: []
+                        status: In Development
+                        runtime: null
+                        premiered: null
+                        officialSite: null
+                        schedule:
+                          time: ''
+                          days: []
+                        rating:
+                          average: null
+                        weight: 94
+                        network:
+                          id: 5
+                          name: The CW
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: null
+                          thetvdb: null
+                          imdb: tt12976292
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/307/768002.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/307/768002.jpg'
+                        summary: <p>The superhero children have grown and are now disillusioned twentysomethings who resent having lost their childhood to crime fighting. Will they agree to reunite now that the world needs them more than ever?</p>
+                        updated: 1618291403
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/49892'
+                    - score: 14.8862915
+                      show:
+                        id: 722
+                        url: 'https://www.tvmaze.com/shows/722/the-golden-girls'
+                        name: The Golden Girls
+                        type: Scripted
+                        language: English
+                        genres:
+                          - Drama
+                          - Comedy
+                        status: Ended
+                        runtime: 30
+                        premiered: '1985-09-14'
+                        officialSite: null
+                        schedule:
+                          time: '21:00'
+                          days:
+                            - Saturday
+                        rating:
+                          average: 8.5
+                        weight: 90
+                        network:
+                          id: 1
+                          name: NBC
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: 5820
+                          thetvdb: 71292
+                          imdb: tt0088526
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/6/15097.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/6/15097.jpg'
+                        summary: '<p><b>The Golden Girls</b> follows four South Florida seniors sharing a house, their dreams, and a whole lot of cheesecake. Bright, promiscuous, clueless, and hilarious, these lovely mismatched ladies form the perfect circle of friends.</p>'
+                        updated: 1617572610
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/722'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/64040'
+                    - score: 14.840658
+                      show:
+                        id: 33320
+                        url: 'https://www.tvmaze.com/shows/33320/derry-girls'
+                        name: Derry Girls
+                        type: Scripted
+                        language: English
+                        genres:
+                          - Comedy
+                        status: Running
+                        runtime: 30
+                        premiered: '2018-01-04'
+                        officialSite: 'http://www.channel4.com/programmes/derry-girls'
+                        schedule:
+                          time: '22:00'
+                          days:
+                            - Tuesday
+                        rating:
+                          average: 8
+                        weight: 93
+                        network:
+                          id: 45
+                          name: Channel 4
+                          country:
+                            name: United Kingdom
+                            code: GB
+                            timezone: Europe/London
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: null
+                          thetvdb: 338903
+                          imdb: tt7120662
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/184/460240.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/184/460240.jpg'
+                        summary: '<p>16-year-old Erin Quinn lives with her uncompromising mother, her long-suffering father and the fearsome ‘Granda Joe'', a man whose love for his daughters and granddaughters is surpassed only by his contempt for his son-in-law.</p><p>It''s the early 90s, and Erin is used to seeing her country on the nightly news and speaking in acronyms (The IRA, The UDA, The RUC). This is a time of armed police in armoured Land Rovers and British Army check points. But it''s also the time of Murder She Wrote, The Cranberries, MJ and Lisa Marie, Doc Martens, bomber jackets, The X Files, Nirvana and Wayne''s World. And while The Troubles may hang over her home town, Erin has troubles of her own</p>'
+                        updated: 1608838190
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/33320'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/1631064'
+                    - score: 14.693986
+                      show:
+                        id: 32087
+                        url: 'https://www.tvmaze.com/shows/32087/chicken-girls'
+                        name: Chicken Girls
+                        type: Scripted
+                        language: English
+                        genres:
+                          - Drama
+                          - Children
+                          - Music
+                        status: Running
+                        runtime: 16
+                        premiered: '2017-09-05'
+                        officialSite: 'https://www.youtube.com/playlist?list=PLVewHiZp3_LPhqzbcZFmS3iuDm9HymTsy'
+                        schedule:
+                          time: '15:00'
+                          days:
+                            - Tuesday
+                        rating:
+                          average: 5.7
+                        weight: 89
+                        network: null
+                        webChannel:
+                          id: 274
+                          name: Brat
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        dvdCountry: null
+                        externals:
+                          tvrage: null
+                          thetvdb: 339854
+                          imdb: null
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/250/627433.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/250/627433.jpg'
+                        summary: '<p>Rhyme and her friends — known by their ''ship name, "The Chicken Girls" — have been dancing together forever. But this year, everything''s changing...</p>'
+                        updated: 1618342236
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/32087'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/2053198'
+                          nextepisode:
+                            href: 'https://api.tvmaze.com/episodes/2053199'
+                    - score: 14.268211
+                      show:
+                        id: 525
+                        url: 'https://www.tvmaze.com/shows/525/gilmore-girls'
+                        name: Gilmore Girls
+                        type: Scripted
+                        language: English
+                        genres:
+                          - Drama
+                          - Comedy
+                          - Romance
+                        status: Ended
+                        runtime: 60
+                        premiered: '2000-10-05'
+                        officialSite: null
+                        schedule:
+                          time: '21:00'
+                          days:
+                            - Tuesday
+                        rating:
+                          average: 8.4
+                        weight: 84
+                        network:
+                          id: 5
+                          name: The CW
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: 3683
+                          thetvdb: 76568
+                          imdb: tt0238784
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/4/11308.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/4/11308.jpg'
+                        summary: '<p><b>Gilmore Girls</b> is a drama centering around the relationship between a thirtysomething single mother and her teen daughter living in Stars Hollow, Connecticut.</p>'
+                        updated: 1618158592
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/525'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/47639'
+                    - score: 14.192288
+                      show:
+                        id: 1955
+                        url: 'https://www.tvmaze.com/shows/1955/the-powerpuff-girls'
+                        name: The Powerpuff Girls
+                        type: Animation
+                        language: English
+                        genres:
+                          - Action
+                          - Children
+                          - Crime
+                        status: Ended
+                        runtime: 30
+                        premiered: '1998-11-18'
+                        officialSite: null
+                        schedule:
+                          time: ''
+                          days:
+                            - Friday
+                        rating:
+                          average: 7.7
+                        weight: 65
+                        network:
+                          id: 11
+                          name: Cartoon Network
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: 6102
+                          thetvdb: 76200
+                          imdb: tt0175058
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/11/27896.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/11/27896.jpg'
+                        summary: '<p><b>The Powerpuff Girls</b> is an award-winning animated action series about three super-powered little girls Bubbles, Blossom and Buttercup with one very big mission: saving the world before bedtime.</p>'
+                        updated: 1592706624
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/1955'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/160254'
+                    - score: 14.00795
+                      show:
+                        id: 6771
+                        url: 'https://www.tvmaze.com/shows/6771/the-powerpuff-girls'
+                        name: The Powerpuff Girls
+                        type: Animation
+                        language: English
+                        genres:
+                          - Comedy
+                          - Action
+                          - Science-Fiction
+                        status: Running
+                        runtime: 15
+                        premiered: '2016-04-04'
+                        officialSite: 'https://www.cartoonnetwork.com/video/powerpuff-girls/index.html'
+                        schedule:
+                          time: '17:30'
+                          days:
+                            - Sunday
+                        rating:
+                          average: 5.8
+                        weight: 51
+                        network:
+                          id: 11
+                          name: Cartoon Network
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: null
+                          thetvdb: 307473
+                          imdb: tt4718304
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/60/151357.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/60/151357.jpg'
+                        summary: '<p>The city of Townsville may be a beautiful, bustling metropolis, but don''t be fooled! There''s evil afoot! And only three things can keep the bad guys at bay: Blossom, Bubbles and Buttercup, three super-powered little girls, known to their fans (and villains everywhere) as <b>The Powerpuff Girls</b>. Juggling school, bedtimes, and beating up giant monsters may be daunting, but together the Powerpuff Girls are up to the task. Battling a who''s who of evil, they show what it really means to "fight like a girl."</p>'
+                        updated: 1573685920
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/6771'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/1662010'
+                    - score: 13.952632
+                      show:
+                        id: 42924
+                        url: 'https://www.tvmaze.com/shows/42924/girls-cruise'
+                        name: Girls Cruise
+                        type: Reality
+                        language: English
+                        genres: []
+                        status: Running
+                        runtime: 60
+                        premiered: '2019-07-15'
+                        officialSite: 'http://www.vh1.com/shows/girls-cruise'
+                        schedule:
+                          time: '21:00'
+                          days:
+                            - Monday
+                        rating:
+                          average: null
+                        weight: 89
+                        network:
+                          id: 55
+                          name: VH1
+                          country:
+                            name: United States
+                            code: US
+                            timezone: America/New_York
+                        webChannel: null
+                        dvdCountry: null
+                        externals:
+                          tvrage: null
+                          thetvdb: 365645
+                          imdb: tt10466426
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/207/518599.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/207/518599.jpg'
+                        summary: '<p>Lil'' Kim and her friends Chilli, Mya, Vena E., B. Simone, Tiffany Panhilason and Char Defrancesco set sail for the ultimate Caribbean vacation filled with hilarious antics, emotional breakthroughs and spicy romances.</p>'
+                        updated: 1574896429
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/shows/42924'
+                          previousepisode:
+                            href: 'https://api.tvmaze.com/episodes/1720843'
+      operationId: get-search-shows
+      description: 'Search through all the shows in our database by the show''s name. A fuzzy algorithm is used (with a fuzziness value of 2), meaning that shows will be found even if your query contains small typos. Results are returned in order of relevancy (best matches on top) and contain each show''s full information. '
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: search text
+      tags:
+        - Shows
+  '/shows/{showId}':
+    get:
+      summary: Show Lookup
+      tags:
+        - Shows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowDetails'
+              examples:
+                example-1:
+                  value:
+                    id: 139
+                    url: 'https://www.tvmaze.com/shows/139/girls'
+                    name: Girls
+                    type: Scripted
+                    language: English
+                    genres:
+                      - Drama
+                      - Romance
+                    status: Ended
+                    runtime: 30
+                    premiered: '2012-04-15'
+                    officialSite: 'http://www.hbo.com/girls'
+                    schedule:
+                      time: '22:00'
+                      days:
+                        - Sunday
+                    rating:
+                      average: 6.6
+                    weight: 92
+                    network:
+                      id: 8
+                      name: HBO
+                      country:
+                        name: United States
+                        code: US
+                        timezone: America/New_York
+                    webChannel: null
+                    dvdCountry: null
+                    externals:
+                      tvrage: 30124
+                      thetvdb: 220411
+                      imdb: tt1723816
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg'
+                    summary: <p>This Emmy winning series is a comic look at the assorted humiliations and rare triumphs of a group of girls in their 20s.</p>
+                    updated: 1611310521
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/shows/139'
+                      previousepisode:
+                        href: 'https://api.tvmaze.com/episodes/1079686'
+                    _embedded:
+                      seasons:
+                        - id: 650
+                          url: 'https://www.tvmaze.com/seasons/650/girls-season-1'
+                          number: 1
+                          name: ''
+                          episodeOrder: 10
+                          premiereDate: '2012-04-15'
+                          endDate: '2012-06-17'
+                          network:
+                            id: 8
+                            name: HBO
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                          webChannel: null
+                          image:
+                            medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/45/114492.jpg'
+                            original: 'https://static.tvmaze.com/uploads/images/original_untouched/45/114492.jpg'
+                          summary: null
+                          _links:
+                            self:
+                              href: 'https://api.tvmaze.com/seasons/650'
+                        - id: 651
+                          url: 'https://www.tvmaze.com/seasons/651/girls-season-2'
+                          number: 2
+                          name: ''
+                          episodeOrder: 10
+                          premiereDate: '2013-01-13'
+                          endDate: '2013-03-17'
+                          network:
+                            id: 8
+                            name: HBO
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                          webChannel: null
+                          image:
+                            medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/45/114491.jpg'
+                            original: 'https://static.tvmaze.com/uploads/images/original_untouched/45/114491.jpg'
+                          summary: null
+                          _links:
+                            self:
+                              href: 'https://api.tvmaze.com/seasons/651'
+                        - id: 652
+                          url: 'https://www.tvmaze.com/seasons/652/girls-season-3'
+                          number: 3
+                          name: ''
+                          episodeOrder: 12
+                          premiereDate: '2014-01-12'
+                          endDate: '2014-03-23'
+                          network:
+                            id: 8
+                            name: HBO
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                          webChannel: null
+                          image:
+                            medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/45/114490.jpg'
+                            original: 'https://static.tvmaze.com/uploads/images/original_untouched/45/114490.jpg'
+                          summary: null
+                          _links:
+                            self:
+                              href: 'https://api.tvmaze.com/seasons/652'
+                        - id: 653
+                          url: 'https://www.tvmaze.com/seasons/653/girls-season-4'
+                          number: 4
+                          name: ''
+                          episodeOrder: 10
+                          premiereDate: '2015-01-11'
+                          endDate: '2015-03-22'
+                          network:
+                            id: 8
+                            name: HBO
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                          webChannel: null
+                          image:
+                            medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/45/114489.jpg'
+                            original: 'https://static.tvmaze.com/uploads/images/original_untouched/45/114489.jpg'
+                          summary: null
+                          _links:
+                            self:
+                              href: 'https://api.tvmaze.com/seasons/653'
+                        - id: 21282
+                          url: 'https://www.tvmaze.com/seasons/21282/girls-season-5'
+                          number: 5
+                          name: ''
+                          episodeOrder: 10
+                          premiereDate: '2016-02-21'
+                          endDate: '2016-04-17'
+                          network:
+                            id: 8
+                            name: HBO
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                          webChannel: null
+                          image: null
+                          summary: ''
+                          _links:
+                            self:
+                              href: 'https://api.tvmaze.com/seasons/21282'
+                        - id: 48205
+                          url: 'https://www.tvmaze.com/seasons/48205/girls-season-6'
+                          number: 6
+                          name: ''
+                          episodeOrder: 10
+                          premiereDate: '2017-02-12'
+                          endDate: '2017-04-16'
+                          network:
+                            id: 8
+                            name: HBO
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                          webChannel: null
+                          image: null
+                          summary: null
+                          _links:
+                            self:
+                              href: 'https://api.tvmaze.com/seasons/48205'
+                      cast:
+                        - person:
+                            id: 27410
+                            url: 'https://www.tvmaze.com/people/27410/lena-dunham'
+                            name: Lena Dunham
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1986-05-13'
+                            deathday: null
+                            gender: Female
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7597.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7597.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/27410'
+                          character:
+                            id: 36886
+                            url: 'https://www.tvmaze.com/characters/36886/girls-hannah-horvath'
+                            name: Hannah Horvath
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1954.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1954.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36886'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 11102
+                            url: 'https://www.tvmaze.com/people/11102/allison-williams'
+                            name: Allison Williams
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1988-04-13'
+                            deathday: null
+                            gender: Female
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7628.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7628.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/11102'
+                          character:
+                            id: 36887
+                            url: 'https://www.tvmaze.com/characters/36887/girls-marnie-michaels'
+                            name: Marnie Michaels
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1955.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1955.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36887'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 27411
+                            url: 'https://www.tvmaze.com/people/27411/jemima-kirke'
+                            name: Jemima Kirke
+                            country:
+                              name: United Kingdom
+                              code: GB
+                              timezone: Europe/London
+                            birthday: '1985-04-26'
+                            deathday: null
+                            gender: Female
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7631.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7631.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/27411'
+                          character:
+                            id: 36888
+                            url: 'https://www.tvmaze.com/characters/36888/girls-jessa-johansson'
+                            name: Jessa Johansson
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1957.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1957.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36888'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 16405
+                            url: 'https://www.tvmaze.com/people/16405/zosia-mamet'
+                            name: Zosia Mamet
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1988-02-02'
+                            deathday: null
+                            gender: Female
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7634.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7634.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/16405'
+                          character:
+                            id: 36889
+                            url: 'https://www.tvmaze.com/characters/36889/girls-shoshanna-shapiro'
+                            name: Shoshanna Shapiro
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1956.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1956.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36889'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 24858
+                            url: 'https://www.tvmaze.com/people/24858/adam-driver'
+                            name: Adam Driver
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1983-11-19'
+                            deathday: null
+                            gender: Male
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/257/643602.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/257/643602.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/24858'
+                          character:
+                            id: 36890
+                            url: 'https://www.tvmaze.com/characters/36890/girls-adam-sackler'
+                            name: Adam Sackler
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1959.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1959.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36890'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 24970
+                            url: 'https://www.tvmaze.com/people/24970/alex-karpovsky'
+                            name: Alex Karpovsky
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1975-09-23'
+                            deathday: null
+                            gender: Male
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7638.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7638.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/24970'
+                          character:
+                            id: 36891
+                            url: 'https://www.tvmaze.com/characters/36891/girls-ray-ploshansky'
+                            name: Ray Ploshansky
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1958.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1958.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36891'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 27412
+                            url: 'https://www.tvmaze.com/people/27412/andrew-rannells'
+                            name: Andrew Rannells
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1978-08-23'
+                            deathday: null
+                            gender: Male
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1960.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1960.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/27412'
+                          character:
+                            id: 36892
+                            url: 'https://www.tvmaze.com/characters/36892/girls-elijah-krantz'
+                            name: Elijah Krantz
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/15/38615.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/15/38615.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/36892'
+                          self: false
+                          voice: false
+                        - person:
+                            id: 4896
+                            url: 'https://www.tvmaze.com/people/4896/ebon-moss-bachrach'
+                            name: Ebon Moss-Bachrach
+                            country:
+                              name: United States
+                              code: US
+                              timezone: America/New_York
+                            birthday: '1977-03-19'
+                            deathday: null
+                            gender: Male
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/147/369955.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/147/369955.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/people/4896'
+                          character:
+                            id: 37030
+                            url: 'https://www.tvmaze.com/characters/37030/girls-desi'
+                            name: Desi
+                            image:
+                              medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/15/38616.jpg'
+                              original: 'https://static.tvmaze.com/uploads/images/original_untouched/15/38616.jpg'
+                            _links:
+                              self:
+                                href: 'https://api.tvmaze.com/characters/37030'
+                          self: false
+                          voice: false
+        '404':
+          description: Not Found
+      operationId: get-shows-with-seasons-and-cast
+      description: 'If you already know a show''s tvrage, thetvdb or IMDB ID, you can use this endpoint to find this exact show on TVmaze. If the given ID can be matched, a HTTP 302 redirect to the show''s URL will be returned. Otherwise, a HTTP 404 is sent. '
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: 'embed[1]'
+          description: 'seasons, cast, episodes etc.'
+        - schema:
+            type: string
+          in: query
+          name: 'embed[2]'
+          description: 'seasons, cast, episodes etc.'
+    parameters:
+      - schema:
+          type: integer
+        name: showId
+        in: path
+        required: true
+        description: The ID of the the TV Show
+    put:
+      summary: Update show
+      operationId: put-shows-showId
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShowData'
+      tags:
+        - Shows
+    delete:
+      summary: Delete show
+      operationId: delete-shows-showId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+      description: ''
+      tags:
+        - Shows
+  '/seasons/{seasonId}/episodes':
+    get:
+      summary: Get episodes for season
+      tags:
+        - Episodes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    - id: 40646
+                      url: 'https://www.tvmaze.com/episodes/40646/friends-1x01-the-one-where-monica-gets-a-roommate'
+                      name: The One Where Monica Gets a Roommate
+                      season: 1
+                      number: 1
+                      type: regular
+                      airdate: '1994-09-22'
+                      airtime: '20:00'
+                      airstamp: '1994-09-23T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                      summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40646'
+                    - id: 40647
+                      url: 'https://www.tvmaze.com/episodes/40647/friends-1x02-the-one-with-the-sonogram-at-the-end'
+                      name: The One With the Sonogram at the End
+                      season: 1
+                      number: 2
+                      type: regular
+                      airdate: '1994-09-29'
+                      airtime: '20:00'
+                      airstamp: '1994-09-30T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59020.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59020.jpg'
+                      summary: <p>Rachel returns her engagement ring; Ross's ex-wife has a revelation for him.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40647'
+                    - id: 40648
+                      url: 'https://www.tvmaze.com/episodes/40648/friends-1x03-the-one-with-the-thumb'
+                      name: The One With the Thumb
+                      season: 1
+                      number: 3
+                      type: regular
+                      airdate: '1994-10-06'
+                      airtime: '20:00'
+                      airstamp: '1994-10-07T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59021.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59021.jpg'
+                      summary: <p>Monica's friends find her new beau appealing; Phoebe finds a little something extra in her soda.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40648'
+                    - id: 40649
+                      url: 'https://www.tvmaze.com/episodes/40649/friends-1x04-the-one-with-george-stephanopoulos'
+                      name: The One With George Stephanopoulos
+                      season: 1
+                      number: 4
+                      type: regular
+                      airdate: '1994-10-13'
+                      airtime: '20:00'
+                      airstamp: '1994-10-14T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59022.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59022.jpg'
+                      summary: <p>Chandler and Joey take Ross to a hockey game -- with painful results; the ladies get someone else's pizza.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40649'
+                    - id: 40650
+                      url: 'https://www.tvmaze.com/episodes/40650/friends-1x05-the-one-with-the-east-german-laundry-detergent'
+                      name: The One With the East German Laundry Detergent
+                      season: 1
+                      number: 5
+                      type: regular
+                      airdate: '1994-10-20'
+                      airtime: '20:00'
+                      airstamp: '1994-10-21T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59023.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59023.jpg'
+                      summary: <p>Ross does laundry with Rachel; Joey uses Monica to get his old girlfriend back.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40650'
+                    - id: 40651
+                      url: 'https://www.tvmaze.com/episodes/40651/friends-1x06-the-one-with-the-butt'
+                      name: The One With the Butt
+                      season: 1
+                      number: 6
+                      type: regular
+                      airdate: '1994-10-27'
+                      airtime: '20:00'
+                      airstamp: '1994-10-28T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59024.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59024.jpg'
+                      summary: <p>Joey's new agent gets him a cheeky role in a movie; Chandler dates a woman with lots of baggage.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40651'
+                    - id: 40652
+                      url: 'https://www.tvmaze.com/episodes/40652/friends-1x07-the-one-with-the-blackout'
+                      name: The One With the Blackout
+                      season: 1
+                      number: 7
+                      type: regular
+                      airdate: '1994-11-03'
+                      airtime: '20:00'
+                      airstamp: '1994-11-04T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59025.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59025.jpg'
+                      summary: <p>A blackout traps Chandler in an ATM vestibule with model Jill Goodacre; a cat comes between Ross and Rachel.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40652'
+                    - id: 40653
+                      url: 'https://www.tvmaze.com/episodes/40653/friends-1x08-the-one-where-nana-dies-twice'
+                      name: The One Where Nana Dies Twice
+                      season: 1
+                      number: 8
+                      type: regular
+                      airdate: '1994-11-10'
+                      airtime: '20:00'
+                      airstamp: '1994-11-11T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59026.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59026.jpg'
+                      summary: <p>Monica and Ross mourn the loss of their grandmother.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40653'
+                    - id: 40654
+                      url: 'https://www.tvmaze.com/episodes/40654/friends-1x09-the-one-where-underdog-gets-away'
+                      name: The One Where Underdog Gets Away
+                      season: 1
+                      number: 9
+                      type: regular
+                      airdate: '1994-11-17'
+                      airtime: '20:00'
+                      airstamp: '1994-11-18T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59116.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59116.jpg'
+                      summary: <p>Monica tries to cook Thanksgiving dinner for the gang; Ross relishes the chance to talk to his unborn child.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40654'
+                    - id: 40655
+                      url: 'https://www.tvmaze.com/episodes/40655/friends-1x10-the-one-with-the-monkey'
+                      name: The One With the Monkey
+                      season: 1
+                      number: 10
+                      type: regular
+                      airdate: '1994-12-15'
+                      airtime: '20:00'
+                      airstamp: '1994-12-16T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59027.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59027.jpg'
+                      summary: <p>A new pet monkeys around with Ross's ego during the holidays; Phoebe falls for a scientist .</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40655'
+                    - id: 40656
+                      url: 'https://www.tvmaze.com/episodes/40656/friends-1x11-the-one-with-mrs-bing'
+                      name: The One With Mrs. Bing
+                      season: 1
+                      number: 11
+                      type: regular
+                      airdate: '1995-01-05'
+                      airtime: '20:00'
+                      airstamp: '1995-01-06T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59029.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59029.jpg'
+                      summary: <p>Chandler's novelist mother visits -- and hits on Ross; Phoebe and Monica fall for the same guy.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40656'
+                    - id: 40657
+                      url: 'https://www.tvmaze.com/episodes/40657/friends-1x12-the-one-with-the-dozen-lasagnas'
+                      name: The One With the Dozen Lasagnas
+                      season: 1
+                      number: 12
+                      type: regular
+                      airdate: '1995-01-12'
+                      airtime: '20:00'
+                      airstamp: '1995-01-13T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59117.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59117.jpg'
+                      summary: <p>Phoebe has some bad news for Rachel about Paolo; Ross learns some of the results of his former wife's amniocentesis.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40657'
+                    - id: 40658
+                      url: 'https://www.tvmaze.com/episodes/40658/friends-1x13-the-one-with-the-boobies'
+                      name: The One With the Boobies
+                      season: 1
+                      number: 13
+                      type: regular
+                      airdate: '1995-01-19'
+                      airtime: '20:00'
+                      airstamp: '1995-01-20T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59118.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59118.jpg'
+                      summary: <p>Chandler sees Rachel naked; Joey learns his father is having an affair; Phoebe dates a psychiatrist.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40658'
+                    - id: 40659
+                      url: 'https://www.tvmaze.com/episodes/40659/friends-1x14-the-one-with-the-candy-hearts'
+                      name: The One With the Candy Hearts
+                      season: 1
+                      number: 14
+                      type: regular
+                      airdate: '1995-02-09'
+                      airtime: '20:00'
+                      airstamp: '1995-02-10T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59119.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59119.jpg'
+                      summary: <p>Chandler has a blind date with an ex-girlfriend -- whom he's broken up with twice before; the ladies light a "boyfriend bonfire"; Ross finds an unlikely Valentine's Day date.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40659'
+                    - id: 40660
+                      url: 'https://www.tvmaze.com/episodes/40660/friends-1x15-the-one-with-the-stoned-guy'
+                      name: The One With the Stoned Guy
+                      season: 1
+                      number: 15
+                      type: regular
+                      airdate: '1995-02-16'
+                      airtime: '20:00'
+                      airstamp: '1995-02-17T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59032.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59032.jpg'
+                      summary: '<p>Chandler and Monica plan big career moves, while Ross labors to hit it off with a date.</p>'
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40660'
+                    - id: 40661
+                      url: 'https://www.tvmaze.com/episodes/40661/friends-1x16-the-one-with-two-parts-1'
+                      name: The One With Two Parts (1)
+                      season: 1
+                      number: 16
+                      type: regular
+                      airdate: '1995-02-23'
+                      airtime: '20:00'
+                      airstamp: '1995-02-24T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59033.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59033.jpg'
+                      summary: <p>Ross attends Lamaze classes; Joey dates Phoebe's twin; and Chandler has the hots for a co-worker he's supposed to fire.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40661'
+                    - id: 40662
+                      url: 'https://www.tvmaze.com/episodes/40662/friends-1x17-the-one-with-two-parts-2'
+                      name: The One With Two Parts (2)
+                      season: 1
+                      number: 17
+                      type: regular
+                      airdate: '1995-02-23'
+                      airtime: '20:30'
+                      airstamp: '1995-02-24T01:30:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59036.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59036.jpg'
+                      summary: <p>Monica and Rachel meet two cute doctors; Ross looks to Jack for fatherly advice; Phoebe confronts her twin about Joey.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40662'
+                    - id: 40663
+                      url: 'https://www.tvmaze.com/episodes/40663/friends-1x18-the-one-with-all-the-poker'
+                      name: The One With All the Poker
+                      season: 1
+                      number: 18
+                      type: regular
+                      airdate: '1995-03-02'
+                      airtime: '20:00'
+                      airstamp: '1995-03-03T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59120.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59120.jpg'
+                      summary: '<p>The guys let the ladies in on a sacred ritual -- their poker game. Meanwhile, Rachel has an interview with Saks.</p>'
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40663'
+                    - id: 40664
+                      url: 'https://www.tvmaze.com/episodes/40664/friends-1x19-the-one-where-the-monkey-gets-away'
+                      name: The One Where the Monkey Gets Away
+                      season: 1
+                      number: 19
+                      type: regular
+                      airdate: '1995-03-09'
+                      airtime: '20:00'
+                      airstamp: '1995-03-10T01:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59122.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59122.jpg'
+                      summary: <p>Ross entrusts Rachel with his pet monkey for a day; Barry has a surprise for Rachel.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40664'
+                    - id: 40665
+                      url: 'https://www.tvmaze.com/episodes/40665/friends-1x20-the-one-with-the-evil-orthodontist'
+                      name: The One With the Evil Orthodontist
+                      season: 1
+                      number: 20
+                      type: regular
+                      airdate: '1995-04-06'
+                      airtime: '20:00'
+                      airstamp: '1995-04-07T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59123.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59123.jpg'
+                      summary: <p>Chandler's not a very smooth operator when it comes to calling a woman he went out with; Rachel gets involved with her ex-fiancé.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40665'
+                    - id: 40666
+                      url: 'https://www.tvmaze.com/episodes/40666/friends-1x21-the-one-with-the-fake-monica'
+                      name: The One With the Fake Monica
+                      season: 1
+                      number: 21
+                      type: regular
+                      airdate: '1995-04-27'
+                      airtime: '20:00'
+                      airstamp: '1995-04-28T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59268.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59268.jpg'
+                      summary: <p>Monica meets the woman who used her credit-card number; Ross realizes it's time to find a new home for Marcel.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40666'
+                    - id: 40667
+                      url: 'https://www.tvmaze.com/episodes/40667/friends-1x22-the-one-with-the-ick-factor'
+                      name: The One With the Ick Factor
+                      season: 1
+                      number: 22
+                      type: regular
+                      airdate: '1995-05-04'
+                      airtime: '20:00'
+                      airstamp: '1995-05-05T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59124.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59124.jpg'
+                      summary: <p>Phoebe gets temporary work as Chandler's secretary; Monica's new boyfriend is younger than she thinks.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40667'
+                    - id: 40668
+                      url: 'https://www.tvmaze.com/episodes/40668/friends-1x23-the-one-with-the-birth'
+                      name: The One With the Birth
+                      season: 1
+                      number: 23
+                      type: regular
+                      airdate: '1995-05-11'
+                      airtime: '20:00'
+                      airstamp: '1995-05-12T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59125.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59125.jpg'
+                      summary: <p>Ross quarrels with Susan in the delivery room as Carol prepares to give birth; Joey befriends a mother-to-be.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40668'
+                    - id: 40669
+                      url: 'https://www.tvmaze.com/episodes/40669/friends-1x24-the-one-where-rachel-finds-out'
+                      name: The One Where Rachel Finds Out
+                      season: 1
+                      number: 24
+                      type: regular
+                      airdate: '1995-05-18'
+                      airtime: '20:00'
+                      airstamp: '1995-05-19T00:00:00+00:00'
+                      runtime: 30
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/23/59126.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/23/59126.jpg'
+                      summary: <p>Rachel finally realizes how much Ross likes her -- but not before he leaves for China on museum business.</p>
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/episodes/40669'
+        '404':
+          description: Not Found
+      operationId: get-episodes-for-season
+      description: 'A list of episodes in this season. Specials are always included in this list. '
+    parameters:
+      - schema:
+          type: integer
+        name: seasonId
+        in: path
+        required: true
+        description: The ID of the season
+    post:
+      summary: Create episode
+      operationId: post-seasons-seasonId-episodes
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    id: 40646
+                    url: 'https://www.tvmaze.com/episodes/40646/friends-1x01-the-one-where-monica-gets-a-roommate'
+                    name: The One Where Monica Gets a Roommate
+                    season: 1
+                    number: 1
+                    type: regular
+                    airdate: '1994-09-22'
+                    airtime: '20:00'
+                    airstamp: '1994-09-23T00:00:00+00:00'
+                    runtime: 30
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                    summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/episodes/40646'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EpisodeData'
+            examples:
+              example-1:
+                value:
+                  name: The One Where Monica Gets a Roommate
+                  season: 1
+                  number: 1
+                  type: regular
+                  airdate: '1994-09-22'
+                  airtime: '20:00'
+                  airstamp: '1994-09-23T00:00:00+00:00'
+                  runtime: 30
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                  summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+        description: ''
+      tags:
+        - Episodes
+  '/shows/{showId}/seasons':
+    get:
+      summary: Get seasons for show
+      tags:
+        - Seasons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Season'
+              examples:
+                example-1:
+                  value:
+                    - id: 1
+                      url: 'https://www.tvmaze.com/seasons/1/under-the-dome-season-1'
+                      number: 1
+                      name: ''
+                      episodeOrder: 13
+                      premiereDate: '2013-06-24'
+                      endDate: '2013-09-16'
+                      network:
+                        id: 2
+                        name: CBS
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                      webChannel: null
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                      summary: ''
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/seasons/1'
+                    - id: 2
+                      url: 'https://www.tvmaze.com/seasons/2/under-the-dome-season-2'
+                      number: 2
+                      name: ''
+                      episodeOrder: 13
+                      premiereDate: '2014-06-30'
+                      endDate: '2014-09-22'
+                      network:
+                        id: 2
+                        name: CBS
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                      webChannel: null
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60942.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60942.jpg'
+                      summary: ''
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/seasons/2'
+                    - id: 6233
+                      url: 'https://www.tvmaze.com/seasons/6233/under-the-dome-season-3'
+                      number: 3
+                      name: ''
+                      episodeOrder: 13
+                      premiereDate: '2015-06-25'
+                      endDate: '2015-09-10'
+                      network:
+                        id: 2
+                        name: CBS
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                      webChannel: null
+                      image:
+                        medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/182/457332.jpg'
+                        original: 'https://static.tvmaze.com/uploads/images/original_untouched/182/457332.jpg'
+                      summary: ''
+                      _links:
+                        self:
+                          href: 'https://api.tvmaze.com/seasons/6233'
+        '404':
+          description: Not Found
+      operationId: get-seasons-for-show
+      description: 'A complete list of seasons for the given show. Seasons are returned in ascending order and contain the full information that''s known about them. '
+    parameters:
+      - schema:
+          type: integer
+        name: showId
+        in: path
+        required: true
+        description: The ID of the show
+    post:
+      summary: Create season
+      operationId: post-shows-showId-seasons
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/seasons/1/under-the-dome-season-1'
+                    number: 1
+                    name: ''
+                    episodeOrder: 13
+                    premiereDate: '2013-06-24'
+                    endDate: '2013-09-16'
+                    network:
+                      id: 2
+                      name: CBS
+                      country:
+                        name: United States
+                        code: US
+                        timezone: America/New_York
+                    webChannel: null
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                    summary: ''
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/seasons/1'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonData'
+            examples:
+              example-1:
+                value:
+                  number: 1
+                  name: ''
+                  episodeOrder: 13
+                  premiereDate: '2013-06-24'
+                  endDate: '2013-09-16'
+                  network:
+                    id: 2
+                    name: CBS
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                  webChannel: null
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                  summary: ''
+      tags:
+        - Seasons
+  '/shows/{showId}/cast':
+    get:
+      summary: Get cast for show
+      tags:
+        - Cast
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cast'
+              examples:
+                example-1:
+                  value:
+                    - person:
+                        id: 1
+                        url: 'https://www.tvmaze.com/people/1/mike-vogel'
+                        name: Mike Vogel
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1979-07-17'
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/1'
+                      character:
+                        id: 1
+                        url: 'https://www.tvmaze.com/characters/1/under-the-dome-dale-barbie-barbara'
+                        name: Dale "Barbie" Barbara
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/3.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/3.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/1'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 2
+                        url: 'https://www.tvmaze.com/people/2/rachelle-lefevre'
+                        name: Rachelle Lefevre
+                        country:
+                          name: Canada
+                          code: CA
+                          timezone: America/Halifax
+                        birthday: '1979-02-01'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/82/207417.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/82/207417.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/2'
+                      character:
+                        id: 2
+                        url: 'https://www.tvmaze.com/characters/2/under-the-dome-julia-shumway'
+                        name: Julia Shumway
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/6.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/6.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/2'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 3
+                        url: 'https://www.tvmaze.com/people/3/alexander-koch'
+                        name: Alexander Koch
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1988-02-24'
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/205/513325.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/205/513325.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/3'
+                      character:
+                        id: 3
+                        url: 'https://www.tvmaze.com/characters/3/under-the-dome-junior-rennie'
+                        name: Junior Rennie
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/10.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/10.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/3'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 5
+                        url: 'https://www.tvmaze.com/people/5/colin-ford'
+                        name: Colin Ford
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1996-09-12'
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/142/356748.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/142/356748.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/5'
+                      character:
+                        id: 5
+                        url: 'https://www.tvmaze.com/characters/5/under-the-dome-joe-mcalister'
+                        name: Joe McAlister
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/7.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/7.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/5'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 7
+                        url: 'https://www.tvmaze.com/people/7/mackenzie-lintz'
+                        name: Mackenzie Lintz
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1996-11-22'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7816.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7816.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/7'
+                      character:
+                        id: 7
+                        url: 'https://www.tvmaze.com/characters/7/under-the-dome-norrie-calvert-hill'
+                        name: Norrie Calvert-Hill
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/793.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/793.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/7'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 9
+                        url: 'https://www.tvmaze.com/people/9/dean-norris'
+                        name: Dean Norris
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1963-04-08'
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/163/408986.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/163/408986.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/9'
+                      character:
+                        id: 9
+                        url: 'https://www.tvmaze.com/characters/9/under-the-dome-james-big-jim-rennie'
+                        name: James "Big Jim" Rennie
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/2.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/2.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/9'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 4
+                        url: 'https://www.tvmaze.com/people/4/eddie-cahill'
+                        name: Eddie Cahill
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1978-01-15'
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1162.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1162.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/4'
+                      character:
+                        id: 4
+                        url: 'https://www.tvmaze.com/characters/4/under-the-dome-sam-verdreaux'
+                        name: Sam Verdreaux
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/17/44108.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/17/44108.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/4'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 6
+                        url: 'https://www.tvmaze.com/people/6/nicholas-strong'
+                        name: Nicholas Strong
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: null
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/2499.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/2499.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/6'
+                      character:
+                        id: 6
+                        url: 'https://www.tvmaze.com/characters/6/under-the-dome-phil-bushey'
+                        name: Phil Bushey
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/5.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/5.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/6'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 11
+                        url: 'https://www.tvmaze.com/people/11/britt-robertson'
+                        name: Britt Robertson
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1990-04-18'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/158/396055.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/158/396055.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/11'
+                      character:
+                        id: 11
+                        url: 'https://www.tvmaze.com/characters/11/under-the-dome-angie-mcalister'
+                        name: Angie McAlister
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/4.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/4.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/11'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 12
+                        url: 'https://www.tvmaze.com/people/12/aisha-hinds'
+                        name: Aisha Hinds
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1975-11-13'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/1/2665.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/1/2665.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/12'
+                      character:
+                        id: 12
+                        url: 'https://www.tvmaze.com/characters/12/under-the-dome-carolyn-hill'
+                        name: Carolyn Hill
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/8.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/8.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/12'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 10
+                        url: 'https://www.tvmaze.com/people/10/natalie-martinez'
+                        name: Natalie Martinez
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1984-07-12'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/282/706093.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/282/706093.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/10'
+                      character:
+                        id: 10
+                        url: 'https://www.tvmaze.com/characters/10/under-the-dome-deputy-linda-esquivel'
+                        name: Deputy Linda Esquivel
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/792.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/792.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/10'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 8
+                        url: 'https://www.tvmaze.com/people/8/karla-crome'
+                        name: Karla Crome
+                        country:
+                          name: United Kingdom
+                          code: GB
+                          timezone: Europe/London
+                        birthday: '1989-06-22'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/7817.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/7817.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/8'
+                      character:
+                        id: 8
+                        url: 'https://www.tvmaze.com/characters/8/under-the-dome-rebecca-pine'
+                        name: Rebecca Pine
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/794.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/794.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/8'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 35903
+                        url: 'https://www.tvmaze.com/people/35903/kylie-bunbury'
+                        name: Kylie Bunbury
+                        country:
+                          name: Canada
+                          code: CA
+                          timezone: America/Halifax
+                        birthday: '1989-01-30'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/3/8789.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/3/8789.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/35903'
+                      character:
+                        id: 140786
+                        url: 'https://www.tvmaze.com/characters/140786/under-the-dome-eva-sinclair'
+                        name: Eva Sinclair
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/17/44109.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/17/44109.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/140786'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 13
+                        url: 'https://www.tvmaze.com/people/13/jolene-purdy'
+                        name: Jolene Purdy
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1983-12-09'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/2/5993.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/2/5993.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/13'
+                      character:
+                        id: 13
+                        url: 'https://www.tvmaze.com/characters/13/under-the-dome-dodee-weaver'
+                        name: Dodee Weaver
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/9.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/9.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/13'
+                      self: false
+                      voice: false
+                    - person:
+                        id: 14
+                        url: 'https://www.tvmaze.com/people/14/jeff-fahey'
+                        name: Jeff Fahey
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1952-11-29'
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1163.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1163.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/14'
+                      character:
+                        id: 14
+                        url: 'https://www.tvmaze.com/characters/14/under-the-dome-sheriff-duke-perkins'
+                        name: Sheriff Duke Perkins
+                        image: null
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/characters/14'
+                      self: false
+                      voice: false
+        '404':
+          description: Not Found
+      operationId: get-cast-for-show
+      description: 'A list of main cast for a show. Each cast item is a combination of a person and a character. Items are ordered by importance, which is determined by the total number of appearances of the given character in this show. '
+    parameters:
+      - schema:
+          type: integer
+        name: showId
+        in: path
+        required: true
+        description: The ID of the show
+    post:
+      summary: Add or Update cast
+      operationId: post-shows-showId-cast
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CastData'
+      tags:
+        - Cast
+  '/seasons/{seasonId}':
+    parameters:
+      - schema:
+          type: integer
+        name: seasonId
+        in: path
+        required: true
+        description: The ID of the season
+    get:
+      summary: Get season by ID
+      tags:
+        - Seasons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/seasons/1/under-the-dome-season-1'
+                    number: 1
+                    name: ''
+                    episodeOrder: 13
+                    premiereDate: '2013-06-24'
+                    endDate: '2013-09-16'
+                    network:
+                      id: 2
+                      name: CBS
+                      country:
+                        name: United States
+                        code: US
+                        timezone: America/New_York
+                    webChannel: null
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                    summary: ''
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/seasons/1'
+        '404':
+          description: Not Found
+      operationId: get-seasons-showId
+    put:
+      summary: Update season
+      operationId: put-seasons-seasonId
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonData'
+            examples:
+              example-1:
+                value:
+                  number: 1
+                  name: ''
+                  episodeOrder: 13
+                  premiereDate: '2013-06-24'
+                  endDate: '2013-09-16'
+                  network:
+                    id: 2
+                    name: CBS
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                  webChannel: null
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/24/60941.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/24/60941.jpg'
+                  summary: ''
+      tags:
+        - Seasons
+    delete:
+      summary: Delete season
+      operationId: delete-seasons-seasonId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+      tags:
+        - Seasons
+  '/episodes/{episodeId}':
+    parameters:
+      - schema:
+          type: integer
+        name: episodeId
+        in: path
+        required: true
+        description: The ID of the episode
+    get:
+      summary: Get episode by ID
+      tags:
+        - Episodes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/episodes/1/under-the-dome-1x01-pilot'
+                    name: Pilot
+                    season: 1
+                    number: 1
+                    type: regular
+                    airdate: '2013-06-24'
+                    airtime: '22:00'
+                    airstamp: '2013-06-25T02:00:00+00:00'
+                    runtime: 60
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/1/4388.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/1/4388.jpg'
+                    summary: '<p>When the residents of Chester''s Mill find themselves trapped under a massive transparent dome with no way out, they struggle to survive as resources rapidly dwindle and panic quickly escalates.</p>'
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/episodes/1'
+        '404':
+          description: Not Found
+      operationId: get-episodes-episodeId
+      description: Retrieve all primary information for a given episode.
+    put:
+      summary: Update episode
+      operationId: put-episodes-episodeId
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+              examples:
+                example-1:
+                  value:
+                    id: 40646
+                    url: 'https://www.tvmaze.com/episodes/40646/friends-1x01-the-one-where-monica-gets-a-roommate'
+                    name: The One Where Monica Gets a Roommate
+                    season: 1
+                    number: 1
+                    type: regular
+                    airdate: '1994-09-22'
+                    airtime: '20:00'
+                    airstamp: '1994-09-23T00:00:00+00:00'
+                    runtime: 30
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                    summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/episodes/40646'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EpisodeData'
+            examples:
+              example-1:
+                value:
+                  name: The One Where Monica Gets a Roommate
+                  season: 1
+                  number: 1
+                  type: regular
+                  airdate: '1994-09-22'
+                  airtime: '20:00'
+                  airstamp: '1994-09-23T00:00:00+00:00'
+                  runtime: 30
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_landscape/229/572688.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/229/572688.jpg'
+                  summary: <p>Monica's old friend Rachel moves in with her after leaving her fiancé.</p>
+      tags:
+        - Episodes
+    delete:
+      summary: Delete episode
+      operationId: delete-episodes-episodeId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+      tags:
+        - Episodes
+  '/people/{personId}':
+    parameters:
+      - schema:
+          type: integer
+        name: personId
+        in: path
+        required: true
+    get:
+      summary: Get person by ID
+      tags:
+        - People
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/people/1/mike-vogel'
+                    name: Mike Vogel
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                    birthday: '1979-07-17'
+                    deathday: null
+                    gender: Male
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/people/1'
+        '404':
+          description: Not Found
+      operationId: get-people-personId
+      description: Retrieve all primary information for a given person.
+    put:
+      summary: Update person
+      operationId: put-people-personId
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonData'
+            examples:
+              example-1:
+                value:
+                  name: Mike Vogel
+                  country:
+                    name: United States
+                    code: US
+                    timezone: America/New_York
+                  birthday: '1979-07-17'
+                  deathday: null
+                  gender: Male
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+      tags:
+        - People
+    delete:
+      summary: Delete person
+      operationId: delete-people-personId
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+      tags:
+        - People
+  /people:
+    post:
+      summary: Create person
+      operationId: post-people
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonData'
+            examples:
+              example-1:
+                value:
+                  name: Mike Vogel
+                  country:
+                    name: United States
+                    code: US
+                    timezone: America/New_York
+                  birthday: '1979-07-17'
+                  deathday: null
+                  gender: Male
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1815.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/0/1815.jpg'
+      tags:
+        - People
+  /search/people:
+    get:
+      summary: Search people
+      tags:
+        - People
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PersonSearchResult'
+              examples:
+                example-1:
+                  value:
+                    - score: 39.013103
+                      person:
+                        id: 172658
+                        url: 'https://www.tvmaze.com/people/172658/lauren-bush-lauren'
+                        name: Lauren Bush Lauren
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1984-06-25'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/108/272410.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/108/272410.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/172658'
+                    - score: 32.443718
+                      person:
+                        id: 2012
+                        url: 'https://www.tvmaze.com/people/2012/lauren-luiz'
+                        name: Lauren Luiz
+                        country: null
+                        birthday: null
+                        deathday: null
+                        gender: null
+                        image: null
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/2012'
+                    - score: 32.443718
+                      person:
+                        id: 2933
+                        url: 'https://www.tvmaze.com/people/2933/lauren-gussis'
+                        name: Lauren Gussis
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: null
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/214/537301.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/214/537301.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/2933'
+                    - score: 32.443718
+                      person:
+                        id: 4435
+                        url: 'https://www.tvmaze.com/people/4435/lauren-tom'
+                        name: Lauren Tom
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1959-08-04'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/117/294630.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/117/294630.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/4435'
+                    - score: 32.443718
+                      person:
+                        id: 5308
+                        url: 'https://www.tvmaze.com/people/5308/val-lauren'
+                        name: Val Lauren
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: null
+                        deathday: null
+                        gender: Male
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/191/479296.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/191/479296.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/5308'
+                    - score: 32.443718
+                      person:
+                        id: 6486
+                        url: 'https://www.tvmaze.com/people/6486/hope-lauren'
+                        name: Hope Lauren
+                        country: null
+                        birthday: null
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/144/361826.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/144/361826.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/6486'
+                    - score: 32.443718
+                      person:
+                        id: 7426
+                        url: 'https://www.tvmaze.com/people/7426/lauren-jones'
+                        name: Lauren Jones
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1982-08-27'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/75/189366.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/75/189366.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/7426'
+                    - score: 32.443718
+                      person:
+                        id: 8140
+                        url: 'https://www.tvmaze.com/people/8140/lauren-weedman'
+                        name: Lauren Weedman
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1969-03-05'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/84/211953.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/84/211953.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/8140'
+                    - score: 32.443718
+                      person:
+                        id: 9785
+                        url: 'https://www.tvmaze.com/people/9785/lauren-sanchez'
+                        name: Lauren Sánchez
+                        country:
+                          name: United States
+                          code: US
+                          timezone: America/New_York
+                        birthday: '1969-12-19'
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/195/489995.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/195/489995.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/9785'
+                    - score: 32.443718
+                      person:
+                        id: 9809
+                        url: 'https://www.tvmaze.com/people/9809/lauren-pritchard'
+                        name: Lauren Pritchard
+                        country: null
+                        birthday: null
+                        deathday: null
+                        gender: Female
+                        image:
+                          medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/222/555634.jpg'
+                          original: 'https://static.tvmaze.com/uploads/images/original_untouched/222/555634.jpg'
+                        _links:
+                          self:
+                            href: 'https://api.tvmaze.com/people/9809'
+      operationId: get-search-people
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: search text
+  /shows:
+    post:
+      summary: Create show
+      operationId: post-shows
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowSummary'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    url: 'https://www.tvmaze.com/shows/1/under-the-dome'
+                    name: Under the Dome
+                    type: Scripted
+                    language: English
+                    genres:
+                      - Drama
+                      - Science-Fiction
+                      - Thriller
+                    status: Ended
+                    runtime: 60
+                    premiered: '2013-06-24'
+                    officialSite: 'http://www.cbs.com/shows/under-the-dome/'
+                    schedule:
+                      time: '22:00'
+                      days:
+                        - Thursday
+                    rating:
+                      average: 6.6
+                    weight: 96
+                    network:
+                      id: 2
+                      name: CBS
+                      country:
+                        name: United States
+                        code: US
+                        timezone: America/New_York
+                    webChannel: null
+                    dvdCountry: null
+                    externals:
+                      tvrage: 25988
+                      thetvdb: 264492
+                      imdb: tt1553656
+                    image:
+                      medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg'
+                      original: 'https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg'
+                    summary: '<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town''s inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>'
+                    updated: 1617697381
+                    _links:
+                      self:
+                        href: 'https://api.tvmaze.com/shows/1'
+                      previousepisode:
+                        href: 'https://api.tvmaze.com/episodes/185054'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShowData'
+            examples:
+              example-1:
+                value:
+                  name: Under the Dome
+                  type: Scripted
+                  language: English
+                  genres:
+                    - Drama
+                    - Science-Fiction
+                    - Thriller
+                  status: Ended
+                  runtime: 60
+                  premiered: '2013-06-24'
+                  officialSite: 'http://www.cbs.com/shows/under-the-dome/'
+                  schedule:
+                    time: '22:00'
+                    days:
+                      - Thursday
+                  rating:
+                    average: 6.6
+                  weight: 96
+                  network:
+                    id: 2
+                    name: CBS
+                    country:
+                      name: United States
+                      code: US
+                      timezone: America/New_York
+                  webChannel: null
+                  dvdCountry: null
+                  externals:
+                    tvrage: 25988
+                    thetvdb: 264492
+                    imdb: tt1553656
+                  image:
+                    medium: 'https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg'
+                    original: 'https://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg'
+                  summary: '<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town''s inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>'
+                  updated: 1617697381
+      tags:
+        - Shows
+components:
+  schemas:
+    ShowSearchResult:
+      description: ''
+      type: object
+      properties:
+        score:
+          type: number
+        show:
+          $ref: '#/components/schemas/ShowSummary'
+      required:
+        - score
+        - show
+    ShowSummary:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        language:
+          type: string
+          minLength: 1
+        genres:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        premiered:
+          type: string
+          minLength: 1
+        officialSite:
+          type: string
+          minLength: 1
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        rating:
+          $ref: '#/components/schemas/Rating'
+        weight:
+          type: number
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        dvdCountry: {}
+        externals:
+          $ref: '#/components/schemas/Externals'
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+        updated:
+          type: number
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - name
+        - type
+        - language
+        - genres
+        - status
+        - runtime
+        - premiered
+        - officialSite
+        - schedule
+        - rating
+        - weight
+        - network
+        - externals
+        - summary
+        - updated
+        - _links
+    Country:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        code:
+          type: string
+          minLength: 1
+        timezone:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - code
+        - timezone
+    Network:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+          minLength: 1
+        country:
+          $ref: '#/components/schemas/Country'
+      required:
+        - id
+        - name
+        - country
+    Schedule:
+      description: ''
+      type: object
+      properties:
+        time:
+          type: string
+          minLength: 1
+        days:
+          type: array
+          items:
+            type: string
+      required:
+        - time
+        - days
+    Rating:
+      description: ''
+      type: object
+      properties:
+        average:
+          type: number
+      required:
+        - average
+    Externals:
+      description: ''
+      type: object
+      properties:
+        tvrage:
+          type: number
+        thetvdb:
+          type: number
+        imdb:
+          type: string
+          minLength: 1
+    Image:
+      description: ''
+      type: object
+      properties:
+        medium:
+          type: string
+          minLength: 1
+        original:
+          type: string
+          minLength: 1
+      required:
+        - medium
+        - original
+    Links:
+      description: ''
+      type: object
+      properties:
+        self:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              minLength: 1
+        previousepisode:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              minLength: 1
+      required:
+        - self
+    ShowDetails:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        language:
+          type: string
+          minLength: 1
+        genres:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        premiered:
+          type: string
+          minLength: 1
+        officialSite:
+          type: string
+          minLength: 1
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        rating:
+          $ref: '#/components/schemas/Rating'
+        weight:
+          type: number
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        dvdCountry: {}
+        externals:
+          $ref: '#/components/schemas/Externals'
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+        updated:
+          type: number
+        _links:
+          $ref: '#/components/schemas/Links'
+        _embedded:
+          $ref: '#/components/schemas/Embedded'
+      required:
+        - id
+        - url
+        - name
+        - type
+        - language
+        - genres
+        - status
+        - runtime
+        - premiered
+        - officialSite
+        - schedule
+        - rating
+        - weight
+        - network
+        - externals
+        - summary
+        - updated
+        - _links
+    Season:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        number:
+          type: number
+        name:
+          type: string
+        episodeOrder:
+          type: number
+        premiereDate:
+          type: string
+          minLength: 1
+        endDate:
+          type: string
+          minLength: 1
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        image:
+          $ref: '#/components/schemas/Image'
+        summary: {}
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - number
+        - name
+        - episodeOrder
+        - premiereDate
+        - endDate
+        - network
+        - image
+        - _links
+    Cast:
+      description: ''
+      type: object
+      properties:
+        person:
+          $ref: '#/components/schemas/Person'
+        character:
+          $ref: '#/components/schemas/Character'
+        self:
+          type: boolean
+        voice:
+          type: boolean
+      required:
+        - person
+        - character
+        - self
+        - voice
+    Person:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        country:
+          $ref: '#/components/schemas/Country'
+        birthday:
+          type: string
+          minLength: 1
+        deathday:
+          type: string
+        gender:
+          type: string
+          minLength: 1
+        image:
+          $ref: '#/components/schemas/Image'
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - name
+        - country
+        - birthday
+        - gender
+        - _links
+    Character:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        image:
+          $ref: '#/components/schemas/Image'
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - name
+        - _links
+      x-examples:
+        example-1:
+          id: 0
+          url: string
+          name: string
+          image:
+            medium: string
+            original: string
+          _links:
+            self:
+              href: string
+            previousepisode:
+              href: string
+    Episode:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        url:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        season:
+          type: number
+        number:
+          type: number
+        type:
+          type: string
+          minLength: 1
+        airdate:
+          type: string
+          minLength: 1
+        airtime:
+          type: string
+          minLength: 1
+        airstamp:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+        _links:
+          $ref: '#/components/schemas/Links'
+      required:
+        - id
+        - url
+        - name
+        - season
+        - number
+        - type
+        - airdate
+        - airtime
+        - airstamp
+        - runtime
+        - summary
+        - _links
+    Embedded:
+      title: Embedded
+      type: object
+      properties:
+        seasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Season'
+        cast:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cast'
+    PersonData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        country:
+          $ref: '#/components/schemas/Country'
+        birthday:
+          type: string
+          minLength: 1
+        deathday:
+          type: string
+        gender:
+          type: string
+          minLength: 1
+        image:
+          $ref: '#/components/schemas/Image'
+      required:
+        - name
+        - country
+        - birthday
+        - gender
+    PersonSearchResult:
+      description: ''
+      type: object
+      properties:
+        score:
+          type: number
+        person:
+          $ref: '#/components/schemas/Person'
+      required:
+        - score
+        - person
+    ShowData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        language:
+          type: string
+          minLength: 1
+        genres:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        premiered:
+          type: string
+          minLength: 1
+        officialSite:
+          type: string
+          minLength: 1
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        rating:
+          $ref: '#/components/schemas/Rating'
+        weight:
+          type: number
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        dvdCountry: {}
+        externals:
+          $ref: '#/components/schemas/Externals'
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+        updated:
+          type: number
+      required:
+        - name
+        - type
+        - language
+        - genres
+        - status
+        - runtime
+        - premiered
+        - officialSite
+        - schedule
+        - rating
+        - weight
+        - network
+        - externals
+        - summary
+        - updated
+    SeasonData:
+      description: ''
+      type: object
+      properties:
+        number:
+          type: number
+        name:
+          type: string
+        episodeOrder:
+          type: number
+        premiereDate:
+          type: string
+          minLength: 1
+        endDate:
+          type: string
+          minLength: 1
+        network:
+          $ref: '#/components/schemas/Network'
+        webChannel: {}
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+      required:
+        - number
+        - name
+        - episodeOrder
+        - premiereDate
+        - endDate
+        - network
+        - image
+        - summary
+    EpisodeData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        season:
+          type: number
+        number:
+          type: number
+        type:
+          type: string
+          minLength: 1
+        airdate:
+          type: string
+          minLength: 1
+        airtime:
+          type: string
+          minLength: 1
+        airstamp:
+          type: string
+          minLength: 1
+        runtime:
+          type: number
+        image:
+          $ref: '#/components/schemas/Image'
+        summary:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - season
+        - number
+        - type
+        - airdate
+        - airtime
+        - airstamp
+        - runtime
+        - image
+        - summary
+    CastData:
+      title: CastData
+      type: object
+      properties:
+        personId:
+          type: integer
+        character:
+          $ref: '#/components/schemas/CharacterData'
+        self:
+          type: boolean
+        voice:
+          type: boolean
+    CharacterData:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        image:
+          $ref: '#/components/schemas/Image'
+      required:
+        - name
+        - image

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.databinding.FragmentFavouritetvshowsBinding
@@ -36,5 +37,14 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
 
     override fun updateView(message: String) {
         binding.textFavouritetvshows.text = message
+    }
+
+    override fun onDestroy() {
+        presenter.cleanup()
+        super.onDestroy()
+    }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

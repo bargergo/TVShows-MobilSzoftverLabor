@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
+import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.databinding.FragmentCreatetvshowBinding
+import hu.bme.aut.tvshows.model.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -30,12 +32,47 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
         val view = binding.root
         binding.textCreatetvshow.text = "This is create TV Show Fragment"
         binding.btnClickMe.setOnClickListener {
-            presenter.onCreateTvShow("Halo, Halo")
+            presenter.onCreateTvShow(
+                ShowData(
+                "Halo, halo",
+                "Series",
+                "English",
+                listOf("Comedy"),
+                "Finished",
+                153654,
+                "1989-12-01",
+                "asdasd.as",
+                Schedule(
+                    "12:00",
+                    listOf("Monday")
+                ),
+                Rating(8.24f),
+                1321,
+                Network(13, "BBC", Country("United Kingdom", "UK", "GMT0")),
+                null,
+                null,
+                Externals(null, null, null),
+                null,
+                "It's a good a show",
+                8545410
+                ),
+                listOf(Season(
+                    null,
+                    1,
+                    null
+                ))
+            )
+
         }
         return view
     }
 
     override fun showMessage(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        presenter.cleanup()
+        super.onDestroy()
     }
 }
