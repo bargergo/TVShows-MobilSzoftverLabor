@@ -8,10 +8,7 @@ import kotlin.coroutines.CoroutineContext
 class SearchTvShowsPresenter @Inject constructor(
     private val view: SearchTvShowsContract.View,
     private val networkInteractor: NetworkInteractor
-) : SearchTvShowsContract.Presenter, CoroutineScope {
-
-    private val job = Job()
-    override val coroutineContext: CoroutineContext = job + Dispatchers.IO
+) : SearchTvShowsContract.Presenter, CoroutineScope by MainScope() {
 
     override fun search(keywords: String) {
         launch {
@@ -28,6 +25,6 @@ class SearchTvShowsPresenter @Inject constructor(
         // will use the job and dispatcher specified by the
         // coroutineContext.
         // The coroutines are scoped to their execution environment.
-        job.cancel()
+        cancel()
     }
 }

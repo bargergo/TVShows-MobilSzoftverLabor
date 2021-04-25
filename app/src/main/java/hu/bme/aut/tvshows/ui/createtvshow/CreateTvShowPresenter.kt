@@ -15,10 +15,7 @@ class CreateTvShowPresenter @Inject constructor(
     private val view: CreateTvShowContract.View,
     private val dbInteractor: DbInteractor,
     private val networkInteractor: NetworkInteractor
-) : CreateTvShowContract.Presenter, CoroutineScope {
-
-    private val job = Job()
-    override val coroutineContext: CoroutineContext = job + Dispatchers.IO
+) : CreateTvShowContract.Presenter, CoroutineScope by MainScope() {
 
     override fun onCreateTvShow(data: ShowData, seasons: List<Season>) {
         launch {
@@ -48,6 +45,6 @@ class CreateTvShowPresenter @Inject constructor(
         // will use the job and dispatcher specified by the
         // coroutineContext.
         // The coroutines are scoped to their execution environment.
-        job.cancel()
+        cancel()
     }
 }
