@@ -13,4 +13,9 @@
     <string name="menu_createtvshow">Create TV Show</string>
     <string name="menu_about">About</string>
     <string name="click_me">Click me!</string>
+    <string name="about_logo_content_description">The launcher icon of the app. A dark grey clapperboard with blue background in a square</string>
+    <string name="about_app_name">TV shows app</string>
+    <string name="about_all_rights_reserved">All rights reserved</string>
+    <string name="about_author_name">Bargergo</string>
+    <string name="about_year">2021</string>
 </resources>
