@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
@@ -34,10 +35,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     ): View {
         _binding = FragmentSearchtvshowsBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.textSearchtvshows.text = "This is search TV Shows Fragment"
-        binding.btnClickMe.setOnClickListener {
-            presenter.search("Garfield")
-        }
+        val recyclerView = binding.recyclerview
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(TvShowListAdapter(1234));
         return view
     }
 
