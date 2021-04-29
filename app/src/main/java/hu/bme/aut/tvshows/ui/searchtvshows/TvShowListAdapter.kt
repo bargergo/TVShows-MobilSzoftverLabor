@@ -46,7 +46,7 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
 
     inner class TvShowViewHolder(val binding: ListelementTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val textView: TextView = binding.randomText
+        val textView: TextView = binding.tvTitle
         val imageView: ImageView = binding.ivCover
     }
 }
