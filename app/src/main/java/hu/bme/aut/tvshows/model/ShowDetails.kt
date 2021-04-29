@@ -1,5 +1,7 @@
 package hu.bme.aut.tvshows.model
 
+import org.threeten.bp.LocalDate
+
 data class ShowDetails (
 
     val id: Int,
@@ -10,7 +12,7 @@ data class ShowDetails (
     val genres: List<String>,
     val status: String,
     val runtime: Long,
-    val premiered: String,
+    val premiered: LocalDate? = null,
     val officialSite: String,
     val schedule: Schedule,
     val rating: Rating,
@@ -20,7 +22,7 @@ data class ShowDetails (
     val dvdCountry: Any? = null,
     val externals: Externals,
     val image: Image? = null,
-    val summary: String,
+    val summary: String? = null,
     val updated: Long,
     val links: Links,
     val embedded: Embedded? = null

@@ -21,7 +21,15 @@
         android:id="@+id/nav_searchtvshows"
         android:name="hu.bme.aut.tvshows.ui.searchtvshows.SearchTvShowsFragment"
         android:label="@string/menu_searchtvshows"
-        tools:layout="@layout/fragment_searchtvshows" />
+        tools:layout="@layout/fragment_searchtvshows" >
+        <action
+            android:id="@+id/action_nav_searchtvshows_to_nav_tvshowdetail"
+            app:destination="@id/nav_tvshowdetail">
+            <argument
+                android:name="tvShowId"
+                app:argType="integer" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_createtvshow"
@@ -34,4 +42,9 @@
         android:name="hu.bme.aut.tvshows.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_tvshowdetail"
+        android:name="hu.bme.aut.tvshows.ui.tvshowdetail.TvShowDetailFragment"
+        tools:layout="@layout/fragment_tvshowdetail" />
 </navigation>

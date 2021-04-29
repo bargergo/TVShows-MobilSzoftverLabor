@@ -18,4 +18,7 @@
     <string name="about_all_rights_reserved">All rights reserved</string>
     <string name="about_author_name">Bargergo</string>
     <string name="about_year">2021</string>
+    <string name="search_menu_title">Search TV Shows</string>
+    <string name="search_for_something">Use the search bar at the top to find TV Shows</string>
+    <string name="no_data_available">No results found</string>
 </resources>

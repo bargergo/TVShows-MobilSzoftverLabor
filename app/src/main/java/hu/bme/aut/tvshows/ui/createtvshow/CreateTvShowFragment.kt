@@ -10,6 +10,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.databinding.FragmentCreatetvshowBinding
 import hu.bme.aut.tvshows.model.*
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,7 +42,7 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 listOf("Comedy"),
                 "Finished",
                 153654,
-                "1989-12-01",
+                    LocalDate.parse("1989-12-01", DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 "asdasd.as",
                 Schedule(
                     "12:00",

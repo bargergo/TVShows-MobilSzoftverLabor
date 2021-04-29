@@ -7,7 +7,7 @@ import java.net.URI
 import java.net.URISyntaxException
 
 class ApiKeyAuth(val location: String, val paramName: String) : Interceptor {
-    var apiKey: String? = null
+    lateinit var apiKey: String
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val paramValue: String

@@ -2,7 +2,6 @@ package hu.bme.aut.tvshows.network
 
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
-import hu.bme.aut.tvshows.network.GsonCustomConverterFactory
 import hu.bme.aut.tvshows.network.auth.ApiKeyAuth
 import hu.bme.aut.tvshows.network.auth.HttpBasicAuth
 import hu.bme.aut.tvshows.network.auth.OAuth
@@ -25,7 +24,7 @@ import java.util.*
 
 class ApiClient() {
     private var apiAuthorizations: MutableMap<String, Interceptor>
-    var okBuilder: OkHttpClient.Builder? = null
+    lateinit var okBuilder: OkHttpClient.Builder
         private set
     lateinit var adapterBuilder: Retrofit.Builder
         private set
@@ -48,7 +47,7 @@ class ApiClient() {
      * @param authName Authentication name
      * @param apiKey API key
      */
-    constructor(authName: String, apiKey: String?) : this(authName) {
+    constructor(authName: String, apiKey: String) : this(authName) {
         setApiKey(apiKey)
     }
 
@@ -58,7 +57,7 @@ class ApiClient() {
      * @param username Username
      * @param password Password
      */
-    constructor(authName: String, username: String?, password: String?) : this(authName) {
+    constructor(authName: String, username: String, password: String) : this(authName) {
         setCredentials(username, password)
     }
 
@@ -97,17 +96,17 @@ class ApiClient() {
 
     fun <S> createService(serviceClass: Class<S>?): S {
         return adapterBuilder
-            .client(okBuilder!!.build())
+            .client(okBuilder.build())
             .build()
             .create(serviceClass)
     }
 
-    fun setDateFormat(dateFormat: DateFormat?): ApiClient {
+    fun setDateFormat(dateFormat: DateFormat): ApiClient {
         json.setDateFormat(dateFormat)
         return this
     }
 
-    fun setSqlDateFormat(dateFormat: DateFormat?): ApiClient {
+    fun setSqlDateFormat(dateFormat: DateFormat): ApiClient {
         json.setSqlDateFormat(dateFormat)
         return this
     }
@@ -127,7 +126,7 @@ class ApiClient() {
      * @param apiKey API key
      * @return ApiClient
      */
-    fun setApiKey(apiKey: String?): ApiClient {
+    fun setApiKey(apiKey: String): ApiClient {
         for (apiAuthorization in apiAuthorizations.values) {
             if (apiAuthorization is ApiKeyAuth) {
                 apiAuthorization.apiKey = apiKey
@@ -143,7 +142,7 @@ class ApiClient() {
      * @param password Password
      * @return ApiClient
      */
-    fun setCredentials(username: String?, password: String?): ApiClient {
+    fun setCredentials(username: String, password: String): ApiClient {
         for (apiAuthorization in apiAuthorizations.values) {
             if (apiAuthorization is HttpBasicAuth) {
                 apiAuthorization.setCredentials(username, password)
@@ -254,7 +253,7 @@ class ApiClient() {
             throw RuntimeException("auth name \"$authName\" already in api authorizations")
         }
         apiAuthorizations[authName] = authorization
-        okBuilder!!.addInterceptor(authorization)
+        okBuilder.addInterceptor(authorization)
         return this
     }
 
@@ -272,9 +271,9 @@ class ApiClient() {
         return this
     }
 
-    fun addAuthsToOkBuilder(okBuilder: OkHttpClient.Builder?) {
+    fun addAuthsToOkBuilder(okBuilder: OkHttpClient.Builder) {
         for (apiAuthorization in apiAuthorizations.values) {
-            okBuilder!!.addInterceptor(apiAuthorization)
+            okBuilder.addInterceptor(apiAuthorization)
         }
     }
 
