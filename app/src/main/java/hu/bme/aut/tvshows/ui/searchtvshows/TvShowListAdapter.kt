@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -44,6 +45,10 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
                 .placeholder(R.drawable.loading_animation)
             Glide.with(context).load(it.medium).apply(options).into(holder.imageView)
         }
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -56,5 +61,6 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
         val tvGenres: TextView = binding.tvGenres
         val tvSummary: TextView = binding.tvSummary
         val imageView: ImageView = binding.ivCover
+
     }
 }
