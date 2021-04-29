@@ -11,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementTvshowBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
+import hu.bme.aut.tvshows.util.stripHtml
 
 
 class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
@@ -29,7 +30,12 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
         val tvShow = tvShows[position]
         val year = tvShow.show.premiered?.year ?: "N/A"
-        holder.textView.text =  "${tvShow.show.name} ($year)"
+        holder.tvTitle.text =  "${tvShow.show.name} ($year)"
+        holder.tvGenres.text = if (tvShow.show.genres.size > 0)
+            tvShow.show.genres.joinToString(", ")
+        else
+            "N/A"
+        holder.tvSummary.text = tvShow.show.summary?.stripHtml() ?: "N/A"
 
         val image = tvShow.show.image
         image?.let {
@@ -46,7 +52,9 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
 
     inner class TvShowViewHolder(val binding: ListelementTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val textView: TextView = binding.tvTitle
+        val tvTitle: TextView = binding.tvTitle
+        val tvGenres: TextView = binding.tvGenres
+        val tvSummary: TextView = binding.tvSummary
         val imageView: ImageView = binding.ivCover
     }
 }
