@@ -1,12 +1,11 @@
 package hu.bme.aut.tvshows.ui.searchtvshows
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
+import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
 import javax.inject.Inject
 
@@ -21,6 +20,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    init {
+        setHasOptionsMenu(true);
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,6 +36,11 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
             presenter.search("Garfield")
         }
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onSearchResults(results: String) {
