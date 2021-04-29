@@ -47,7 +47,7 @@ class ApiClient() {
      * @param authName Authentication name
      * @param apiKey API key
      */
-    constructor(authName: String, apiKey: String?) : this(authName) {
+    constructor(authName: String, apiKey: String) : this(authName) {
         setApiKey(apiKey)
     }
 
@@ -57,7 +57,7 @@ class ApiClient() {
      * @param username Username
      * @param password Password
      */
-    constructor(authName: String, username: String?, password: String?) : this(authName) {
+    constructor(authName: String, username: String, password: String) : this(authName) {
         setCredentials(username, password)
     }
 
@@ -126,7 +126,7 @@ class ApiClient() {
      * @param apiKey API key
      * @return ApiClient
      */
-    fun setApiKey(apiKey: String?): ApiClient {
+    fun setApiKey(apiKey: String): ApiClient {
         for (apiAuthorization in apiAuthorizations.values) {
             if (apiAuthorization is ApiKeyAuth) {
                 apiAuthorization.apiKey = apiKey
@@ -142,7 +142,7 @@ class ApiClient() {
      * @param password Password
      * @return ApiClient
      */
-    fun setCredentials(username: String?, password: String?): ApiClient {
+    fun setCredentials(username: String, password: String): ApiClient {
         for (apiAuthorization in apiAuthorizations.values) {
             if (apiAuthorization is HttpBasicAuth) {
                 apiAuthorization.setCredentials(username, password)
