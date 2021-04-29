@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -15,7 +16,9 @@ import hu.bme.aut.tvshows.model.ShowSearchResult
 import hu.bme.aut.tvshows.util.stripHtml
 
 
-class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
+class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<ShowSearchResult>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
+
+    val context: Context = fragment.requireContext()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
 
@@ -47,7 +50,9 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
         }
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
+            val bundle = bundleOf("tvShowId" to tvShow.show.id)
+            val navController = fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
+            //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
         }
     }
 
