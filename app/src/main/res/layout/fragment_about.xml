@@ -7,11 +7,11 @@
     tools:context=".ui.about.AboutFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivAboutIcon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/about_logo_content_description"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_about"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.314"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/ivAboutIcon"
         app:layout_constraintVertical_bias="0.050" />
 
     <TextView
