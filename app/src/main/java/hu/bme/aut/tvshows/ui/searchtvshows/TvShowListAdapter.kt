@@ -1,7 +1,6 @@
 package hu.bme.aut.tvshows.ui.searchtvshows
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import hu.bme.aut.tvshows.R
-import hu.bme.aut.tvshows.databinding.FrameTvshowBinding
+import hu.bme.aut.tvshows.databinding.ListelementTvshowBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
 
 
@@ -19,7 +18,7 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
 
         return TvShowViewHolder(
-            FrameTvshowBinding.inflate(
+            ListelementTvshowBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -45,7 +44,7 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
         return tvShows.size
     }
 
-    inner class TvShowViewHolder(val binding: FrameTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TvShowViewHolder(val binding: ListelementTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         val textView: TextView = binding.randomText
         val imageView: ImageView = binding.ivCover
