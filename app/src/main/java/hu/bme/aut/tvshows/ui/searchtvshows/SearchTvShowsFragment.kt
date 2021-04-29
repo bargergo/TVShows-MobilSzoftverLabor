@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
+import hu.bme.aut.tvshows.model.ShowSearchResult
 import hu.bme.aut.tvshows.util.DebouncingQueryTextListener
 import javax.inject.Inject
 
@@ -54,7 +55,7 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
                     if (it.isEmpty()) {
                         Toast.makeText(activity, "Reset search", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(activity, "Searched for: $it", Toast.LENGTH_SHORT).show()
+                        presenter.search(it)
                     }
 
                 }
@@ -62,8 +63,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onSearchResults(results: String) {
-        Toast.makeText(activity, results, Toast.LENGTH_SHORT).show()
+    override fun onSearchResults(results: List<ShowSearchResult>) {
+        val resultText = results.map { it.show.name }.joinToString(",\n")
+        Toast.makeText(activity, resultText, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
