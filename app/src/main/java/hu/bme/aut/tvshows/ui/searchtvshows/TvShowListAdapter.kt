@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementTvshowBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
+import hu.bme.aut.tvshows.util.hideKeyboard
 import hu.bme.aut.tvshows.util.stripHtml
 
 
@@ -50,6 +51,7 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
         }
 
         holder.itemView.setOnClickListener {
+            fragment.activity?.hideKeyboard()
             val bundle = bundleOf("tvShowId" to tvShow.show.id)
             fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
             //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
