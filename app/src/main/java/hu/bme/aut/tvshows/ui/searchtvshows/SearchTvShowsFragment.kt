@@ -57,7 +57,11 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         ) { searchText ->
                 searchText?.let {
                     if (it.isEmpty()) {
-                        Toast.makeText(activity, "Reset search", Toast.LENGTH_SHORT).show()
+                        showSearchResults.clear()
+                        adapter.notifyDataSetChanged()
+                        binding.emptyView.visibility = View.VISIBLE
+                        binding.noDataView.visibility = View.GONE
+                        binding.recyclerview.visibility = View.GONE
                     } else {
                         presenter.search(it)
                     }
@@ -71,8 +75,14 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         showSearchResults.clear()
         showSearchResults.addAll(results)
         adapter.notifyDataSetChanged()
-        val resultText = results.map { it.show.name }.joinToString(",\n")
-        Toast.makeText(activity, resultText, Toast.LENGTH_SHORT).show()
+        binding.emptyView.visibility = View.GONE
+        if (results.size > 0) {
+            binding.noDataView.visibility = View.GONE
+            binding.recyclerview.visibility = View.VISIBLE
+        } else {
+            binding.noDataView.visibility = View.VISIBLE
+            binding.recyclerview.visibility = View.GONE
+        }
     }
 
     override fun onDestroy() {
