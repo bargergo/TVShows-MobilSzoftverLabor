@@ -51,7 +51,7 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
 
         holder.itemView.setOnClickListener {
             val bundle = bundleOf("tvShowId" to tvShow.show.id)
-            val navController = fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
+            fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
             //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
         }
     }
