@@ -11,6 +11,8 @@
  */
 package hu.bme.aut.tvshows.model
 
+import org.threeten.bp.LocalDate
+
 /**
  * 
  * @param id 
@@ -45,7 +47,7 @@ data class ShowSummary (
     val genres: List<String>,
     val status: String,
     val runtime: Long,
-    val premiered: String,
+    val premiered: LocalDate,
     val officialSite: String,
     val schedule: Schedule,
     val rating: Rating,

@@ -1,6 +1,8 @@
 package hu.bme.aut.tvshows.interactor
 
 import hu.bme.aut.tvshows.model.*
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 class FakeNetworkInteractor : NetworkInteractor {
     override suspend fun searchShows(keywords: String): List<ShowSearchResult> {
@@ -18,7 +20,7 @@ class FakeNetworkInteractor : NetworkInteractor {
                         "Thriller"),
                     "Ended",
                     60,
-                    "2013-06-24",
+                    LocalDate.parse("2013-06-24", DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                     "http://www.cbs.com/shows/under-the-dome/",
                     Schedule(
                         "22:00",
