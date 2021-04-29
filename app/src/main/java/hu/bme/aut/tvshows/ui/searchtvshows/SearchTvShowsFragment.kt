@@ -1,7 +1,9 @@
 package hu.bme.aut.tvshows.ui.searchtvshows
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +42,24 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_menu, menu);
+
+        val search = menu.findItem(R.id.nav_search)
+        val searchView = search.actionView as SearchView
+        searchView.queryHint= "Search TV Shows"
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    Toast.makeText(activity, "Searched for: ${newText}", Toast.LENGTH_SHORT).show()
+                }
+                return true
+            }
+
+        })
         super.onCreateOptionsMenu(menu, inflater)
     }
 
