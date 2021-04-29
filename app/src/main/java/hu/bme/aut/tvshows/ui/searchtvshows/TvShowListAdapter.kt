@@ -1,6 +1,5 @@
 package hu.bme.aut.tvshows.ui.searchtvshows
 
-import android.R
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
+import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FrameTvshowBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
 
@@ -36,12 +35,10 @@ class TvShowListAdapter(val context: Context, var tvShows: List<ShowSearchResult
         val image = tvShow.show.image
         image?.let {
             val options: RequestOptions = RequestOptions()
-                .placeholder(R.drawable.ic_media_ff)
-                .error(R.drawable.ic_media_ff)
-                .override(400)
+                .error(R.drawable.ic_broken_image)
+                .placeholder(R.drawable.loading_animation)
             Glide.with(context).load(it.medium).apply(options).into(holder.imageView)
         }
-
     }
 
     override fun getItemCount(): Int {
