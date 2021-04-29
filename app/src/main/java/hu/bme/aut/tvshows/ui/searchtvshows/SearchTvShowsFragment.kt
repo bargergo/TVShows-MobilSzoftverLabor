@@ -23,6 +23,8 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    lateinit var adapter: TvShowListAdapter
+    var showSearchResults: MutableList<ShowSearchResult> = mutableListOf()
 
     init {
         setHasOptionsMenu(true);
@@ -36,9 +38,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         _binding = FragmentSearchtvshowsBinding.inflate(inflater, container, false)
         val view = binding.root
         val recyclerView = binding.recyclerview
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(TvShowListAdapter(1234));
+        recyclerView.setHasFixedSize(true)
+        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
+        adapter = TvShowListAdapter(showSearchResults)
+        recyclerView.setAdapter(adapter)
         return view
     }
 
@@ -65,6 +68,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     }
 
     override fun onSearchResults(results: List<ShowSearchResult>) {
+        showSearchResults.clear()
+        showSearchResults.addAll(results)
+        adapter.notifyDataSetChanged()
         val resultText = results.map { it.show.name }.joinToString(",\n")
         Toast.makeText(activity, resultText, Toast.LENGTH_SHORT).show()
     }
