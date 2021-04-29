@@ -26,6 +26,8 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     lateinit var adapter: TvShowListAdapter
     var showSearchResults: MutableList<ShowSearchResult> = mutableListOf()
 
+    private var keywords = ""
+
     init {
         setHasOptionsMenu(true);
     }
@@ -42,6 +44,7 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
         adapter = TvShowListAdapter(this, showSearchResults)
         recyclerView.setAdapter(adapter)
+
         return view
     }
 
@@ -50,7 +53,15 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
 
         val search = menu.findItem(R.id.nav_search)
         val searchView = search.actionView as SearchView
+        searchView.isIconifiedByDefault = false
         searchView.queryHint= "Search TV Shows"
+
+        if (keywords.isNotEmpty()) {
+            searchView.setQuery(keywords, false)
+            adapter.notifyDataSetChanged()
+            changeVisibility(showSearchResults)
+        }
+
 
         searchView.setOnQueryTextListener(DebouncingQueryTextListener(
                 this@SearchTvShowsFragment.lifecycle
@@ -63,6 +74,7 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
                         binding.noDataView.visibility = View.GONE
                         binding.recyclerview.visibility = View.GONE
                     } else {
+                        keywords = it
                         presenter.search(it)
                     }
 
@@ -75,6 +87,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         showSearchResults.clear()
         showSearchResults.addAll(results)
         adapter.notifyDataSetChanged()
+        changeVisibility(results)
+    }
+
+    private fun changeVisibility(results: List<ShowSearchResult>) {
         binding.emptyView.visibility = View.GONE
         if (results.size > 0) {
             binding.noDataView.visibility = View.GONE
