@@ -12,7 +12,7 @@ data class ShowDetails (
     val genres: List<String>,
     val status: String,
     val runtime: Long,
-    val premiered: LocalDate,
+    val premiered: LocalDate?,
     val officialSite: String,
     val schedule: Schedule,
     val rating: Rating,

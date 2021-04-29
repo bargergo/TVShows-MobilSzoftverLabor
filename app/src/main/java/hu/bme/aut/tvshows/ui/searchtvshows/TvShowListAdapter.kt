@@ -23,7 +23,8 @@ class TvShowListAdapter(var tvShows: List<ShowSearchResult>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
-        holder.getView().text =  "${tvShows[position].show.name} (${tvShows[position].show.premiered.year})"
+        val year = tvShows[position].show.premiered?.year ?: "N/A"
+        holder.getView().text =  "${tvShows[position].show.name} ($year)"
     }
 
     override fun getItemCount(): Int {
