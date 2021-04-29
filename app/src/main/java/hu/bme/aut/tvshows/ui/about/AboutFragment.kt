@@ -21,7 +21,6 @@ class AboutFragment : Fragment() {
     ): View {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.textAbout.text = "This is about Fragment"
         return view
     }
 }
