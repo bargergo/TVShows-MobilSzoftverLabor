@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
+import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentTvshowdetailBinding
 import hu.bme.aut.tvshows.model.Cast
 import hu.bme.aut.tvshows.model.Season
@@ -42,5 +45,12 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
 
     override fun onResultsReady(showDetail: ShowDetails, cast: List<Cast>, seasons: List<Season>) {
         binding.textView2.text = showDetail.name + "\n" + cast.map { "${it.character.name} : ${it.person.name}" }.joinToString(",\n") + "\n" + seasons.map { it.number }.joinToString(",\n")
+        val image = showDetail.image
+        image?.let {
+            val options: RequestOptions = RequestOptions()
+                    .error(R.drawable.ic_broken_image)
+                    .placeholder(R.drawable.loading_animation)
+            Glide.with(requireContext()).load(it.original).apply(options).into(binding.ivCover)
+        }
     }
 }

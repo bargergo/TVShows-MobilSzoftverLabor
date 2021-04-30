@@ -21,4 +21,5 @@
     <string name="search_menu_title">Search TV Shows</string>
     <string name="search_for_something">Use the search bar at the top to find TV Shows</string>
     <string name="no_data_available">No results found</string>
+    <string name="search_cover_content_description">The cover image of the series</string>
 </resources>
