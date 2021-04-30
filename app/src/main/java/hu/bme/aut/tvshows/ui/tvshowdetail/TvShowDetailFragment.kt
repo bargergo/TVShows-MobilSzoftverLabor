@@ -14,6 +14,7 @@ import hu.bme.aut.tvshows.databinding.FragmentTvshowdetailBinding
 import hu.bme.aut.tvshows.model.Cast
 import hu.bme.aut.tvshows.model.Season
 import hu.bme.aut.tvshows.model.ShowDetails
+import hu.bme.aut.tvshows.util.stripHtml
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -35,7 +36,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         _binding = FragmentTvshowdetailBinding.inflate(inflater, container, false)
         val view = binding.root
         val tvShowId = arguments?.getInt("tvShowId")
-        binding.textView2.text = "Got TV Show Id: $tvShowId"
+        binding.tvTitle.text = "Got TV Show Id: $tvShowId"
         tvShowId?.let {
             presenter.getDetails(it)
             Toast.makeText(activity, "Requests sent", Toast.LENGTH_SHORT).show()
@@ -44,7 +45,12 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
     }
 
     override fun onResultsReady(showDetail: ShowDetails, cast: List<Cast>, seasons: List<Season>) {
-        binding.textView2.text = showDetail.name + "\n" + cast.map { "${it.character.name} : ${it.person.name}" }.joinToString(",\n") + "\n" + seasons.map { it.number }.joinToString(",\n")
+        val year: String = showDetail.premiered?.year?.toString() ?: "N/A"
+        binding.tvTitle.text = "${showDetail.name} ($year)"
+        binding.tvSummary.text = showDetail.summary?.stripHtml() ?: "N/A"
+        binding.tvCast.text = cast.map { "${it.character.name} : ${it.person.name}" }.joinToString(",\n")
+        binding.tvSeasons.text = seasons.map { "Season ${it.number}" }.joinToString(",\n")
+
         val image = showDetail.image
         image?.let {
             val options: RequestOptions = RequestOptions()
