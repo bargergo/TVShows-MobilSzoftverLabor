@@ -47,6 +47,10 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
     override fun onResultsReady(showDetail: ShowDetails, cast: List<Cast>, seasons: List<Season>) {
         val year: String = showDetail.premiered?.year?.toString() ?: "N/A"
         binding.tvTitle.text = "${showDetail.name} ($year)"
+        binding.tvGenres.text = if (showDetail.genres.size > 0)
+            showDetail.genres.joinToString(", ")
+        else
+            "N/A"
         binding.tvSummary.text = showDetail.summary?.stripHtml() ?: "N/A"
         binding.tvCast.text = cast.map { "${it.character.name} : ${it.person.name}" }.joinToString(",\n")
         binding.tvSeasons.text = seasons.map { "Season ${it.number}" }.joinToString(",\n")
