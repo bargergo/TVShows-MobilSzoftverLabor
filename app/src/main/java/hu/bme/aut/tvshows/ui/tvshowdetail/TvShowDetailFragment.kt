@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -16,8 +15,6 @@ import hu.bme.aut.tvshows.databinding.FragmentTvshowdetailBinding
 import hu.bme.aut.tvshows.model.Cast
 import hu.bme.aut.tvshows.model.Season
 import hu.bme.aut.tvshows.model.ShowDetails
-import hu.bme.aut.tvshows.model.ShowSearchResult
-import hu.bme.aut.tvshows.ui.searchtvshows.TvShowListAdapter
 import hu.bme.aut.tvshows.util.stripHtml
 import javax.inject.Inject
 
@@ -27,8 +24,11 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
     @Inject
     lateinit var presenter: TvShowDetailContract.Presenter
 
-    lateinit var adapter: CastListAdapter
+    lateinit var castListAdapter: CastListAdapter
     var castResults: MutableList<Cast> = mutableListOf()
+
+    lateinit var seasonListAdapter: SeasonListAdapter
+    var seasonResults: MutableList<Season> = mutableListOf()
 
     private var _binding: FragmentTvshowdetailBinding? = null
     // This property is only valid between onCreateView and
@@ -42,12 +42,21 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
     ): View {
         _binding = FragmentTvshowdetailBinding.inflate(inflater, container, false)
         val view = binding.root
+
         val rvCastList = binding.rvCastList
         rvCastList.setHasFixedSize(true)
         rvCastList.setLayoutManager(LinearLayoutManager(view.getContext()))
         rvCastList.isNestedScrollingEnabled = false
-        adapter = CastListAdapter(requireContext(), castResults)
-        rvCastList.adapter = adapter
+        castListAdapter = CastListAdapter(requireContext(), castResults)
+        rvCastList.adapter = castListAdapter
+
+        val rvSeasonList = binding.rvSeasonList
+        rvSeasonList.setHasFixedSize(true)
+        rvSeasonList.setLayoutManager(LinearLayoutManager(view.getContext()))
+        rvSeasonList.isNestedScrollingEnabled = false
+        seasonListAdapter = SeasonListAdapter(requireContext(), seasonResults)
+        rvSeasonList.adapter = seasonListAdapter
+
         val tvShowId = arguments?.getInt("tvShowId")
         binding.tvTitle.text = "Got TV Show Id: $tvShowId"
         tvShowId?.let {
@@ -65,9 +74,10 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
             "N/A"
         binding.tvSummary.text = showDetail.summary?.stripHtml() ?: "N/A"
         castResults.addAll(cast)
-        adapter.notifyDataSetChanged()
-        Log.d("Tvshowdetail", cast.toString())
-        binding.tvSeasons.text = seasons.map { "Season ${it.number}" }.joinToString(",\n")
+        castListAdapter.notifyDataSetChanged()
+
+        seasonResults.addAll(seasons)
+        seasonListAdapter.notifyDataSetChanged()
 
         val image = showDetail.image
         image?.let {
