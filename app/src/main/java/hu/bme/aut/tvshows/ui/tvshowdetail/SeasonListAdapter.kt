@@ -3,6 +3,7 @@ package hu.bme.aut.tvshows.ui.tvshowdetail
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.tvshows.databinding.ListelementSeasonBinding
 import hu.bme.aut.tvshows.model.Season
@@ -23,6 +24,10 @@ class SeasonListAdapter(val context: Context, val seasons: List<Season>) : Recyc
         val season = seasons[position]
         holder.binding.tvSeasonNumber.text = "Season ${season.number}"
         holder.binding.tvEpisodes.text = "${season.episodeOrder} episodes"
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(context, "Clicked on Season ${season.number}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
