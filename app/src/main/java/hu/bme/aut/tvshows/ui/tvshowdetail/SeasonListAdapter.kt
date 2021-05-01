@@ -32,7 +32,7 @@ class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>) : Rec
         holder.binding.tvEpisodes.text = "${season.episodeOrder} episodes"
 
         holder.itemView.setOnClickListener {
-            val bundle = bundleOf("seasonId" to season.id)
+            val bundle = bundleOf("seasonId" to season.id, "seasonNumber" to season.number)
             fragment.findNavController().navigate(R.id.action_nav_tvshowdetail_to_nav_seasondetail, bundle)
         }
     }

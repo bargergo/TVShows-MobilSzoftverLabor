@@ -43,11 +43,14 @@ class SeasonDetailFragment : Fragment(), SeasonDetailContract.View {
         episodeListAdapter = EpisodeListAdapter(this, episodeResults)
         rvEpisodes.adapter = episodeListAdapter
 
-        binding.textView2.text = "This is Season Detail fragment"
+        binding.tvTitle.text = "This is Season Detail fragment"
         val seasonId = arguments?.getInt("seasonId")
+        val seasonNumber = arguments?.getInt("seasonNumber")
         seasonId?.let {
-            binding.textView2.text = "Got argument: $it"
             presenter.getEpisodes(it)
+        }
+        seasonNumber?.let {
+            binding.tvTitle.text = "Season $it"
         }
 
         return view

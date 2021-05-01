@@ -29,16 +29,17 @@ class EpisodeDetailFragment: Fragment(), EpisodeDetailContract.View {
     ): View {
         _binding = FragmentEpisodedetailBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.textView3.text = "This is episode detail fragment"
+        binding.tvTitle.text = "Title"
+        binding.tvSummary.text = "Summary"
         val episodeId = arguments?.getInt("episodeId")
         episodeId?.let {
-            binding.textView3.text = "Got argument: $it"
             presenter.fetchEpisodeDetails(it)
         }
         return view
     }
 
     override fun onResults(result: Episode) {
-        binding.textView3.text = result.summary?.stripHtml() ?: "No summary added yet"
+        binding.tvTitle.text = "S${result.season}E${result.number} ${result.name}"
+        binding.tvSummary.text = result.summary?.stripHtml() ?: "No summary added yet"
     }
 }

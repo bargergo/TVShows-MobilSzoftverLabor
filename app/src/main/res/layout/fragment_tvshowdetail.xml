@@ -2,8 +2,10 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F8FD">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,7 +28,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="Friends"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivCover" />
@@ -35,7 +37,7 @@
             android:id="@+id/tvGenres"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="Comedy, Drama"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -44,7 +46,7 @@
             android:id="@+id/tvSummary"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            tools:text="Summary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGenres" />
