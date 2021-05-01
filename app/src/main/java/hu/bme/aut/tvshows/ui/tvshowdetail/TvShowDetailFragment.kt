@@ -54,7 +54,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         rvSeasonList.setHasFixedSize(true)
         rvSeasonList.setLayoutManager(LinearLayoutManager(view.getContext()))
         rvSeasonList.isNestedScrollingEnabled = false
-        seasonListAdapter = SeasonListAdapter(requireContext(), seasonResults)
+        seasonListAdapter = SeasonListAdapter(this, seasonResults)
         rvSeasonList.adapter = seasonListAdapter
 
         val tvShowId = arguments?.getInt("tvShowId")
