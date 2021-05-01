@@ -55,5 +55,14 @@
     <fragment
         android:id="@+id/nav_seasondetail"
         android:name="hu.bme.aut.tvshows.ui.seasondetail.SeasonDetailFragment"
-        tools:layout="@layout/fragment_seasondetail" />
+        tools:layout="@layout/fragment_seasondetail" >
+        <action
+            android:id="@+id/action_nav_seasondetail_to_nav_episodedetail"
+            app:destination="@id/nav_episodedetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_episodedetail"
+        android:name="hu.bme.aut.tvshows.ui.episodedetail.EpisodeDetailFragment"
+        tools:layout="@layout/fragment_episodedetail" />
 </navigation>

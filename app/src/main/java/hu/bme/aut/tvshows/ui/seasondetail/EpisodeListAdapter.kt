@@ -4,8 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementEpisodeBinding
 import hu.bme.aut.tvshows.model.Episode
 
@@ -30,7 +33,8 @@ class EpisodeListAdapter(val fragment: Fragment, val episodes: List<Episode>) : 
         holder.binding.tvTitle.text = episode.name
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "Episode ${episode.number} clicked", Toast.LENGTH_SHORT).show()
+            val bundle = bundleOf("episodeId" to episode.id)
+            fragment.findNavController().navigate(R.id.action_nav_seasondetail_to_nav_episodedetail, bundle)
         }
     }
 
