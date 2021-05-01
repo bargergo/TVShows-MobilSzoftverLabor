@@ -81,7 +81,6 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
     ): View {
         _binding = FragmentFavouritetvshowsBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.textFavouritetvshows.text = "This is favourite TV Show Fragment"
         val recyclerView = binding.recyclerview
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(view.getContext())
@@ -91,7 +90,7 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
     }
 
     override fun updateView(message: String) {
-        binding.textFavouritetvshows.text = message
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
