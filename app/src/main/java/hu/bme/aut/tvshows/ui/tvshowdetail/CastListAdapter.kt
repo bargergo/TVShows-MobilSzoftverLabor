@@ -31,7 +31,7 @@ class CastListAdapter(val context: Context, val cast: List<Cast>) : RecyclerView
         holder.tvCharacter.text = castElement.character.name
         holder.tvActor.text = castElement.person.name
 
-        val image = castElement.person.image
+        val image = castElement.character.image
         image?.let {
             val options: RequestOptions = RequestOptions()
                     .error(R.drawable.ic_broken_image)

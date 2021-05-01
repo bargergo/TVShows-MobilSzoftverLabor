@@ -44,7 +44,8 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         val view = binding.root
         val recyclerView = binding.recyclerview
         recyclerView.setHasFixedSize(true)
-        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false))
+        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
+        recyclerView.isNestedScrollingEnabled = false
         adapter = CastListAdapter(requireContext(), castResults)
         recyclerView.adapter = adapter
         val tvShowId = arguments?.getInt("tvShowId")
