@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
+import hu.bme.aut.tvshows.model.ShowSummary
 import hu.bme.aut.tvshows.util.DebouncingQueryTextListener
 import javax.inject.Inject
 
@@ -24,7 +25,7 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     // onDestroyView.
     private val binding get() = _binding!!
     lateinit var adapter: TvShowListAdapter
-    var showSearchResults: MutableList<ShowSearchResult> = mutableListOf()
+    var showSearchResults: MutableList<ShowSummary> = mutableListOf()
 
     private var keywords = ""
 
@@ -84,13 +85,14 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     }
 
     override fun onSearchResults(results: List<ShowSearchResult>) {
+        val shows = results.map { it.show }
         showSearchResults.clear()
-        showSearchResults.addAll(results)
+        showSearchResults.addAll(shows)
         adapter.notifyDataSetChanged()
-        changeVisibility(results)
+        changeVisibility(shows)
     }
 
-    private fun changeVisibility(results: List<ShowSearchResult>) {
+    private fun changeVisibility(results: List<ShowSummary>) {
         binding.emptyView.visibility = View.GONE
         if (results.size > 0) {
             binding.noDataView.visibility = View.GONE

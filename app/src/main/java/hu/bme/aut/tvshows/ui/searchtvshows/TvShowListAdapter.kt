@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,11 +14,12 @@ import com.bumptech.glide.request.RequestOptions
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementTvshowBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
+import hu.bme.aut.tvshows.model.ShowSummary
 import hu.bme.aut.tvshows.util.hideKeyboard
 import hu.bme.aut.tvshows.util.stripHtml
 
 
-class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<ShowSearchResult>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
+class TvShowListAdapter(val fragment: Fragment, var tvShows: List<ShowSummary>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
 
     val context: Context = fragment.requireContext()
 
@@ -34,15 +36,15 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
         val tvShow = tvShows[position]
-        val year = tvShow.show.premiered?.year ?: "N/A"
-        holder.tvTitle.text =  "${tvShow.show.name} ($year)"
-        holder.tvGenres.text = if (tvShow.show.genres.size > 0)
-            tvShow.show.genres.joinToString(", ")
+        val year = tvShow.premiered?.year ?: "N/A"
+        holder.tvTitle.text =  "${tvShow.name} ($year)"
+        holder.tvGenres.text = if (tvShow.genres.size > 0)
+            tvShow.genres.joinToString(", ")
         else
             "N/A"
-        holder.tvSummary.text = tvShow.show.summary?.stripHtml() ?: "N/A"
+        holder.tvSummary.text = tvShow.summary?.stripHtml() ?: "N/A"
 
-        val image = tvShow.show.image
+        val image = tvShow.image
         image?.let {
             val options: RequestOptions = RequestOptions()
                 .error(R.drawable.ic_broken_image)
@@ -52,7 +54,7 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
 
         holder.itemView.setOnClickListener {
             fragment.activity?.hideKeyboard()
-            val bundle = bundleOf("tvShowId" to tvShow.show.id)
+            val bundle = bundleOf("tvShowId" to tvShow.id)
             fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
             //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
         }
