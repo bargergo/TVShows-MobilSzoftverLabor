@@ -73,11 +73,15 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         else
             "N/A"
         binding.tvSummary.text = showDetail.summary?.stripHtml() ?: "N/A"
-        castResults.addAll(cast)
-        castListAdapter.notifyDataSetChanged()
+        if (castResults.isEmpty()) {
+            castResults.addAll(cast)
+            castListAdapter.notifyDataSetChanged()
+        }
 
-        seasonResults.addAll(seasons)
-        seasonListAdapter.notifyDataSetChanged()
+        if (seasonResults.isEmpty()) {
+            seasonResults.addAll(seasons)
+            seasonListAdapter.notifyDataSetChanged()
+        }
 
         val image = showDetail.image
         image?.let {

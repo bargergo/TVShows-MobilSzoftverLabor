@@ -32,7 +32,6 @@ class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>) : Rec
         holder.binding.tvEpisodes.text = "${season.episodeOrder} episodes"
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "Clicked on Season ${season.number}", Toast.LENGTH_SHORT).show()
             val bundle = bundleOf("seasonId" to season.id)
             fragment.findNavController().navigate(R.id.action_nav_tvshowdetail_to_nav_seasondetail, bundle)
         }

@@ -3,7 +3,6 @@ package hu.bme.aut.tvshows.ui.searchtvshows
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import kotlinx.coroutines.*
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 class SearchTvShowsPresenter @Inject constructor(
     private val view: SearchTvShowsContract.View,
