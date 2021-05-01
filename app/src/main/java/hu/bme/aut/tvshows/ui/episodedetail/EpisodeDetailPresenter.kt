@@ -1,10 +1,22 @@
 package hu.bme.aut.tvshows.ui.episodedetail
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
+import hu.bme.aut.tvshows.interactor.NetworkInteractor
+import kotlinx.coroutines.*
+import javax.inject.Inject
 
-class EpisodeDetailPresenter : EpisodeDetailContract.Presenter, CoroutineScope by MainScope() {
+class EpisodeDetailPresenter @Inject constructor(
+        val view: EpisodeDetailContract.View,
+        val networkInteractor: NetworkInteractor
+) : EpisodeDetailContract.Presenter, CoroutineScope by MainScope() {
+    override fun fetchEpisodeDetails(episodeId: Int) {
+        launch {
+            val result = networkInteractor.getEpisode(episodeId)
+            withContext(Dispatchers.Main) {
+                view.onResults(result)
+            }
+        }
+    }
+
     override fun cleanup() {
         cancel()
     }
