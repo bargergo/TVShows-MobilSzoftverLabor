@@ -42,12 +42,12 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
     ): View {
         _binding = FragmentTvshowdetailBinding.inflate(inflater, container, false)
         val view = binding.root
-        val recyclerView = binding.recyclerview
-        recyclerView.setHasFixedSize(true)
-        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
-        recyclerView.isNestedScrollingEnabled = false
+        val rvCastList = binding.rvCastList
+        rvCastList.setHasFixedSize(true)
+        rvCastList.setLayoutManager(LinearLayoutManager(view.getContext()))
+        rvCastList.isNestedScrollingEnabled = false
         adapter = CastListAdapter(requireContext(), castResults)
-        recyclerView.adapter = adapter
+        rvCastList.adapter = adapter
         val tvShowId = arguments?.getInt("tvShowId")
         binding.tvTitle.text = "Got TV Show Id: $tvShowId"
         tvShowId?.let {
