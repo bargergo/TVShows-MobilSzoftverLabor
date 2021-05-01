@@ -41,9 +41,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         val view = binding.root
         val recyclerView = binding.recyclerview
         recyclerView.setHasFixedSize(true)
-        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
+        recyclerView.layoutManager = LinearLayoutManager(view.getContext())
         adapter = TvShowListAdapter(this, showSearchResults)
-        recyclerView.setAdapter(adapter)
+        recyclerView.adapter = adapter
 
         return view
     }
