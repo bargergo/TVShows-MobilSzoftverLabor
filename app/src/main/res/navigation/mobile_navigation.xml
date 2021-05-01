@@ -46,5 +46,23 @@
     <fragment
         android:id="@+id/nav_tvshowdetail"
         android:name="hu.bme.aut.tvshows.ui.tvshowdetail.TvShowDetailFragment"
-        tools:layout="@layout/fragment_tvshowdetail" />
+        tools:layout="@layout/fragment_tvshowdetail" >
+        <action
+            android:id="@+id/action_nav_tvshowdetail_to_nav_seasondetail"
+            app:destination="@id/nav_seasondetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_seasondetail"
+        android:name="hu.bme.aut.tvshows.ui.seasondetail.SeasonDetailFragment"
+        tools:layout="@layout/fragment_seasondetail" >
+        <action
+            android:id="@+id/action_nav_seasondetail_to_nav_episodedetail"
+            app:destination="@id/nav_episodedetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_episodedetail"
+        android:name="hu.bme.aut.tvshows.ui.episodedetail.EpisodeDetailFragment"
+        tools:layout="@layout/fragment_episodedetail" />
 </navigation>

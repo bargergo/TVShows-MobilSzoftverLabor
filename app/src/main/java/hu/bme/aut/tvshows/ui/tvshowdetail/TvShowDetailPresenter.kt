@@ -1,22 +1,22 @@
-package hu.bme.aut.tvshows.ui.searchtvshows
+package hu.bme.aut.tvshows.ui.tvshowdetail
 
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-class SearchTvShowsPresenter @Inject constructor(
-    private val view: SearchTvShowsContract.View,
+class TvShowDetailPresenter @Inject constructor(
+    private val view: TvShowDetailContract.View,
     private val networkInteractor: NetworkInteractor
-) : SearchTvShowsContract.Presenter, CoroutineScope by MainScope() {
-
-    override fun search(keywords: String) {
+) : TvShowDetailContract.Presenter, CoroutineScope by MainScope() {
+    override fun getDetails(id: Int) {
         launch {
-            val result = networkInteractor.searchShows(keywords)
+            val show = networkInteractor.getShow(id)
+            val cast = networkInteractor.getCast(id)
+            val seasons = networkInteractor.getSeasons(id)
             withContext(Dispatchers.Main) {
-                view.onSearchResults(result)
+                view.onResultsReady(show, cast, seasons)
             }
         }
-
     }
 
     override fun cleanup() {

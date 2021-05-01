@@ -13,7 +13,7 @@ data class Episode (
     val airstamp: String,
     val runtime: Long,
     val image: Image? = null,
-    val summary: String,
+    val summary: String?,
     val links: Links
 ) {
 }

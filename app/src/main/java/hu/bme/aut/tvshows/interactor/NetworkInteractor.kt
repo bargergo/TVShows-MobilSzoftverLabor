@@ -5,7 +5,7 @@ import hu.bme.aut.tvshows.model.*
 interface NetworkInteractor {
 
     suspend fun searchShows(keywords: String): List<ShowSearchResult>
-    suspend fun getShow(id: Int, includeSeasons: Boolean, includeCast: Boolean): ShowDetails
+    suspend fun getShow(id: Int, includeSeasons: Boolean = false, includeCast: Boolean = false): ShowDetails
     suspend fun updateShow(id: Int, data: ShowData)
     suspend fun deleteShow(id: Int)
     suspend fun createShow(data: ShowData)
