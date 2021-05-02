@@ -97,7 +97,7 @@ class TvShowDetailPresenter @Inject constructor(
 
     override fun deleteShow(show: ShowDetail) {
         launch(Dispatchers.IO) {
-            //networkInteractor.deleteShow(show.id)
+            networkInteractor.deleteShow(show.id)
             dbInteractor.removeTvShow(show.toDataModel())
             withContext(Dispatchers.Main) {
                 view.onShowDeleted()

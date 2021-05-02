@@ -22,7 +22,7 @@ class CreateTvShowPresenter @Inject constructor(
         launch(Dispatchers.IO) {
 
             try {
-                //networkInteractor.createShow(data)
+                networkInteractor.createShow(data)
                 dbInteractor.insertTvShow(Show(
                     null,
                     data.name,

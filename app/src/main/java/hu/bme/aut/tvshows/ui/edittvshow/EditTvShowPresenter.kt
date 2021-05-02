@@ -33,7 +33,7 @@ class EditTvShowPresenter @Inject constructor(
                 data.image?.original
             )
             )
-            //networkInteractor.updateShow(id, data)
+            networkInteractor.updateShow(id, data)
             withContext(Dispatchers.Main) {
                 view.showMessage("Updated show")
             }
