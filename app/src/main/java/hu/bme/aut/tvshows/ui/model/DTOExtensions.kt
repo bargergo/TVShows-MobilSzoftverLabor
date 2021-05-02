@@ -3,6 +3,7 @@ package hu.bme.aut.tvshows.ui.model
 import hu.bme.aut.tvshows.model.*
 import hu.bme.aut.tvshows.model.Cast
 import hu.bme.aut.tvshows.model.Season
+import hu.bme.aut.tvshows.model.Episode
 import hu.bme.aut.tvshows.util.stripHtml
 
 fun ShowSearchResult.toUIModel(favouriteIds: List<Long>) = Show(
@@ -48,4 +49,12 @@ fun Episode.toDataModel(seasonId: Long) = hu.bme.aut.tvshows.data.Episode(
     this.name,
     this.season,
     this.summary?.stripHtml() ?: "N/A"
+)
+
+fun Episode.toUIModel() = hu.bme.aut.tvshows.ui.model.Episode(
+    this.id,
+    this.name,
+    this.number,
+    this.summary?.stripHtml() ?: "N/A",
+    this.season
 )

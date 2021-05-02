@@ -9,4 +9,5 @@ interface DbInteractor {
     suspend fun getFavouriteTvShows(): List<Show>
     suspend fun getFavouriteTvShowIds(): List<Long>
     suspend fun getShow(id: Long): ShowWithSeasonsAndEpisodesAndCast
+    suspend fun getEpisodesForSeason(seasonId: Long): List<Episode>
 }

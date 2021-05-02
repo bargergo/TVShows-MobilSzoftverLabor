@@ -2,6 +2,8 @@ package hu.bme.aut.tvshows.ui.model
 
 import hu.bme.aut.tvshows.data.*
 import hu.bme.aut.tvshows.data.Cast
+import hu.bme.aut.tvshows.data.Episode
+import hu.bme.aut.tvshows.util.stripHtml
 
 
 fun hu.bme.aut.tvshows.data.Show.toUIModel() = Show(
@@ -38,4 +40,12 @@ fun ShowWithSeasonsAndEpisodesAndCast.toUIModel() = ShowDetail(
     true,
     this.cast.map { it.toUIModel() },
     this.seasons.map { it.toUIModel() }
+)
+
+fun Episode.toUIModel() = hu.bme.aut.tvshows.ui.model.Episode(
+    this.id!!,
+    this.name,
+    this.number,
+    this.summary ?: "N/A",
+    this.season
 )

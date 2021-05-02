@@ -38,7 +38,7 @@
             app:destination="@id/nav_tvshowdetail">
             <argument
                 android:name="tvShowId"
-                app:argType="integer" />
+                app:argType="long" />
             <argument
                 android:name="useDbOnly"
                 app:argType="boolean" />
@@ -63,7 +63,17 @@
         tools:layout="@layout/fragment_tvshowdetail" >
         <action
             android:id="@+id/action_nav_tvshowdetail_to_nav_seasondetail"
-            app:destination="@id/nav_seasondetail" />
+            app:destination="@id/nav_seasondetail" >
+            <argument
+                android:name="seasonId"
+                app:argType="long" />
+            <argument
+                android:name="seasonNumber"
+                app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
     </fragment>
 
     <fragment

@@ -11,7 +11,7 @@ import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementSeasonBinding
 import hu.bme.aut.tvshows.ui.model.Season
 
-class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>) : RecyclerView.Adapter<SeasonListAdapter.SeasonViewHolder>() {
+class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>, val useDbOnly: Boolean) : RecyclerView.Adapter<SeasonListAdapter.SeasonViewHolder>() {
 
     val context: Context = fragment.requireContext()
 
@@ -31,7 +31,7 @@ class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>) : Rec
         holder.binding.tvEpisodes.text = "${season.numberOfEpisodes} episodes"
 
         holder.itemView.setOnClickListener {
-            val bundle = bundleOf("seasonId" to season.id, "seasonNumber" to season.number)
+            val bundle = bundleOf("seasonId" to season.id, "seasonNumber" to season.number, "useDbOnly" to useDbOnly)
             fragment.findNavController().navigate(R.id.action_nav_tvshowdetail_to_nav_seasondetail, bundle)
         }
     }

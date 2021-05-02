@@ -3,16 +3,15 @@ package hu.bme.aut.tvshows.ui.seasondetail
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementEpisodeBinding
-import hu.bme.aut.tvshows.model.Episode
+import hu.bme.aut.tvshows.ui.model.Episode
 
-class EpisodeListAdapter(val fragment: Fragment, val episodes: List<Episode>) : RecyclerView.Adapter<EpisodeListAdapter.EpisodeViewHolder>() {
+class EpisodeListAdapter(val fragment: Fragment, val episodes: List<Episode>, val useDbOnly: Boolean) : RecyclerView.Adapter<EpisodeListAdapter.EpisodeViewHolder>() {
 
     val context: Context = fragment.requireContext()
 

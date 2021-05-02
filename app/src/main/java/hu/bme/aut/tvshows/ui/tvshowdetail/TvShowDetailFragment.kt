@@ -47,6 +47,9 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         _binding = FragmentTvshowdetailBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        val tvShowId = arguments?.getLong("tvShowId")
+        val useDbOnly = arguments?.getBoolean("useDbOnly", false) ?: false
+
         val rvCastList = binding.rvCastList
         rvCastList.setHasFixedSize(true)
         rvCastList.setLayoutManager(LinearLayoutManager(view.getContext()))
@@ -58,11 +61,9 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         rvSeasonList.setHasFixedSize(true)
         rvSeasonList.setLayoutManager(LinearLayoutManager(view.getContext()))
         rvSeasonList.isNestedScrollingEnabled = false
-        seasonListAdapter = SeasonListAdapter(this, seasonResults)
+        seasonListAdapter = SeasonListAdapter(this, seasonResults, useDbOnly)
         rvSeasonList.adapter = seasonListAdapter
 
-        val tvShowId = arguments?.getLong("tvShowId")
-        val useDbOnly = arguments?.getBoolean("useDbOnly") ?: false
         binding.tvTitle.text = "Got TV Show Id: $tvShowId"
         tvShowId?.let {
             if (useDbOnly) {

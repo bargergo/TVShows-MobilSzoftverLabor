@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.databinding.FragmentSeasondetailBinding
-import hu.bme.aut.tvshows.model.Cast
-import hu.bme.aut.tvshows.model.Episode
-import hu.bme.aut.tvshows.ui.tvshowdetail.CastListAdapter
+import hu.bme.aut.tvshows.ui.model.Episode
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,18 +33,26 @@ class SeasonDetailFragment : Fragment(), SeasonDetailContract.View {
         _binding = FragmentSeasondetailBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        val seasonId = arguments?.getLong("seasonId")
+        val seasonNumber = arguments?.getInt("seasonNumber")
+        val useDbOnly = arguments?.getBoolean("useDbOnly", false) ?: false
+
         val rvEpisodes = binding.rvEpisodes
         rvEpisodes.setHasFixedSize(true)
         rvEpisodes.setLayoutManager(LinearLayoutManager(view.getContext()))
         rvEpisodes.isNestedScrollingEnabled = false
-        episodeListAdapter = EpisodeListAdapter(this, episodeResults)
+        episodeListAdapter = EpisodeListAdapter(this, episodeResults, useDbOnly)
         rvEpisodes.adapter = episodeListAdapter
 
         binding.tvTitle.text = "This is Season Detail fragment"
-        val seasonId = arguments?.getLong("seasonId")
-        val seasonNumber = arguments?.getInt("seasonNumber")
+
+
         seasonId?.let {
-            presenter.getEpisodes(it)
+            if (useDbOnly) {
+                presenter.getEpisodesFromDb(it)
+            } else {
+                presenter.getEpisodes(it)
+            }
         }
         seasonNumber?.let {
             binding.tvTitle.text = "Season $it"
