@@ -17,6 +17,15 @@ class DbInteractorImpl @Inject constructor(
         castDao.insertCast(*cast.toTypedArray())
     }
 
+    override suspend fun removeTvShow(data: Show) {
+        val showId = data.id!!
+        castDao.deleteCastForShow(showId)
+        val seasonIds = seasonDao.getSeasonsForSeries(showId).map { it.id!! }
+        episodeDao.deleteEpisodesForSeasons(seasonIds)
+        seasonDao.deleteSeasonsForShow(showId)
+        showDao.deleteShow(data)
+    }
+
     override suspend fun getFavouriteTvShows(): List<Show> {
         return showDao.getShows()
     }

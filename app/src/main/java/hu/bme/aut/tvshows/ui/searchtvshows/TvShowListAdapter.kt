@@ -15,11 +15,12 @@ import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementTvshowBinding
 import hu.bme.aut.tvshows.model.ShowSearchResult
 import hu.bme.aut.tvshows.model.ShowSummary
+import hu.bme.aut.tvshows.ui.model.Show
 import hu.bme.aut.tvshows.util.hideKeyboard
 import hu.bme.aut.tvshows.util.stripHtml
 
 
-class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<ShowSummary>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
+class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<Show>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
 
     val context: Context = fragment.requireContext()
 
@@ -36,20 +37,17 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
         val tvShow = tvShows[position]
-        val year = tvShow.premiered?.year ?: "N/A"
+        val year = tvShow.premier?.year ?: "N/A"
         holder.tvTitle.text =  "${tvShow.name} ($year)"
-        holder.tvGenres.text = if (tvShow.genres.size > 0)
-            tvShow.genres.joinToString(", ")
-        else
-            "N/A"
+        holder.tvGenres.text = tvShow.genres ?: "N/A"
         holder.tvSummary.text = tvShow.summary?.stripHtml() ?: "N/A"
 
-        val image = tvShow.image
+        val image = tvShow.imageUrl
         image?.let {
             val options: RequestOptions = RequestOptions()
                 .error(R.drawable.ic_broken_image)
                 .placeholder(R.drawable.loading_animation)
-            Glide.with(context).load(it.medium).apply(options).into(holder.imageView)
+            Glide.with(context).load(it).apply(options).into(holder.imageView)
         }
 
         holder.itemView.setOnClickListener {
@@ -60,7 +58,10 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
         }
 
         holder.binding.ibStar.setOnClickListener {
-            fragment.saveShow(tvShow)
+            if (tvShow.isFavourite)
+                fragment.removeShow(tvShow)
+            else
+                fragment.saveShow(tvShow)
         }
     }
 

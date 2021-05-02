@@ -22,4 +22,7 @@ interface SeasonDAO {
     @Transaction
     @Query("SELECT * FROM season")
     fun getSeasonsWithEpisodes(): List<SeasonWithEpisodes>
+
+    @Query("DELETE FROM season WHERE showId=:showId")
+    suspend fun deleteSeasonsForShow(showId: Long)
 }

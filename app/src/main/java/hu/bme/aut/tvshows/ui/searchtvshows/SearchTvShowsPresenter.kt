@@ -6,7 +6,6 @@ import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.data.Show
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
-import hu.bme.aut.tvshows.model.ShowSummary
 import hu.bme.aut.tvshows.util.stripHtml
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -17,7 +16,7 @@ class SearchTvShowsPresenter @Inject constructor(
     private val dbInteractor: DbInteractor
 ) : SearchTvShowsContract.Presenter, CoroutineScope by MainScope() {
 
-    override fun saveShow(show: ShowSummary) {
+    override fun saveShow(show: hu.bme.aut.tvshows.ui.model.Show) {
         launch {
             val seasons = networkInteractor.getSeasons(show.id)
             val episodes = mutableListOf<Episode>()
@@ -41,10 +40,10 @@ class SearchTvShowsPresenter @Inject constructor(
                 Show(
                     id = show.id,
                     name = show.name,
-                    premier = show.premiered,
-                    genres = show.genres.joinToString(", "),
-                    summary = show.summary?.stripHtml(),
-                    imageUrl = show.image?.original
+                    premier = show.premier,
+                    genres = show.genres,
+                    summary = show.summary,
+                    imageUrl = show.imageUrl
                 ),
                 seasons.map {
                             Season(
@@ -70,9 +69,34 @@ class SearchTvShowsPresenter @Inject constructor(
         }
     }
 
+    override fun removeShow(show: hu.bme.aut.tvshows.ui.model.Show) {
+        launch {
+            dbInteractor.removeTvShow(Show(
+                id = show.id,
+                name = show.name,
+                premier = show.premier,
+                genres = show.genres,
+                summary = show.summary,
+                imageUrl = show.imageUrl
+            ))
+        }
+    }
+
     override fun search(keywords: String) {
         launch {
-            val result = networkInteractor.searchShows(keywords)
+            val searchResult = networkInteractor.searchShows(keywords)
+            val favouriteIds = dbInteractor.getFavouriteTvShows().map { it.id }
+            val result = searchResult.map {
+                hu.bme.aut.tvshows.ui.model.Show(
+                    it.show.id,
+                    it.show.name,
+                    it.show.premiered,
+                    it.show.genres.joinToString(", "),
+                    it.show.summary?.stripHtml(),
+                    it.show.image?.original,
+                    favouriteIds.contains(it.show.id)
+                )
+            }
             withContext(Dispatchers.Main) {
                 view.onSearchResults(result)
             }
