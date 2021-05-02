@@ -18,7 +18,7 @@ class TvShowDetailPresenter @Inject constructor(
     private val dbInteractor: DbInteractor
 ) : TvShowDetailContract.Presenter, CoroutineScope by MainScope() {
     override fun getDetails(id: Long) {
-        launch {
+        launch(Dispatchers.IO) {
             val show = networkInteractor.getShow(id)
             val cast = networkInteractor.getCast(id)
             val seasons = networkInteractor.getSeasons(id)
@@ -41,7 +41,7 @@ class TvShowDetailPresenter @Inject constructor(
     }
 
     override fun saveShow(show: ShowDetail) {
-        launch {
+        launch(Dispatchers.IO) {
             val episodes = mutableListOf<Episode>()
             for (season in show.seasons) {
                 val seasonId = season.id!!
@@ -63,10 +63,20 @@ class TvShowDetailPresenter @Inject constructor(
     }
 
     override fun removeShow(show: ShowDetail) {
-        launch {
+        launch(Dispatchers.IO) {
             dbInteractor.removeTvShow(show.toDataModel())
             withContext(Dispatchers.Main) {
                 view.onShowRemovedFromFavourites()
+            }
+        }
+    }
+
+    override fun deleteShow(show: ShowDetail) {
+        launch(Dispatchers.IO) {
+            //networkInteractor.deleteShow(show.id)
+            dbInteractor.removeTvShow(show.toDataModel())
+            withContext(Dispatchers.Main) {
+                view.onShowDeleted()
             }
         }
     }

@@ -118,6 +118,11 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         addOrRemoveFavourites.title = getString(R.string.title_add_to_favourites)
     }
 
+    override fun onShowDeleted() {
+        model.isFavourite = false
+        Toast.makeText(requireContext(), "Show deleted", Toast.LENGTH_SHORT).show()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.showdetail_menu, menu);
 
@@ -139,6 +144,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         }
 
         delete.setOnMenuItemClickListener {
+            presenter.deleteShow(model)
             true
         }
 
