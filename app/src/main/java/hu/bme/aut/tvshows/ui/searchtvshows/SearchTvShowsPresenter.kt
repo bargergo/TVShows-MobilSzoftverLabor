@@ -6,6 +6,7 @@ import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.data.Show
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
+import hu.bme.aut.tvshows.ui.model.toUIModel
 import hu.bme.aut.tvshows.util.stripHtml
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -85,18 +86,8 @@ class SearchTvShowsPresenter @Inject constructor(
     override fun search(keywords: String) {
         launch {
             val searchResult = networkInteractor.searchShows(keywords)
-            val favouriteIds = dbInteractor.getFavouriteTvShows().map { it.id }
-            val result = searchResult.map {
-                hu.bme.aut.tvshows.ui.model.Show(
-                    it.show.id,
-                    it.show.name,
-                    it.show.premiered,
-                    it.show.genres.joinToString(", "),
-                    it.show.summary?.stripHtml(),
-                    it.show.image?.original,
-                    favouriteIds.contains(it.show.id)
-                )
-            }
+            val favouriteIds = dbInteractor.getFavouriteTvShows().map { it.id!! }
+            val result = searchResult.map { it.toUIModel(favouriteIds) }
             withContext(Dispatchers.Main) {
                 view.onSearchResults(result)
             }
