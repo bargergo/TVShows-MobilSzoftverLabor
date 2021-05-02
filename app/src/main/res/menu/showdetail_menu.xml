@@ -7,11 +7,6 @@
         android:title="@string/title_add_to_favourites"
         app:showAsAction="never" />
     <item
-        android:id="@+id/remove_from_favourites"
-        android:orderInCategory="100"
-        android:title="@string/title_remove_from_favourites"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/edit_show"
         android:orderInCategory="100"
         android:title="@string/title_edit_show"

@@ -33,6 +33,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
     private val binding get() = _binding!!
 
     lateinit var model: ShowDetail
+    lateinit var addOrRemoveFavourites: MenuItem
 
     init {
         setHasOptionsMenu(true);
@@ -91,27 +92,39 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
                     .placeholder(R.drawable.loading_animation)
             Glide.with(requireContext()).load(it).apply(options).into(binding.ivCover)
         }
+
+        if (model.isFavourite) {
+            addOrRemoveFavourites.title = getString(R.string.title_delete_show)
+        } else {
+            addOrRemoveFavourites.title = getString(R.string.title_add_to_favourites)
+        }
     }
 
     override fun onShowAddedToFavourites() {
+        model.isFavourite = true
         Toast.makeText(requireContext(), "Show saved", Toast.LENGTH_SHORT).show()
+        addOrRemoveFavourites.title = getString(R.string.title_delete_show)
+    }
+
+    override fun onShowRemovedFromFavourites() {
+        model.isFavourite = false
+        Toast.makeText(requireContext(), "Show removed", Toast.LENGTH_SHORT).show()
+        addOrRemoveFavourites.title = getString(R.string.title_add_to_favourites)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.showdetail_menu, menu);
 
-        val addToFavourites = menu.findItem(R.id.add_to_favourites)
-        val removeFromFavourites = menu.findItem(R.id.remove_from_favourites)
+        addOrRemoveFavourites = menu.findItem(R.id.add_to_favourites)
         val edit = menu.findItem(R.id.edit_show)
         val delete = menu.findItem(R.id.delete)
 
-        addToFavourites.setOnMenuItemClickListener {
-            presenter.saveShow(model)
-            model.isFavourite = true
-            true
-        }
-
-        removeFromFavourites.setOnMenuItemClickListener {
+        addOrRemoveFavourites.setOnMenuItemClickListener {
+            if (model.isFavourite) {
+                presenter.removeShow(model)
+            } else {
+                presenter.saveShow(model)
+            }
             true
         }
 

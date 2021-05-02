@@ -52,6 +52,15 @@ class TvShowDetailPresenter @Inject constructor(
         }
     }
 
+    override fun removeShow(show: ShowDetail) {
+        launch {
+            dbInteractor.removeTvShow(show.toDataModel())
+            withContext(Dispatchers.Main) {
+                view.onShowRemovedFromFavourites()
+            }
+        }
+    }
+
     override fun cleanup() {
         // By default, every coroutine initiated in this context
         // will use the job and dispatcher specified by the
