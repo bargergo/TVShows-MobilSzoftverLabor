@@ -58,11 +58,7 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 "It's a good a show",
                 8545410
                 ),
-                listOf(Season(
-                    null,
-                    1,
-                    null
-                ))
+                emptyList()
             )
 
         }

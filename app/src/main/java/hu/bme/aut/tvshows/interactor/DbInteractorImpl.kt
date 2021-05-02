@@ -16,7 +16,7 @@ class DbInteractorImpl @Inject constructor(
         seasonDAO.insertSeason(*seasons.toTypedArray())
     }
 
-    override suspend fun getFavouriteTvShows(): List<ShowWithSeasons> {
-        return showDao.getShowsWithSeasons()
+    override suspend fun getFavouriteTvShows(): List<Show> {
+        return showDao.getShows()
     }
 }

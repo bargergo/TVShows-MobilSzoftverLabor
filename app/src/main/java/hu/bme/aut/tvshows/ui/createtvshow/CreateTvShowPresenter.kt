@@ -7,6 +7,7 @@ import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.model.*
 import kotlinx.coroutines.*
+import org.threeten.bp.LocalDate
 import java.lang.Exception
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -28,6 +29,8 @@ class CreateTvShowPresenter @Inject constructor(
                 dbInteractor.insertTvShow(Show(
                     null,
                     data.name,
+                    LocalDate.now(),
+                    "comedy, drama",
                     data.summary,
                     data.image?.medium ?: ""
                 ), seasons)

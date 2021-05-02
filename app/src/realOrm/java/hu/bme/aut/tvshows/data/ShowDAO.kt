@@ -18,6 +18,6 @@ interface ShowDAO {
 
     @Transaction
     @Query("SELECT * FROM show")
-    fun getShowsWithSeasons(): List<ShowWithSeasons>
+    fun getShowsWithSeasonsAndEpisodesAndCast(): List<ShowWithSeasonsAndEpisodesAndCast>
 
 }

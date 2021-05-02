@@ -16,7 +16,7 @@ class FavouriteTvShowsPresenter @Inject constructor(
             try {
                 val favouriteShows = dbInteractor.getFavouriteTvShows()
                 withContext(Dispatchers.Main) {
-                    view.updateView(favouriteShows.toString())
+                    view.updateView(favouriteShows)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
