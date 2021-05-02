@@ -27,4 +27,7 @@ interface ShowDAO {
     @Query("SELECT * FROM show WHERE id=:showId")
     fun getShowWithSeasonsAndEpisodesAndCast(showId: Long): ShowWithSeasonsAndEpisodesAndCast?
 
+    @Update
+    fun updateShow(show: Show);
+
 }

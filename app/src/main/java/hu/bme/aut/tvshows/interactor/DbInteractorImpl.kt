@@ -1,6 +1,7 @@
 package hu.bme.aut.tvshows.interactor
 
 import hu.bme.aut.tvshows.data.*
+import hu.bme.aut.tvshows.model.ShowData
 import javax.inject.Inject
 
 class DbInteractorImpl @Inject constructor(
@@ -44,5 +45,9 @@ class DbInteractorImpl @Inject constructor(
 
     override suspend fun getEpisode(id: Long): Episode {
         return episodeDao.getEpisode(id)
+    }
+
+    override suspend fun updateShow(data: Show) {
+        showDao.updateShow(data)
     }
 }

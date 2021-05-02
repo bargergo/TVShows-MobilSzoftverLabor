@@ -11,4 +11,5 @@ interface DbInteractor {
     suspend fun getShow(id: Long): ShowWithSeasonsAndEpisodesAndCast?
     suspend fun getEpisodesForSeason(seasonId: Long): List<Episode>
     suspend fun getEpisode(id: Long): Episode
+    suspend fun updateShow(data: Show)
 }
