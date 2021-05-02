@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
-import hu.bme.aut.tvshows.model.ShowSearchResult
+import hu.bme.aut.tvshows.ui.model.Show
 import hu.bme.aut.tvshows.util.DebouncingQueryTextListener
 import javax.inject.Inject
 
@@ -24,7 +24,7 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     // onDestroyView.
     private val binding get() = _binding!!
     lateinit var adapter: TvShowListAdapter
-    var showSearchResults: MutableList<ShowSearchResult> = mutableListOf()
+    var showSearchResults: MutableList<Show> = mutableListOf()
 
     private var keywords = ""
 
@@ -83,14 +83,18 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onSearchResults(results: List<ShowSearchResult>) {
+    override fun showMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSearchResults(results: List<Show>) {
         showSearchResults.clear()
         showSearchResults.addAll(results)
         adapter.notifyDataSetChanged()
         changeVisibility(results)
     }
 
-    private fun changeVisibility(results: List<ShowSearchResult>) {
+    private fun changeVisibility(results: List<Show>) {
         binding.emptyView.visibility = View.GONE
         if (results.size > 0) {
             binding.noDataView.visibility = View.GONE
@@ -104,5 +108,13 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     override fun onDestroy() {
         presenter.cleanup()
         super.onDestroy()
+    }
+
+    fun saveShow(show: Show) {
+        presenter.saveShow(show)
+    }
+
+    fun removeShow(show: Show) {
+        presenter.removeShow(show)
     }
 }

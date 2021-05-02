@@ -13,33 +13,9 @@ package hu.bme.aut.tvshows.model
 
 import org.threeten.bp.LocalDate
 
-/**
- * 
- * @param id 
- * @param url 
- * @param name 
- * @param type 
- * @param language 
- * @param genres 
- * @param status 
- * @param runtime 
- * @param premiered 
- * @param officialSite 
- * @param schedule 
- * @param rating 
- * @param weight 
- * @param network 
- * @param webChannel 
- * @param dvdCountry 
- * @param externals 
- * @param image 
- * @param summary 
- * @param updated 
- * @param links 
- */
 data class ShowSummary (
 
-    val id: Int,
+    val id: Long,
     val url: String,
     val name: String,
     val type: String,

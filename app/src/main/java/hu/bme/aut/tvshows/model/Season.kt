@@ -3,7 +3,7 @@ package hu.bme.aut.tvshows.model
 
 data class Season (
 
-    val id: Int,
+    val id: Long,
     val url: String,
     val number: Int,
     val name: String,

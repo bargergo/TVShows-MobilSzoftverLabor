@@ -2,6 +2,9 @@ package hu.bme.aut.tvshows.ui.favouritetvshows
 
 import android.util.Log
 import hu.bme.aut.tvshows.interactor.DbInteractor
+import hu.bme.aut.tvshows.ui.model.Show
+import hu.bme.aut.tvshows.ui.model.toDataModel
+import hu.bme.aut.tvshows.ui.model.toUIModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -14,9 +17,11 @@ class FavouriteTvShowsPresenter @Inject constructor(
     override fun getFavouriteTvShows() {
         launch {
             try {
-                val favouriteShows = dbInteractor.getFavouriteTvShows()
+                val favouriteShows = dbInteractor
+                    .getFavouriteTvShows()
+                    .map { it.toUIModel() }
                 withContext(Dispatchers.Main) {
-                    view.updateView(favouriteShows.toString())
+                    view.updateView(favouriteShows)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -25,6 +30,15 @@ class FavouriteTvShowsPresenter @Inject constructor(
                 }
             }
 
+        }
+    }
+
+    override fun removeShow(show: Show) {
+        launch {
+            dbInteractor.removeTvShow(show.toDataModel())
+            withContext(Dispatchers.Main) {
+                view.itemRemoved()
+            }
         }
     }
 

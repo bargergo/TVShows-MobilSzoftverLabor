@@ -5,29 +5,29 @@ import hu.bme.aut.tvshows.model.*
 interface NetworkInteractor {
 
     suspend fun searchShows(keywords: String): List<ShowSearchResult>
-    suspend fun getShow(id: Int, includeSeasons: Boolean = false, includeCast: Boolean = false): ShowDetails
-    suspend fun updateShow(id: Int, data: ShowData)
-    suspend fun deleteShow(id: Int)
+    suspend fun getShow(id: Long, includeSeasons: Boolean = false, includeCast: Boolean = false): ShowDetails
+    suspend fun updateShow(id: Long, data: ShowData)
+    suspend fun deleteShow(id: Long)
     suspend fun createShow(data: ShowData)
 
-    suspend fun getEpisodes(seasonId: Int): List<Episode>
-    suspend fun createEpisode(seasonId: Int, data: EpisodeData)
-    suspend fun getEpisode(episodeId: Int): Episode
-    suspend fun updateEpisode(id: Int, data: EpisodeData)
-    suspend fun deleteEpisode(id: Int)
+    suspend fun getEpisodes(seasonId: Long): List<Episode>
+    suspend fun createEpisode(seasonId: Long, data: EpisodeData)
+    suspend fun getEpisode(episodeId: Long): Episode
+    suspend fun updateEpisode(id: Long, data: EpisodeData)
+    suspend fun deleteEpisode(id: Long)
 
-    suspend fun getSeasons(showId: Int): List<Season>
-    suspend fun createSeason(showId: Int, data: SeasonData)
-    suspend fun getSeason(seasonId: Int): Season
-    suspend fun updateSeason(seasonId: Int, data: SeasonData)
-    suspend fun deleteSeason(seasonId: Int)
+    suspend fun getSeasons(showId: Long): List<Season>
+    suspend fun createSeason(showId: Long, data: SeasonData)
+    suspend fun getSeason(seasonId: Long): Season
+    suspend fun updateSeason(seasonId: Long, data: SeasonData)
+    suspend fun deleteSeason(seasonId: Long)
 
-    suspend fun getCast(showId: Int): List<Cast>
-    suspend fun updateCast(showId: Int, data: List<CastData>)
+    suspend fun getCast(showId: Long): List<Cast>
+    suspend fun updateCast(showId: Long, data: List<CastData>)
 
-    suspend fun getPerson(id: Int): Person
-    suspend fun updatePerson(id: Int, data: PersonData)
-    suspend fun deletePerson(id: Int)
+    suspend fun getPerson(id: Long): Person
+    suspend fun updatePerson(id: Long, data: PersonData)
+    suspend fun deletePerson(id: Long)
     suspend fun createPerson(data: PersonData)
     suspend fun searchPeople(keywords: String): List<PersonSearchResult>
 }

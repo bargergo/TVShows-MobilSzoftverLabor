@@ -15,7 +15,18 @@
         android:id="@+id/nav_favouritetvshows"
         android:name="hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsFragment"
         android:label="@string/menu_favouritetvshows"
-        tools:layout="@layout/fragment_favouritetvshows" />
+        tools:layout="@layout/fragment_favouritetvshows" >
+        <action
+            android:id="@+id/action_nav_favouritetvshows_to_nav_tvshowdetail"
+            app:destination="@id/nav_tvshowdetail">
+            <argument
+                android:name="tvShowId"
+                app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_searchtvshows"
@@ -27,7 +38,10 @@
             app:destination="@id/nav_tvshowdetail">
             <argument
                 android:name="tvShowId"
-                app:argType="integer" />
+                app:argType="long" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
         </action>
     </fragment>
 
@@ -49,7 +63,17 @@
         tools:layout="@layout/fragment_tvshowdetail" >
         <action
             android:id="@+id/action_nav_tvshowdetail_to_nav_seasondetail"
-            app:destination="@id/nav_seasondetail" />
+            app:destination="@id/nav_seasondetail" >
+            <argument
+                android:name="seasonId"
+                app:argType="long" />
+            <argument
+                android:name="seasonNumber"
+                app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
     </fragment>
 
     <fragment
@@ -58,7 +82,14 @@
         tools:layout="@layout/fragment_seasondetail" >
         <action
             android:id="@+id/action_nav_seasondetail_to_nav_episodedetail"
-            app:destination="@id/nav_episodedetail" />
+            app:destination="@id/nav_episodedetail">
+            <argument
+                android:name="episodeId"
+                app:argType="long" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
     </fragment>
 
     <fragment

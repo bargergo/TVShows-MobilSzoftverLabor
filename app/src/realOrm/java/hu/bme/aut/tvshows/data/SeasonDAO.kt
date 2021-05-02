@@ -8,7 +8,7 @@ interface SeasonDAO {
     suspend fun getSeasons(): List<Season>
 
     @Query("""SELECT * FROM season WHERE showId=:showId""")
-    suspend fun getSeasonsForSeries(showId: Int): List<Season>
+    suspend fun getSeasonsForSeries(showId: Long): List<Season>
 
     @Insert
     suspend fun insertSeason(vararg seasons: Season)
@@ -18,4 +18,11 @@ interface SeasonDAO {
 
     @Query("DELETE FROM season")
     suspend fun deleteAllSeasons()
+
+    @Transaction
+    @Query("SELECT * FROM season")
+    fun getSeasonsWithEpisodes(): List<SeasonWithEpisodes>
+
+    @Query("DELETE FROM season WHERE showId=:showId")
+    suspend fun deleteSeasonsForShow(showId: Long)
 }

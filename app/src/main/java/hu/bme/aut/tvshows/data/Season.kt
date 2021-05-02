@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Season (
     @PrimaryKey(autoGenerate = true) var id: Long?,
     var number: Int,
-    var showId: Long?
+    var showId: Long
 )

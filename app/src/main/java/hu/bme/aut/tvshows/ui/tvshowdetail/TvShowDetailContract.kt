@@ -1,17 +1,21 @@
 package hu.bme.aut.tvshows.ui.tvshowdetail
 
-import hu.bme.aut.tvshows.model.Cast
-import hu.bme.aut.tvshows.model.Season
-import hu.bme.aut.tvshows.model.ShowDetails
+import hu.bme.aut.tvshows.ui.model.ShowDetail
+
 
 interface TvShowDetailContract {
 
     interface View {
-        fun onResultsReady(showDetail: ShowDetails, cast: List<Cast>, seasons: List<Season>)
+        fun onResultsReady(showDetail: ShowDetail)
+        fun onShowAddedToFavourites()
+        fun onShowRemovedFromFavourites()
     }
 
     interface Presenter {
-        fun getDetails(id: Int)
+        fun saveShow(show: ShowDetail)
+        fun removeShow(show: ShowDetail)
+        fun getDetails(id: Long)
+        fun getDetailsFromDb(id: Long)
         fun cleanup()
     }
 }

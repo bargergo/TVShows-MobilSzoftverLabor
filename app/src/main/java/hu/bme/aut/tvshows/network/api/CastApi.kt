@@ -14,7 +14,7 @@ interface CastApi {
      */
     @GET("shows/{showId}/cast")
     suspend fun getCastForShow(
-        @Path("showId") showId: Int?
+        @Path("showId") showId: Long
     ): List<Cast>
 
     /**
@@ -27,6 +27,6 @@ interface CastApi {
     @Headers("Content-Type:application/json")
     @POST("shows/{showId}/cast")
     suspend fun postShowsShowIdCast(
-        @Path("showId") showId: Int, @Body body: List<CastData>
+        @Path("showId") showId: Long, @Body body: List<CastData>
     )
 }

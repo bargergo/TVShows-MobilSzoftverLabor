@@ -17,7 +17,7 @@ class NetworkInteractorImpl @Inject constructor(retrofit: Retrofit) : NetworkInt
     }
 
     override suspend fun getShow(
-        id: Int,
+        id: Long,
         includeSeasons: Boolean,
         includeCast: Boolean
     ): ShowDetails {
@@ -26,11 +26,11 @@ class NetworkInteractorImpl @Inject constructor(retrofit: Retrofit) : NetworkInt
         return showsApi.getShowsWithSeasonsAndCast(id, seasons, cast)
     }
 
-    override suspend fun updateShow(id: Int, data: ShowData) {
+    override suspend fun updateShow(id: Long, data: ShowData) {
         showsApi.putShowsShowId(id, data)
     }
 
-    override suspend fun deleteShow(id: Int) {
+    override suspend fun deleteShow(id: Long) {
         showsApi.deleteShowsShowId(id)
     }
 
@@ -38,63 +38,63 @@ class NetworkInteractorImpl @Inject constructor(retrofit: Retrofit) : NetworkInt
         showsApi.postShows(data)
     }
 
-    override suspend fun getEpisodes(seasonId: Int): List<Episode> {
+    override suspend fun getEpisodes(seasonId: Long): List<Episode> {
         return episodesApi.getEpisodesForSeason(seasonId)
     }
 
-    override suspend fun createEpisode(seasonId: Int, data: EpisodeData) {
+    override suspend fun createEpisode(seasonId: Long, data: EpisodeData) {
         episodesApi.postSeasonsSeasonIdEpisodes(seasonId, data)
     }
 
-    override suspend fun getEpisode(episodeId: Int): Episode {
+    override suspend fun getEpisode(episodeId: Long): Episode {
         return episodesApi.getEpisodesEpisodeId(episodeId)
     }
 
-    override suspend fun updateEpisode(id: Int, data: EpisodeData) {
+    override suspend fun updateEpisode(id: Long, data: EpisodeData) {
         episodesApi.putEpisodesEpisodeId(id, data)
     }
 
-    override suspend fun deleteEpisode(id: Int) {
+    override suspend fun deleteEpisode(id: Long) {
         episodesApi.deleteEpisodesEpisodeId(id)
     }
 
-    override suspend fun getSeasons(showId: Int): List<Season> {
+    override suspend fun getSeasons(showId: Long): List<Season> {
         return seasonsApi.getSeasonsForShow(showId)
     }
 
-    override suspend fun createSeason(showId: Int, data: SeasonData) {
+    override suspend fun createSeason(showId: Long, data: SeasonData) {
         seasonsApi.postShowsShowIdSeasons(showId, data)
     }
 
-    override suspend fun getSeason(seasonId: Int): Season {
+    override suspend fun getSeason(seasonId: Long): Season {
         return seasonsApi.getSeasonsShowId(seasonId)
     }
 
-    override suspend fun updateSeason(seasonId: Int, data: SeasonData) {
+    override suspend fun updateSeason(seasonId: Long, data: SeasonData) {
         seasonsApi.putSeasonsSeasonId(seasonId, data)
     }
 
-    override suspend fun deleteSeason(seasonId: Int) {
+    override suspend fun deleteSeason(seasonId: Long) {
         seasonsApi.deleteSeasonsSeasonId(seasonId)
     }
 
-    override suspend fun getCast(showId: Int): List<Cast> {
+    override suspend fun getCast(showId: Long): List<Cast> {
         return castApi.getCastForShow(showId)
     }
 
-    override suspend fun updateCast(showId: Int, data: List<CastData>) {
+    override suspend fun updateCast(showId: Long, data: List<CastData>) {
         castApi.postShowsShowIdCast(showId, data)
     }
 
-    override suspend fun getPerson(id: Int): Person {
+    override suspend fun getPerson(id: Long): Person {
         return peopleApi.getPeoplePersonId(id)
     }
 
-    override suspend fun updatePerson(id: Int, data: PersonData) {
+    override suspend fun updatePerson(id: Long, data: PersonData) {
         peopleApi.putPeoplePersonId(id, data)
     }
 
-    override suspend fun deletePerson(id: Int) {
+    override suspend fun deletePerson(id: Long) {
         peopleApi.deletePeoplePersonId(id)
     }
 

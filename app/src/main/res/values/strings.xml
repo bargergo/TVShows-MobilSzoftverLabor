@@ -23,4 +23,10 @@
     <string name="no_data_available">No results found</string>
     <string name="search_cover_content_description">The cover image of the series</string>
     <string name="details_actor_image_content_description">Image of the actor</string>
+    <string name="star_button_content_description">Empty star, click on it to mark show as favourite</string>
+    <string name="unstar_button_content_description">A filled star, click on it delete from gavourite shows</string>
+    <string name="title_add_to_favourites">Add to favourites</string>
+    <string name="title_remove_from_favourites">Remove from favourites</string>
+    <string name="title_edit_show">Edit</string>
+    <string name="title_delete_show">Delete</string>
 </resources>

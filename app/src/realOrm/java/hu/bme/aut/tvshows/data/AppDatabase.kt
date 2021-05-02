@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
-@Database(entities = [Show::class, Season::class], version = 3)
+@Database(entities = [Show::class, Season::class, Cast::class, Episode::class], version = 4)
+@TypeConverters(LocalDateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun showDao(): ShowDAO
     abstract fun seasonDao(): SeasonDAO
+    abstract fun episodeDao(): EpisodeDAO
+    abstract fun castDao(): CastDao
 
     companion object {
         @Volatile

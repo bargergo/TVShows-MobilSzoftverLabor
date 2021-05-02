@@ -17,7 +17,7 @@ interface ShowsApi {
      */
     @DELETE("shows/{showId}")
     suspend fun deleteShowsShowId(
-        @Path("showId") showId: Int
+        @Path("showId") showId: Long
     )
 
     /**
@@ -41,7 +41,7 @@ interface ShowsApi {
      */
     @GET("shows/{showId}")
     suspend fun getShowsWithSeasonsAndCast(
-        @Path("showId") showId: Int,
+        @Path("showId") showId: Long,
         @Query("embed[1]") embed1: String?,
         @Query("embed[2]") embed2: String?
     ): ShowDetails
@@ -68,6 +68,6 @@ interface ShowsApi {
     @Headers("Content-Type:application/json")
     @PUT("shows/{showId}")
     suspend fun putShowsShowId(
-        @Path("showId") showId: Int, @Body body: ShowData
+        @Path("showId") showId: Long, @Body body: ShowData
     )
 }

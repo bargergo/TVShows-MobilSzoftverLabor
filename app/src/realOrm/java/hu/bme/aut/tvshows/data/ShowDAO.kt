@@ -7,6 +7,9 @@ interface ShowDAO {
     @Query("SELECT * FROM show")
     suspend fun getShows(): List<Show>
 
+    @Query("SELECT id FROM show")
+    suspend fun getShowIds(): List<Long>
+
     @Insert
     suspend fun insertShow(show: Show): Long
 
@@ -18,6 +21,10 @@ interface ShowDAO {
 
     @Transaction
     @Query("SELECT * FROM show")
-    fun getShowsWithSeasons(): List<ShowWithSeasons>
+    fun getShowsWithSeasonsAndEpisodesAndCast(): List<ShowWithSeasonsAndEpisodesAndCast>
+
+    @Transaction
+    @Query("SELECT * FROM show WHERE id=:showId")
+    fun getShowWithSeasonsAndEpisodesAndCast(showId: Long): ShowWithSeasonsAndEpisodesAndCast
 
 }
