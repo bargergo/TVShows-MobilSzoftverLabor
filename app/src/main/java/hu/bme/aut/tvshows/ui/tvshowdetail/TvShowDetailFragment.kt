@@ -100,7 +100,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         }
 
         if (model.isFavourite) {
-            addOrRemoveFavourites.title = getString(R.string.title_delete_show)
+            addOrRemoveFavourites.title = getString(R.string.title_remove_from_favourites)
         } else {
             addOrRemoveFavourites.title = getString(R.string.title_add_to_favourites)
         }
