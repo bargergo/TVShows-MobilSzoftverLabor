@@ -3,7 +3,9 @@ package hu.bme.aut.tvshows.ui.tvshowdetail
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -100,7 +102,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         }
 
         if (model.isFavourite) {
-            addOrRemoveFavourites.title = getString(R.string.title_delete_show)
+            addOrRemoveFavourites.title = getString(R.string.title_remove_from_favourites)
         } else {
             addOrRemoveFavourites.title = getString(R.string.title_add_to_favourites)
         }
@@ -116,6 +118,16 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         model.isFavourite = false
         Toast.makeText(requireContext(), "Show removed", Toast.LENGTH_SHORT).show()
         addOrRemoveFavourites.title = getString(R.string.title_add_to_favourites)
+    }
+
+    override fun onShowDeleted() {
+        model.isFavourite = false
+        Toast.makeText(requireContext(), "Show deleted", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onShowReadyForEdit() {
+        val bundle = bundleOf("showId" to model.id)
+        findNavController().navigate(R.id.action_nav_tvshowdetail_to_nav_edittvshow, bundle)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -135,10 +147,12 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         }
 
         edit.setOnMenuItemClickListener {
+            presenter.saveShowIfNotSavedYet(model)
             true
         }
 
         delete.setOnMenuItemClickListener {
+            presenter.deleteShow(model)
             true
         }
 

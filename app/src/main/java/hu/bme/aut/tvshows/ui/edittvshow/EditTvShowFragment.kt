@@ -1,4 +1,4 @@
-package hu.bme.aut.tvshows.ui.createtvshow
+package hu.bme.aut.tvshows.ui.edittvshow
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,20 +9,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
-import hu.bme.aut.tvshows.data.Season
-import hu.bme.aut.tvshows.databinding.FragmentCreatetvshowBinding
-import hu.bme.aut.tvshows.model.*
+import hu.bme.aut.tvshows.data.ShowWithSeasonsAndEpisodesAndCast
+import hu.bme.aut.tvshows.databinding.FragmentEdittvshowBinding
+import hu.bme.aut.tvshows.model.Image
+import hu.bme.aut.tvshows.model.ShowData
 import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
-class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
+class EditTvShowFragment: Fragment(), EditTvShowContract.View {
 
     @Inject
-    lateinit var presenter: CreateTvShowContract.Presenter
+    lateinit var presenter: EditTvShowContract.Presenter
 
-    private var _binding: FragmentCreatetvshowBinding? = null
+    var showId: Long by Delegates.notNull<Long>()
+
+    lateinit var showData: ShowData
+
+    private var _binding: FragmentEdittvshowBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -32,8 +37,11 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCreatetvshowBinding.inflate(inflater, container, false)
+        _binding = FragmentEdittvshowBinding.inflate(inflater, container, false)
         val view = binding.root
+
+
+        showId = arguments?.getLong("showId")!!
 
         binding.etPremiered.addTextChangedListener(
             object: TextWatcher {
@@ -67,7 +75,8 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                     )
                 else
                     null
-                presenter.createTvShow(
+                presenter.updateShow(
+                    showId,
                     ShowData(
                         binding.etTitle.text.toString(),
                         "Show",
@@ -92,11 +101,16 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 showMessage("There are some validation errors!")
             }
         }
+        presenter.loadShowData(showId)
         return view
     }
 
-    override fun showMessage(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    override fun onShowDataLoaded(data: ShowWithSeasonsAndEpisodesAndCast) {
+        binding.etTitle.setText(data.show.name)
+        binding.etGenres.setText(data.show.genres)
+        binding.etPremiered.setText(data.show.premier.toString())
+        binding.etImageUrl.setText(data.show.imageUrl)
+        binding.etSummary.setText(data.show.summary)
     }
 
     override fun onDestroy() {
@@ -110,5 +124,9 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 && binding.etPremiered.error == null && (binding.etPremiered.text?.length ?: 0) > 0
                 && binding.etSummary.error == null && (binding.etSummary.text?.length ?: 0) > 0
                 && binding.etTitle.error == null && (binding.etTitle.text?.length ?: 0) > 0
+    }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

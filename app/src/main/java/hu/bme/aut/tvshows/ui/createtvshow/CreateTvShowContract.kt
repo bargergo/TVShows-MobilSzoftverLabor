@@ -10,7 +10,7 @@ interface CreateTvShowContract {
     }
 
     interface Presenter {
-        fun onCreateTvShow(data: ShowData, seasons: List<Season>)
+        fun createTvShow(data: ShowData)
         fun cleanup()
     }
 }

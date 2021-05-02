@@ -60,6 +60,7 @@
     <fragment
         android:id="@+id/nav_tvshowdetail"
         android:name="hu.bme.aut.tvshows.ui.tvshowdetail.TvShowDetailFragment"
+        android:label="TV Show Detail"
         tools:layout="@layout/fragment_tvshowdetail" >
         <action
             android:id="@+id/action_nav_tvshowdetail_to_nav_seasondetail"
@@ -74,11 +75,19 @@
                 android:name="useDbOnly"
                 app:argType="boolean" />
         </action>
+        <action
+            android:id="@+id/action_nav_tvshowdetail_to_nav_edittvshow"
+            app:destination="@id/nav_edittvshow">
+            <argument
+                android:name="showId"
+                app:argType="long" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/nav_seasondetail"
         android:name="hu.bme.aut.tvshows.ui.seasondetail.SeasonDetailFragment"
+        android:label="Season Detail"
         tools:layout="@layout/fragment_seasondetail" >
         <action
             android:id="@+id/action_nav_seasondetail_to_nav_episodedetail"
@@ -95,5 +104,12 @@
     <fragment
         android:id="@+id/nav_episodedetail"
         android:name="hu.bme.aut.tvshows.ui.episodedetail.EpisodeDetailFragment"
+        android:label="Episode Detail"
         tools:layout="@layout/fragment_episodedetail" />
+
+    <fragment
+        android:id="@+id/nav_edittvshow"
+        android:name="hu.bme.aut.tvshows.ui.edittvshow.EditTvShowFragment"
+        android:label="Edit TV Show"
+        tools:layout="@layout/fragment_edittvshow" />
 </navigation>
