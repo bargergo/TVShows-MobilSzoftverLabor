@@ -29,4 +29,9 @@
     <string name="title_remove_from_favourites">Remove from favourites</string>
     <string name="title_edit_show">Edit</string>
     <string name="title_delete_show">Delete</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_genres">Genres</string>
+    <string name="premiered">Premiered</string>
+    <string name="hint_summary">Summary</string>
+    <string name="hint_image_url">Image URL</string>
 </resources>

@@ -32,35 +32,8 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
     ): View {
         _binding = FragmentCreatetvshowBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.textCreatetvshow.text = "This is create TV Show Fragment"
         binding.btnClickMe.setOnClickListener {
-            presenter.onCreateTvShow(
-                ShowData(
-                "Halo, halo",
-                "Series",
-                "English",
-                listOf("Comedy"),
-                "Finished",
-                153654,
-                    LocalDate.parse("1989-12-01", DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                "asdasd.as",
-                Schedule(
-                    "12:00",
-                    listOf("Monday")
-                ),
-                Rating(8.24f),
-                1321,
-                Network(13, "BBC", Country("United Kingdom", "UK", "GMT0")),
-                null,
-                null,
-                Externals(null, null, null),
-                null,
-                "It's a good a show",
-                8545410
-                ),
-                emptyList()
-            )
-
+            Toast.makeText(activity, binding.etTitle.text, Toast.LENGTH_SHORT).show()
         }
         return view
     }
