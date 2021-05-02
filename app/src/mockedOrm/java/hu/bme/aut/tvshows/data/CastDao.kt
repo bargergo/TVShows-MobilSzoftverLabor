@@ -21,4 +21,7 @@ interface CastDao {
 
     @Query("DELETE FROM `cast`")
     suspend fun deleteAllCast()
+
+    @Query("DELETE FROM `cast` WHERE showId=:showId")
+    suspend fun deleteCastForShow(showId: Long)
 }

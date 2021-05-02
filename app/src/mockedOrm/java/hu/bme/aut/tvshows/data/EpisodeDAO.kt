@@ -21,4 +21,7 @@ interface EpisodeDAO {
 
     @Query("DELETE FROM episode")
     suspend fun deleteAllEpisodes()
+
+    @Query("DELETE FROM episode WHERE seasonId IN (:seasonIds)")
+    suspend fun deleteEpisodesForSeasons(seasonIds: List<Long>)
 }
