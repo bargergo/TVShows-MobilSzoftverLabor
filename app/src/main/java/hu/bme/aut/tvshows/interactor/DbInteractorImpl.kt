@@ -5,15 +5,16 @@ import javax.inject.Inject
 
 class DbInteractorImpl @Inject constructor(
     val showDao: ShowDAO,
-    val seasonDAO: SeasonDAO
+    val seasonDao: SeasonDAO,
+    val episodeDao: EpisodeDAO,
+    val castDao: CastDao
 ) : DbInteractor {
 
-    override suspend fun insertTvShow(data: Show, seasons: List<Season>) {
-        val showId = showDao.insertShow(data)
-        for (season in seasons) {
-            season.showId = showId
-        }
-        seasonDAO.insertSeason(*seasons.toTypedArray())
+    override suspend fun insertTvShow(data: Show, seasons: List<Season>, episodes: List<Episode>, cast: List<Cast>) {
+        showDao.insertShow(data)
+        seasonDao.insertSeason(*seasons.toTypedArray())
+        episodeDao.insertEpisode(*episodes.toTypedArray())
+        castDao.insertCast(*cast.toTypedArray())
     }
 
     override suspend fun getFavouriteTvShows(): List<Show> {

@@ -63,5 +63,14 @@
             app:layout_constraintTop_toBottomOf="@+id/tvGenres"
             tools:text="Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan. " />
 
+        <ImageButton
+            android:id="@+id/ibStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ivCover"
+            app:layout_constraintTop_toBottomOf="@+id/tvSummary"
+            app:srcCompat="@drawable/ic_star_border"
+            android:contentDescription="Star" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

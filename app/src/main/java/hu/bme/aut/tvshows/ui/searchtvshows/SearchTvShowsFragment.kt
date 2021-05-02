@@ -84,6 +84,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun showMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
     override fun onSearchResults(results: List<ShowSearchResult>) {
         val shows = results.map { it.show }
         showSearchResults.clear()
@@ -106,5 +110,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     override fun onDestroy() {
         presenter.cleanup()
         super.onDestroy()
+    }
+
+    fun saveShow(show: ShowSummary) {
+        presenter.saveShow(show)
     }
 }

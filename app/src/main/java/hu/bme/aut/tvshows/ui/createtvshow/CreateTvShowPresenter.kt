@@ -19,13 +19,10 @@ class CreateTvShowPresenter @Inject constructor(
 ) : CreateTvShowContract.Presenter, CoroutineScope by MainScope() {
 
     override fun onCreateTvShow(data: ShowData, seasons: List<Season>) {
-        launch {
+        /*launch {
 
             try {
                 //networkInteractor.createShow(data)
-                withContext(Dispatchers.Main) {
-                    view.showMessage("Successfully created TV Show")
-                }
                 dbInteractor.insertTvShow(Show(
                     null,
                     data.name,
@@ -34,13 +31,16 @@ class CreateTvShowPresenter @Inject constructor(
                     data.summary,
                     data.image?.medium ?: ""
                 ), seasons)
+                withContext(Dispatchers.Main) {
+                    view.showMessage("Successfully created TV Show")
+                }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Log.d("CreateTVP", "Exception", e)
                     view.showMessage("Something went wrong")
                 }
             }
-        }
+        }*/
     }
 
     override fun cleanup() {

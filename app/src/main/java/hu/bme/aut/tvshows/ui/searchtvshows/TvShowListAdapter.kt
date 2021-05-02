@@ -19,7 +19,7 @@ import hu.bme.aut.tvshows.util.hideKeyboard
 import hu.bme.aut.tvshows.util.stripHtml
 
 
-class TvShowListAdapter(val fragment: Fragment, var tvShows: List<ShowSummary>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
+class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<ShowSummary>) : RecyclerView.Adapter<TvShowListAdapter.TvShowViewHolder>() {
 
     val context: Context = fragment.requireContext()
 
@@ -57,6 +57,10 @@ class TvShowListAdapter(val fragment: Fragment, var tvShows: List<ShowSummary>) 
             val bundle = bundleOf("tvShowId" to tvShow.id)
             fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
             //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
+        }
+
+        holder.binding.ibStar.setOnClickListener {
+            fragment.saveShow(tvShow)
         }
     }
 

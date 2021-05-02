@@ -6,14 +6,22 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import hu.bme.aut.tvshows.data.AppDatabase
-import hu.bme.aut.tvshows.data.SeasonDAO
-import hu.bme.aut.tvshows.data.ShowDAO
+import hu.bme.aut.tvshows.data.*
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
 object DbModule {
+
+    @Provides
+    fun provideEpisodeDao(appDatabase: AppDatabase): EpisodeDAO {
+        return appDatabase.episodeDao()
+    }
+
+    @Provides
+    fun provideCastDao(appDatabase: AppDatabase): CastDao {
+        return appDatabase.castDao()
+    }
 
     @Provides
     fun provideShowDao(appDatabase: AppDatabase): ShowDAO {
