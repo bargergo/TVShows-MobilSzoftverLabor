@@ -15,7 +15,7 @@ class FavouriteTvShowsPresenter @Inject constructor(
 ) : FavouriteTvShowsContract.Presenter, CoroutineScope by MainScope() {
 
     override fun getFavouriteTvShows() {
-        launch {
+        launch(Dispatchers.IO) {
             try {
                 val favouriteShows = dbInteractor
                     .getFavouriteTvShows()
@@ -34,7 +34,7 @@ class FavouriteTvShowsPresenter @Inject constructor(
     }
 
     override fun removeShow(show: Show) {
-        launch {
+        launch(Dispatchers.IO) {
             dbInteractor.removeTvShow(show.toDataModel())
             withContext(Dispatchers.Main) {
                 view.itemRemoved()

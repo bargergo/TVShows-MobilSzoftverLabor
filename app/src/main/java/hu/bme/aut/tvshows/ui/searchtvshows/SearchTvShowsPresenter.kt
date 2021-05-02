@@ -19,7 +19,7 @@ class SearchTvShowsPresenter @Inject constructor(
 ) : SearchTvShowsContract.Presenter, CoroutineScope by MainScope() {
 
     override fun saveShow(show: hu.bme.aut.tvshows.ui.model.Show) {
-        launch {
+        launch(Dispatchers.IO) {
             val seasons = networkInteractor.getSeasons(show.id)
             val episodes = mutableListOf<Episode>()
             for (season in seasons) {
@@ -65,13 +65,13 @@ class SearchTvShowsPresenter @Inject constructor(
     }
 
     override fun removeShow(show: hu.bme.aut.tvshows.ui.model.Show) {
-        launch {
+        launch(Dispatchers.IO) {
             dbInteractor.removeTvShow(show.toDataModel())
         }
     }
 
     override fun search(keywords: String) {
-        launch {
+        launch(Dispatchers.IO) {
             val searchResult = networkInteractor.searchShows(keywords)
             val favouriteIds = dbInteractor.getFavouriteTvShowIds()
             val result = searchResult.map { it.toUIModel(favouriteIds) }
