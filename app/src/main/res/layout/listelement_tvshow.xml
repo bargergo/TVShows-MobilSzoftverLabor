@@ -21,7 +21,7 @@
             android:layout_width="130dp"
             android:layout_height="180dp"
             android:contentDescription="@string/search_cover_content_description"
-            android:src="@drawable/ic_broken_image"
+            app:srcCompat="@drawable/ic_broken_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,7 +70,17 @@
             app:layout_constraintStart_toEndOf="@+id/ivCover"
             app:layout_constraintTop_toBottomOf="@+id/tvSummary"
             app:srcCompat="@drawable/ic_star_border"
-            android:contentDescription="Star" />
+            android:contentDescription="@string/star_button_content_description" />
+
+        <ImageButton
+            android:id="@+id/ibUnstar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ivCover"
+            app:layout_constraintTop_toBottomOf="@+id/tvSummary"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_star_filled"
+            android:contentDescription="@string/unstar_button_content_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

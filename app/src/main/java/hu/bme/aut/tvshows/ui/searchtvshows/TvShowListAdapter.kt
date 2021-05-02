@@ -2,6 +2,7 @@ package hu.bme.aut.tvshows.ui.searchtvshows
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -57,11 +58,24 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
             //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
         }
 
+        if (tvShow.isFavourite) {
+            holder.binding.ibStar.visibility = View.GONE
+            holder.binding.ibUnstar.visibility = View.VISIBLE
+        } else {
+            holder.binding.ibStar.visibility = View.VISIBLE
+            holder.binding.ibUnstar.visibility = View.GONE
+        }
+
         holder.binding.ibStar.setOnClickListener {
-            if (tvShow.isFavourite)
-                fragment.removeShow(tvShow)
-            else
-                fragment.saveShow(tvShow)
+            fragment.saveShow(tvShow)
+            tvShow.isFavourite = true
+            notifyItemChanged(position)
+        }
+
+        holder.binding.ibUnstar.setOnClickListener {
+            fragment.removeShow(tvShow)
+            tvShow.isFavourite = false
+            notifyItemChanged(position)
         }
     }
 
