@@ -8,7 +8,7 @@ class TvShowDetailPresenter @Inject constructor(
     private val view: TvShowDetailContract.View,
     private val networkInteractor: NetworkInteractor
 ) : TvShowDetailContract.Presenter, CoroutineScope by MainScope() {
-    override fun getDetails(id: Int) {
+    override fun getDetails(id: Long) {
         launch {
             val show = networkInteractor.getShow(id)
             val cast = networkInteractor.getCast(id)

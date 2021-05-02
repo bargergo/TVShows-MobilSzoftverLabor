@@ -8,7 +8,7 @@ class EpisodeDetailPresenter @Inject constructor(
         val view: EpisodeDetailContract.View,
         val networkInteractor: NetworkInteractor
 ) : EpisodeDetailContract.Presenter, CoroutineScope by MainScope() {
-    override fun fetchEpisodeDetails(episodeId: Int) {
+    override fun fetchEpisodeDetails(episodeId: Long) {
         launch {
             val result = networkInteractor.getEpisode(episodeId)
             withContext(Dispatchers.Main) {

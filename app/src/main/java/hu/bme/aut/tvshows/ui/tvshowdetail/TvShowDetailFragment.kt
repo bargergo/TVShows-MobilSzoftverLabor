@@ -57,7 +57,7 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         seasonListAdapter = SeasonListAdapter(this, seasonResults)
         rvSeasonList.adapter = seasonListAdapter
 
-        val tvShowId = arguments?.getInt("tvShowId")
+        val tvShowId = arguments?.getLong("tvShowId")
         binding.tvTitle.text = "Got TV Show Id: $tvShowId"
         tvShowId?.let {
             presenter.getDetails(it)

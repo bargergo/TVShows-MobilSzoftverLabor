@@ -11,7 +11,7 @@ interface TvShowDetailContract {
     }
 
     interface Presenter {
-        fun getDetails(id: Int)
+        fun getDetails(id: Long)
         fun cleanup()
     }
 }

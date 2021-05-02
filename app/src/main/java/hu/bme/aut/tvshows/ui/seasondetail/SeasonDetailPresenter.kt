@@ -9,7 +9,7 @@ class SeasonDetailPresenter @Inject constructor(
         private val networkInteractor: NetworkInteractor
 ) : SeasonDetailContract.Presenter, CoroutineScope by MainScope() {
 
-    override fun getEpisodes(seasonId: Int) {
+    override fun getEpisodes(seasonId: Long) {
         launch {
             val results = networkInteractor.getEpisodes(seasonId)
             withContext(Dispatchers.Main) {

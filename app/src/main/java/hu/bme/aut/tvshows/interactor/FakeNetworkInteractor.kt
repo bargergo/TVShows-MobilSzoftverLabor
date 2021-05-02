@@ -60,18 +60,18 @@ class FakeNetworkInteractor : NetworkInteractor {
     }
 
     override suspend fun getShow(
-        id: Int,
+        id: Long,
         includeSeasons: Boolean,
         includeCast: Boolean
     ): ShowDetails {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateShow(id: Int, data: ShowData) {
+    override suspend fun updateShow(id: Long, data: ShowData) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun deleteShow(id: Int) {
+    override suspend fun deleteShow(id: Long) {
         TODO("Not yet implemented")
     }
 
@@ -79,63 +79,63 @@ class FakeNetworkInteractor : NetworkInteractor {
 
     }
 
-    override suspend fun getEpisodes(seasonId: Int): List<Episode> {
+    override suspend fun getEpisodes(seasonId: Long): List<Episode> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun createEpisode(seasonId: Int, data: EpisodeData) {
+    override suspend fun createEpisode(seasonId: Long, data: EpisodeData) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getEpisode(episodeId: Int): Episode {
+    override suspend fun getEpisode(episodeId: Long): Episode {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateEpisode(id: Int, data: EpisodeData) {
+    override suspend fun updateEpisode(id: Long, data: EpisodeData) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun deleteEpisode(id: Int) {
+    override suspend fun deleteEpisode(id: Long) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getSeasons(showId: Int): List<Season> {
+    override suspend fun getSeasons(showId: Long): List<Season> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun createSeason(showId: Int, data: SeasonData) {
+    override suspend fun createSeason(showId: Long, data: SeasonData) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getSeason(seasonId: Int): Season {
+    override suspend fun getSeason(seasonId: Long): Season {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateSeason(seasonId: Int, data: SeasonData) {
+    override suspend fun updateSeason(seasonId: Long, data: SeasonData) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun deleteSeason(seasonId: Int) {
+    override suspend fun deleteSeason(seasonId: Long) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getCast(showId: Int): List<Cast> {
+    override suspend fun getCast(showId: Long): List<Cast> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateCast(showId: Int, data: List<CastData>) {
+    override suspend fun updateCast(showId: Long, data: List<CastData>) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getPerson(id: Int): Person {
+    override suspend fun getPerson(id: Long): Person {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updatePerson(id: Int, data: PersonData) {
+    override suspend fun updatePerson(id: Long, data: PersonData) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun deletePerson(id: Int) {
+    override suspend fun deletePerson(id: Long) {
         TODO("Not yet implemented")
     }
 

@@ -31,7 +31,7 @@ class EpisodeDetailFragment: Fragment(), EpisodeDetailContract.View {
         val view = binding.root
         binding.tvTitle.text = "Title"
         binding.tvSummary.text = "Summary"
-        val episodeId = arguments?.getInt("episodeId")
+        val episodeId = arguments?.getLong("episodeId")
         episodeId?.let {
             presenter.fetchEpisodeDetails(it)
         }

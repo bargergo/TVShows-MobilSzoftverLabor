@@ -9,7 +9,7 @@ interface SeasonDetailContract {
     }
 
     interface Presenter {
-        fun getEpisodes(seasonId: Int)
+        fun getEpisodes(seasonId: Long)
         fun cleanup()
     }
 }

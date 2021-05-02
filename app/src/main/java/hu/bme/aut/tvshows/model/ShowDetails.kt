@@ -4,7 +4,7 @@ import org.threeten.bp.LocalDate
 
 data class ShowDetails (
 
-    val id: Int,
+    val id: Long,
     val url: String,
     val name: String,
     val type: String,

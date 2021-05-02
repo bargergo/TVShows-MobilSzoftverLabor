@@ -15,7 +15,7 @@ interface SeasonsApi {
      */
     @DELETE("seasons/{seasonId}")
     suspend fun deleteSeasonsSeasonId(
-        @Path("seasonId") seasonId: Int
+        @Path("seasonId") seasonId: Long
     )
 
     /**
@@ -26,7 +26,7 @@ interface SeasonsApi {
      */
     @GET("shows/{showId}/seasons")
     suspend fun getSeasonsForShow(
-        @Path("showId") showId: Int
+        @Path("showId") showId: Long
     ): List<Season>
 
     /**
@@ -37,7 +37,7 @@ interface SeasonsApi {
      */
     @GET("seasons/{seasonId}")
     suspend fun getSeasonsShowId(
-        @Path("seasonId") seasonId: Int
+        @Path("seasonId") seasonId: Long
     ): Season
 
     /**
@@ -50,7 +50,7 @@ interface SeasonsApi {
     @Headers("Content-Type:application/json")
     @POST("shows/{showId}/seasons")
     suspend fun postShowsShowIdSeasons(
-        @Path("showId") showId: Int, @Body body: SeasonData
+        @Path("showId") showId: Long, @Body body: SeasonData
     ): Season
 
     /**
@@ -63,6 +63,6 @@ interface SeasonsApi {
     @Headers("Content-Type:application/json")
     @PUT("seasons/{seasonId}")
     suspend fun putSeasonsSeasonId(
-        @Path("seasonId") seasonId: Int, @Body body: SeasonData
+        @Path("seasonId") seasonId: Long, @Body body: SeasonData
     )
 }

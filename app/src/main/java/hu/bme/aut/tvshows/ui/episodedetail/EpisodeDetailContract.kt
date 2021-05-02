@@ -9,7 +9,7 @@ interface EpisodeDetailContract {
     }
 
     interface Presenter {
-        fun fetchEpisodeDetails(episodeId: Int)
+        fun fetchEpisodeDetails(episodeId: Long)
         fun cleanup()
     }
 }

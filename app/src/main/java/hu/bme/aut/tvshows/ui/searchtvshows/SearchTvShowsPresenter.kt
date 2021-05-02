@@ -26,8 +26,8 @@ class SearchTvShowsPresenter @Inject constructor(
                     .getEpisodes(season.id)
                     .map {
                         Episode(
-                            it.id.toLong(),
-                            season.id.toLong(),
+                            it.id,
+                            season.id,
                             it.number,
                             it.name,
                             it.season,
@@ -39,7 +39,7 @@ class SearchTvShowsPresenter @Inject constructor(
             val cast = networkInteractor.getCast(show.id)
             dbInteractor.insertTvShow(
                 Show(
-                    id = show.id.toLong(),
+                    id = show.id,
                     name = show.name,
                     premier = show.premiered,
                     genres = show.genres.joinToString(", "),
@@ -48,16 +48,16 @@ class SearchTvShowsPresenter @Inject constructor(
                 ),
                 seasons.map {
                             Season(
-                                it.id.toLong(),
+                                it.id,
                                 it.number,
-                                show.id.toLong()
+                                show.id
                             )
                 },
                 episodes,
                 cast.map {
                     Cast(
-                        it.character.id.toLong(),
-                        show.id.toLong(),
+                        it.character.id,
+                        show.id,
                         it.character.image?.medium,
                         it.character.name,
                         it.person.name
