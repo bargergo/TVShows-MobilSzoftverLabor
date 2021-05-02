@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.databinding.FragmentEpisodedetailBinding
-import hu.bme.aut.tvshows.model.Episode
+import hu.bme.aut.tvshows.ui.model.Episode
 import hu.bme.aut.tvshows.util.stripHtml
 import javax.inject.Inject
 
@@ -32,8 +32,13 @@ class EpisodeDetailFragment: Fragment(), EpisodeDetailContract.View {
         binding.tvTitle.text = "Title"
         binding.tvSummary.text = "Summary"
         val episodeId = arguments?.getLong("episodeId")
+        val useDbOnly = arguments?.getBoolean("useDbOnly", false) ?: false
         episodeId?.let {
-            presenter.fetchEpisodeDetails(it)
+            if (useDbOnly) {
+                presenter.fetchEpisodeDetailsFromDb(it)
+            } else {
+                presenter.fetchEpisodeDetails(it)
+            }
         }
         return view
     }

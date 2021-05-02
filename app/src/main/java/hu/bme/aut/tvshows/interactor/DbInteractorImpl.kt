@@ -41,4 +41,8 @@ class DbInteractorImpl @Inject constructor(
     override suspend fun getEpisodesForSeason(seasonId: Long): List<Episode> {
         return episodeDao.getEpisodesForSeason(seasonId)
     }
+
+    override suspend fun getEpisode(id: Long): Episode {
+        return episodeDao.getEpisode(id)
+    }
 }

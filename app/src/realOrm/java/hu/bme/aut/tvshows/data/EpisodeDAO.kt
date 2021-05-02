@@ -10,6 +10,9 @@ interface EpisodeDAO {
     @Query("SELECT * FROM episode")
     suspend fun getEpisodes(): List<Episode>
 
+    @Query("SELECT * FROM episode WHERE id=:id")
+    suspend fun getEpisode(id: Long): Episode
+
     @Query("""SELECT * FROM episode WHERE seasonId=:seasonId""")
     suspend fun getEpisodesForSeason(seasonId: Long): List<Episode>
 

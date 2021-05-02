@@ -32,7 +32,7 @@ class EpisodeListAdapter(val fragment: Fragment, val episodes: List<Episode>, va
         holder.binding.tvTitle.text = episode.name
 
         holder.itemView.setOnClickListener {
-            val bundle = bundleOf("episodeId" to episode.id)
+            val bundle = bundleOf("episodeId" to episode.id, "useDbOnly" to useDbOnly)
             fragment.findNavController().navigate(R.id.action_nav_seasondetail_to_nav_episodedetail, bundle)
         }
     }

@@ -1,6 +1,6 @@
 package hu.bme.aut.tvshows.ui.episodedetail
 
-import hu.bme.aut.tvshows.model.Episode
+import hu.bme.aut.tvshows.ui.model.Episode
 
 interface EpisodeDetailContract {
 
@@ -10,6 +10,7 @@ interface EpisodeDetailContract {
 
     interface Presenter {
         fun fetchEpisodeDetails(episodeId: Long)
+        fun fetchEpisodeDetailsFromDb(episodeId: Long)
         fun cleanup()
     }
 }

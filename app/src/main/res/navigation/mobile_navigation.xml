@@ -82,7 +82,14 @@
         tools:layout="@layout/fragment_seasondetail" >
         <action
             android:id="@+id/action_nav_seasondetail_to_nav_episodedetail"
-            app:destination="@id/nav_episodedetail" />
+            app:destination="@id/nav_episodedetail">
+            <argument
+                android:name="episodeId"
+                app:argType="long" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
     </fragment>
 
     <fragment
