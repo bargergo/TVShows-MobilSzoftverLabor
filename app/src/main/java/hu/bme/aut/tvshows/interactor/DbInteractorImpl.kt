@@ -34,7 +34,7 @@ class DbInteractorImpl @Inject constructor(
         return showDao.getShowIds()
     }
 
-    override suspend fun getShow(id: Long): ShowWithSeasonsAndEpisodesAndCast {
+    override suspend fun getShow(id: Long): ShowWithSeasonsAndEpisodesAndCast? {
         return showDao.getShowWithSeasonsAndEpisodesAndCast(id)
     }
 

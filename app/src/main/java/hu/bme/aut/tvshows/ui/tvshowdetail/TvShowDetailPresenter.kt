@@ -34,7 +34,7 @@ class TvShowDetailPresenter @Inject constructor(
         launch(Dispatchers.IO) {
             val show = dbInteractor.getShow(id)
             withContext(Dispatchers.Main) {
-                val uiModels = show.toUIModel()
+                val uiModels = show!!.toUIModel()
                 view.onResultsReady(uiModels)
             }
         }
@@ -58,6 +58,30 @@ class TvShowDetailPresenter @Inject constructor(
             )
             withContext(Dispatchers.Main) {
                 view.onShowAddedToFavourites()
+            }
+        }
+    }
+
+    override fun saveShowIfNotSavedYet(show: ShowDetail) {
+        launch(Dispatchers.IO) {
+            if (dbInteractor.getShow(show.id) == null) {
+                val episodes = mutableListOf<Episode>()
+                for (season in show.seasons) {
+                    val seasonId = season.id!!
+                    episodes.addAll(networkInteractor
+                        .getEpisodes(seasonId)
+                        .map { it.toDataModel(seasonId) }
+                    )
+                }
+                dbInteractor.insertTvShow(
+                    show.toDataModel(),
+                    show.seasons.map { it.toDataModel() },
+                    episodes,
+                    show.cast.map { it.toDataModel(show.id) }
+                )
+            }
+            withContext(Dispatchers.Main) {
+                view.onShowReadyForEdit()
             }
         }
     }

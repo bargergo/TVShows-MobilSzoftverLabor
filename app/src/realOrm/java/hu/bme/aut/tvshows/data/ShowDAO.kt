@@ -25,6 +25,6 @@ interface ShowDAO {
 
     @Transaction
     @Query("SELECT * FROM show WHERE id=:showId")
-    fun getShowWithSeasonsAndEpisodesAndCast(showId: Long): ShowWithSeasonsAndEpisodesAndCast
+    fun getShowWithSeasonsAndEpisodesAndCast(showId: Long): ShowWithSeasonsAndEpisodesAndCast?
 
 }
