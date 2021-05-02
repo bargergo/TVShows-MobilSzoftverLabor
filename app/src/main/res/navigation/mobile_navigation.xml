@@ -15,7 +15,18 @@
         android:id="@+id/nav_favouritetvshows"
         android:name="hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsFragment"
         android:label="@string/menu_favouritetvshows"
-        tools:layout="@layout/fragment_favouritetvshows" />
+        tools:layout="@layout/fragment_favouritetvshows" >
+        <action
+            android:id="@+id/action_nav_favouritetvshows_to_nav_tvshowdetail"
+            app:destination="@id/nav_tvshowdetail">
+            <argument
+                android:name="tvShowId"
+                app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_searchtvshows"
@@ -28,6 +39,9 @@
             <argument
                 android:name="tvShowId"
                 app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
         </action>
     </fragment>
 

@@ -1,9 +1,6 @@
 package hu.bme.aut.tvshows.interactor
 
-import hu.bme.aut.tvshows.data.Cast
-import hu.bme.aut.tvshows.data.Episode
-import hu.bme.aut.tvshows.data.Season
-import hu.bme.aut.tvshows.data.Show
+import hu.bme.aut.tvshows.data.*
 
 interface DbInteractor {
 
@@ -11,4 +8,5 @@ interface DbInteractor {
     suspend fun removeTvShow(data: Show)
     suspend fun getFavouriteTvShows(): List<Show>
     suspend fun getFavouriteTvShowIds(): List<Long>
+    suspend fun getShow(id: Long): ShowWithSeasonsAndEpisodesAndCast
 }

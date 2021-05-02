@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -50,8 +51,8 @@ class TvShowListAdapter(val fragment: FavouriteTvShowsFragment, var tvShows: Lis
 
         holder.itemView.setOnClickListener {
             fragment.activity?.hideKeyboard()
-            val bundle = bundleOf("tvShowId" to tvShow.id)
-            //fragment.findNavController().navigate(R.id.action_nav_searchtvshows_to_nav_tvshowdetail, bundle)
+            val bundle = bundleOf("tvShowId" to tvShow.id, "useDbOnly" to true)
+            fragment.findNavController().navigate(R.id.action_nav_favouritetvshows_to_nav_tvshowdetail, bundle)
             //Toast.makeText(context, "Clicked on ${tvShow.show.name}", Toast.LENGTH_SHORT).show()
         }
 

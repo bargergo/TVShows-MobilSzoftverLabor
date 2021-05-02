@@ -30,6 +30,16 @@ class TvShowDetailPresenter @Inject constructor(
         }
     }
 
+    override fun getDetailsFromDb(id: Long) {
+        launch(Dispatchers.IO) {
+            val show = dbInteractor.getShow(id)
+            withContext(Dispatchers.Main) {
+                val uiModels = show.toUIModel()
+                view.onResultsReady(uiModels)
+            }
+        }
+    }
+
     override fun saveShow(show: ShowDetail) {
         launch {
             val episodes = mutableListOf<Episode>()

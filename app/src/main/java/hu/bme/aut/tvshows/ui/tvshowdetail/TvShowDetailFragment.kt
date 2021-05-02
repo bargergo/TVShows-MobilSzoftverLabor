@@ -62,9 +62,14 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         rvSeasonList.adapter = seasonListAdapter
 
         val tvShowId = arguments?.getLong("tvShowId")
+        val useDbOnly = arguments?.getBoolean("useDbOnly") ?: false
         binding.tvTitle.text = "Got TV Show Id: $tvShowId"
         tvShowId?.let {
-            presenter.getDetails(it)
+            if (useDbOnly) {
+                presenter.getDetailsFromDb(it)
+            } else {
+                presenter.getDetails(it)
+            }
         }
         return view
     }

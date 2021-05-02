@@ -15,6 +15,7 @@ interface TvShowDetailContract {
         fun saveShow(show: ShowDetail)
         fun removeShow(show: ShowDetail)
         fun getDetails(id: Long)
+        fun getDetailsFromDb(id: Long)
         fun cleanup()
     }
 }
