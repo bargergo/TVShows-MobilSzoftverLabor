@@ -6,6 +6,7 @@ import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.data.Show
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
+import hu.bme.aut.tvshows.ui.model.toDataModel
 import hu.bme.aut.tvshows.ui.model.toUIModel
 import hu.bme.aut.tvshows.util.stripHtml
 import kotlinx.coroutines.*
@@ -38,14 +39,7 @@ class SearchTvShowsPresenter @Inject constructor(
             }
             val cast = networkInteractor.getCast(show.id)
             dbInteractor.insertTvShow(
-                Show(
-                    id = show.id,
-                    name = show.name,
-                    premier = show.premier,
-                    genres = show.genres,
-                    summary = show.summary,
-                    imageUrl = show.imageUrl
-                ),
+                show.toDataModel(),
                 seasons.map {
                             Season(
                                 it.id,
@@ -72,21 +66,14 @@ class SearchTvShowsPresenter @Inject constructor(
 
     override fun removeShow(show: hu.bme.aut.tvshows.ui.model.Show) {
         launch {
-            dbInteractor.removeTvShow(Show(
-                id = show.id,
-                name = show.name,
-                premier = show.premier,
-                genres = show.genres,
-                summary = show.summary,
-                imageUrl = show.imageUrl
-            ))
+            dbInteractor.removeTvShow(show.toDataModel())
         }
     }
 
     override fun search(keywords: String) {
         launch {
             val searchResult = networkInteractor.searchShows(keywords)
-            val favouriteIds = dbInteractor.getFavouriteTvShows().map { it.id!! }
+            val favouriteIds = dbInteractor.getFavouriteTvShowIds()
             val result = searchResult.map { it.toUIModel(favouriteIds) }
             withContext(Dispatchers.Main) {
                 view.onSearchResults(result)

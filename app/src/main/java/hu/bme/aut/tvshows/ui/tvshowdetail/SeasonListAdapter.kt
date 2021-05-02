@@ -3,14 +3,13 @@ package hu.bme.aut.tvshows.ui.tvshowdetail
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.ListelementSeasonBinding
-import hu.bme.aut.tvshows.model.Season
+import hu.bme.aut.tvshows.ui.model.Season
 
 class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>) : RecyclerView.Adapter<SeasonListAdapter.SeasonViewHolder>() {
 
@@ -29,7 +28,7 @@ class SeasonListAdapter(val fragment: Fragment, val seasons: List<Season>) : Rec
     override fun onBindViewHolder(holder: SeasonViewHolder, position: Int) {
         val season = seasons[position]
         holder.binding.tvSeasonNumber.text = "Season ${season.number}"
-        holder.binding.tvEpisodes.text = "${season.episodeOrder} episodes"
+        holder.binding.tvEpisodes.text = "${season.numberOfEpisodes} episodes"
 
         holder.itemView.setOnClickListener {
             val bundle = bundleOf("seasonId" to season.id, "seasonNumber" to season.number)

@@ -7,6 +7,9 @@ interface ShowDAO {
     @Query("SELECT * FROM show")
     suspend fun getShows(): List<Show>
 
+    @Query("SELECT id FROM show")
+    suspend fun getShowIds(): List<Long>
+
     @Insert
     suspend fun insertShow(show: Show): Long
 

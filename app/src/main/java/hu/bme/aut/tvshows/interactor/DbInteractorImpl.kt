@@ -29,4 +29,8 @@ class DbInteractorImpl @Inject constructor(
     override suspend fun getFavouriteTvShows(): List<Show> {
         return showDao.getShows()
     }
+
+    override suspend fun getFavouriteTvShowIds(): List<Long> {
+        return showDao.getShowIds()
+    }
 }
