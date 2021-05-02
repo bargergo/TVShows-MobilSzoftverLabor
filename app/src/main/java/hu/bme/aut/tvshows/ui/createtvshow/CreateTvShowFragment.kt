@@ -59,8 +59,38 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
         )
 
         binding.btnClickMe.setOnClickListener {
-            if (!isValid())
+            if (isValid()) {
+                val image = if (binding.etImageUrl.text?.length ?: 0 > 0)
+                    Image(
+                        binding.etImageUrl.text.toString(),
+                        binding.etImageUrl.text.toString()
+                    )
+                else
+                    null
+                presenter.createTvShow(
+                    ShowData(
+                        binding.etTitle.text.toString(),
+                        "Show",
+                        "English",
+                        binding.etGenres.text?.split(",")?.map { it.trim() } ?: emptyList(),
+                        "Running",
+                        30,
+                        LocalDate.parse(binding.etPremiered.text.toString()),
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        image,
+                        binding.etSummary.text.toString()
+                    )
+                )
+            } else {
                 showMessage("There are some validation errors!")
+            }
         }
         return view
     }
