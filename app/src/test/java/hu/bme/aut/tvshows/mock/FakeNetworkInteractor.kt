@@ -1,10 +1,12 @@
-package hu.bme.aut.tvshows.interactor
+package hu.bme.aut.tvshows.mock
 
+import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.model.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
+import javax.inject.Inject
 
-class FakeNetworkInteractor : NetworkInteractor {
+class FakeNetworkInteractor @Inject constructor() : NetworkInteractor {
     override suspend fun searchShows(keywords: String): List<ShowSearchResult> {
         return listOf(
             ShowSearchResult(

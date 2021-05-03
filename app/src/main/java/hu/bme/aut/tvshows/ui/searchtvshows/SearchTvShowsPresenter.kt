@@ -1,9 +1,11 @@
 package hu.bme.aut.tvshows.ui.searchtvshows
 
+import android.util.Log
 import hu.bme.aut.tvshows.data.Cast
 import hu.bme.aut.tvshows.data.Episode
 import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.data.Show
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.ui.model.toDataModel
@@ -11,15 +13,21 @@ import hu.bme.aut.tvshows.ui.model.toUIModel
 import hu.bme.aut.tvshows.util.stripHtml
 import kotlinx.coroutines.*
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 class SearchTvShowsPresenter @Inject constructor(
     private val view: SearchTvShowsContract.View,
     private val networkInteractor: NetworkInteractor,
-    private val dbInteractor: DbInteractor
-) : SearchTvShowsContract.Presenter, CoroutineScope by MainScope() {
+    private val dbInteractor: DbInteractor,
+    private val defaultDispatcher: CoroutineDispatcher
+) : SearchTvShowsContract.Presenter, CoroutineScope {
+
+    private val job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = job + defaultDispatcher
 
     override fun saveShow(show: hu.bme.aut.tvshows.ui.model.Show) {
-        launch {
+        launch(Dispatchers.IO) {
             val seasons = networkInteractor.getSeasons(show.id)
             val episodes = mutableListOf<Episode>()
             for (season in seasons) {
@@ -65,13 +73,13 @@ class SearchTvShowsPresenter @Inject constructor(
     }
 
     override fun removeShow(show: hu.bme.aut.tvshows.ui.model.Show) {
-        launch {
+        launch(Dispatchers.IO) {
             dbInteractor.removeTvShow(show.toDataModel())
         }
     }
 
     override fun search(keywords: String) {
-        launch {
+        launch(defaultDispatcher) {
             val searchResult = networkInteractor.searchShows(keywords)
             val favouriteIds = dbInteractor.getFavouriteTvShowIds()
             val result = searchResult.map { it.toUIModel(favouriteIds) }
