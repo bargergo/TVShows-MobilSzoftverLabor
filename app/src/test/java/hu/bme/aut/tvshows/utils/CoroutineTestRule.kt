@@ -1,5 +1,7 @@
 package hu.bme.aut.tvshows.utils
 
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -9,7 +11,14 @@ import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 @ExperimentalCoroutinesApi
-class CoroutineTestRule(private val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) : TestWatcher() {
+class CoroutineTestRule(val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) : TestWatcher() {
+
+    val testDispatcherProvider = object : DispatcherProvider {
+        override fun default(): CoroutineDispatcher = testDispatcher
+        override fun io(): CoroutineDispatcher = testDispatcher
+        override fun main(): CoroutineDispatcher = testDispatcher
+        override fun unconfined(): CoroutineDispatcher = testDispatcher
+    }
 
     override fun starting(description: Description?) {
         super.starting(description)

@@ -62,8 +62,8 @@ class FirstTest {
     lateinit var networkInteractor: NetworkInteractor
     private lateinit var searchTvShowsView: SearchTvShowsContract.View
 
-    private val testDispatcher = TestCoroutineDispatcher()
-    private val testScope = TestCoroutineScope(testDispatcher)
+    private val testDispatcher = coroutineTestRule.testDispatcher
+    private val testDispatcherProvider = coroutineTestRule.testDispatcherProvider
 
 
     @Before
@@ -80,9 +80,8 @@ class FirstTest {
 
     @Test
     fun testSearch() = testDispatcher.runBlockingTest  {
-        val searchTvShowsPresenter = SearchTvShowsPresenter(searchTvShowsView,networkInteractor,dbInteractor,testDispatcher)
+        val searchTvShowsPresenter = SearchTvShowsPresenter(searchTvShowsView,networkInteractor,dbInteractor,testDispatcherProvider)
         searchTvShowsPresenter.search("Test")
-        searchTvShowsPresenter.coroutineContext[Job]!!.children.forEach { it.join() }
         Mockito.verify(searchTvShowsView).onSearchResults(listOf(
             Show(
                 1,
