@@ -3,7 +3,7 @@ package hu.bme.aut.tvshows.model
 
 data class Person (
 
-    val id: Int,
+    val id: Long,
     val url: String,
     val name: String,
     val country: Country,

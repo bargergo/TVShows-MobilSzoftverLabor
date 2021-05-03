@@ -7,6 +7,7 @@ import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.model.*
 import kotlinx.coroutines.*
+import org.threeten.bp.LocalDate
 import java.lang.Exception
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -15,25 +16,24 @@ class CreateTvShowPresenter @Inject constructor(
     private val view: CreateTvShowContract.View,
     private val dbInteractor: DbInteractor,
     private val networkInteractor: NetworkInteractor
-) : CreateTvShowContract.Presenter, CoroutineScope {
+) : CreateTvShowContract.Presenter, CoroutineScope by MainScope() {
 
-    private val job = Job()
-    override val coroutineContext: CoroutineContext = job + Dispatchers.IO
-
-    override fun onCreateTvShow(data: ShowData, seasons: List<Season>) {
-        launch {
+    override fun createTvShow(data: ShowData) {
+        launch(Dispatchers.IO) {
 
             try {
-                //networkInteractor.createShow(data)
-                withContext(Dispatchers.Main) {
-                    view.showMessage("Successfully created TV Show")
-                }
+                networkInteractor.createShow(data)
                 dbInteractor.insertTvShow(Show(
                     null,
                     data.name,
+                    data.premiered,
+                    data.genres.joinToString(", "),
                     data.summary,
-                    data.image?.medium ?: ""
-                ), seasons)
+                    data.image?.original ?: ""
+                ), emptyList(), emptyList(), emptyList())
+                withContext(Dispatchers.Main) {
+                    view.showMessage("Successfully created TV Show")
+                }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Log.d("CreateTVP", "Exception", e)
@@ -48,6 +48,6 @@ class CreateTvShowPresenter @Inject constructor(
         // will use the job and dispatcher specified by the
         // coroutineContext.
         // The coroutines are scoped to their execution environment.
-        job.cancel()
+        cancel()
     }
 }

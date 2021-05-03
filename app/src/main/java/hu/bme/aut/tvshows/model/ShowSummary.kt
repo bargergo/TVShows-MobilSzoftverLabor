@@ -11,33 +11,11 @@
  */
 package hu.bme.aut.tvshows.model
 
-/**
- * 
- * @param id 
- * @param url 
- * @param name 
- * @param type 
- * @param language 
- * @param genres 
- * @param status 
- * @param runtime 
- * @param premiered 
- * @param officialSite 
- * @param schedule 
- * @param rating 
- * @param weight 
- * @param network 
- * @param webChannel 
- * @param dvdCountry 
- * @param externals 
- * @param image 
- * @param summary 
- * @param updated 
- * @param links 
- */
+import org.threeten.bp.LocalDate
+
 data class ShowSummary (
 
-    val id: Int,
+    val id: Long,
     val url: String,
     val name: String,
     val type: String,
@@ -45,7 +23,7 @@ data class ShowSummary (
     val genres: List<String>,
     val status: String,
     val runtime: Long,
-    val premiered: String,
+    val premiered: LocalDate? = null,
     val officialSite: String,
     val schedule: Schedule,
     val rating: Rating,
@@ -55,7 +33,7 @@ data class ShowSummary (
     val dvdCountry: Any? = null,
     val externals: Externals,
     val image: Image? = null,
-    val summary: String,
+    val summary: String? = null,
     val updated: Long,
     val links: Links
 ) {

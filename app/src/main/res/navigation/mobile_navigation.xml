@@ -15,13 +15,35 @@
         android:id="@+id/nav_favouritetvshows"
         android:name="hu.bme.aut.tvshows.ui.favouritetvshows.FavouriteTvShowsFragment"
         android:label="@string/menu_favouritetvshows"
-        tools:layout="@layout/fragment_favouritetvshows" />
+        tools:layout="@layout/fragment_favouritetvshows" >
+        <action
+            android:id="@+id/action_nav_favouritetvshows_to_nav_tvshowdetail"
+            app:destination="@id/nav_tvshowdetail">
+            <argument
+                android:name="tvShowId"
+                app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_searchtvshows"
         android:name="hu.bme.aut.tvshows.ui.searchtvshows.SearchTvShowsFragment"
         android:label="@string/menu_searchtvshows"
-        tools:layout="@layout/fragment_searchtvshows" />
+        tools:layout="@layout/fragment_searchtvshows" >
+        <action
+            android:id="@+id/action_nav_searchtvshows_to_nav_tvshowdetail"
+            app:destination="@id/nav_tvshowdetail">
+            <argument
+                android:name="tvShowId"
+                app:argType="long" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_createtvshow"
@@ -34,4 +56,60 @@
         android:name="hu.bme.aut.tvshows.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_tvshowdetail"
+        android:name="hu.bme.aut.tvshows.ui.tvshowdetail.TvShowDetailFragment"
+        android:label="TV Show Detail"
+        tools:layout="@layout/fragment_tvshowdetail" >
+        <action
+            android:id="@+id/action_nav_tvshowdetail_to_nav_seasondetail"
+            app:destination="@id/nav_seasondetail" >
+            <argument
+                android:name="seasonId"
+                app:argType="long" />
+            <argument
+                android:name="seasonNumber"
+                app:argType="integer" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
+        <action
+            android:id="@+id/action_nav_tvshowdetail_to_nav_edittvshow"
+            app:destination="@id/nav_edittvshow">
+            <argument
+                android:name="showId"
+                app:argType="long" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_seasondetail"
+        android:name="hu.bme.aut.tvshows.ui.seasondetail.SeasonDetailFragment"
+        android:label="Season Detail"
+        tools:layout="@layout/fragment_seasondetail" >
+        <action
+            android:id="@+id/action_nav_seasondetail_to_nav_episodedetail"
+            app:destination="@id/nav_episodedetail">
+            <argument
+                android:name="episodeId"
+                app:argType="long" />
+            <argument
+                android:name="useDbOnly"
+                app:argType="boolean" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_episodedetail"
+        android:name="hu.bme.aut.tvshows.ui.episodedetail.EpisodeDetailFragment"
+        android:label="Episode Detail"
+        tools:layout="@layout/fragment_episodedetail" />
+
+    <fragment
+        android:id="@+id/nav_edittvshow"
+        android:name="hu.bme.aut.tvshows.ui.edittvshow.EditTvShowFragment"
+        android:label="Edit TV Show"
+        tools:layout="@layout/fragment_edittvshow" />
 </navigation>

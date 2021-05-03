@@ -2,8 +2,8 @@
     <string name="app_name">TV shows</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">TV shows</string>
+    <string name="nav_header_subtitle">Get information about TV shows</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -13,4 +13,26 @@
     <string name="menu_createtvshow">Create TV Show</string>
     <string name="menu_about">About</string>
     <string name="click_me">Click me!</string>
+    <string name="about_logo_content_description">The launcher icon of the app. A dark grey clapperboard with blue background in a square</string>
+    <string name="about_app_name">TV shows app</string>
+    <string name="about_all_rights_reserved">All rights reserved</string>
+    <string name="about_author_name">Bargergo</string>
+    <string name="about_year">2021</string>
+    <string name="search_menu_title">Search TV Shows</string>
+    <string name="search_for_something">Use the search bar at the top to find TV Shows</string>
+    <string name="no_data_available">No results found</string>
+    <string name="search_cover_content_description">The cover image of the series</string>
+    <string name="details_actor_image_content_description">Image of the actor</string>
+    <string name="star_button_content_description">Empty star, click on it to mark show as favourite</string>
+    <string name="unstar_button_content_description">A filled star, click on it delete from gavourite shows</string>
+    <string name="title_add_to_favourites">Add to favourites</string>
+    <string name="title_remove_from_favourites">Remove from favourites</string>
+    <string name="title_edit_show">Edit</string>
+    <string name="title_delete_show">Delete</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_genres">Genres</string>
+    <string name="premiered">Premiered</string>
+    <string name="hint_summary">Summary</string>
+    <string name="hint_image_url">Image URL</string>
+    <string name="save">Save</string>
 </resources>

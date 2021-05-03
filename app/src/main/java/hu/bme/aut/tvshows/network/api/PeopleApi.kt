@@ -16,7 +16,7 @@ interface PeopleApi {
      */
     @DELETE("people/{personId}")
     suspend fun deletePeoplePersonId(
-        @Path("personId") personId: Int
+        @Path("personId") personId: Long
     )
 
     /**
@@ -27,7 +27,7 @@ interface PeopleApi {
      */
     @GET("people/{personId}")
     suspend fun getPeoplePersonId(
-        @Path("personId") personId: Int
+        @Path("personId") personId: Long
     ): Person
 
     /**
@@ -63,6 +63,6 @@ interface PeopleApi {
     @Headers("Content-Type:application/json")
     @PUT("people/{personId}")
     suspend fun putPeoplePersonId(
-        @Path("personId") personId: Int, @Body body: PersonData
+        @Path("personId") personId: Long, @Body body: PersonData
     )
 }

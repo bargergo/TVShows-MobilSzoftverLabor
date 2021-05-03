@@ -3,11 +3,9 @@ package hu.bme.aut.tvshows.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.components.SingletonComponent
-import hu.bme.aut.tvshows.TvShowsApplication
 import hu.bme.aut.tvshows.network.ApiClient
+import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -20,6 +18,7 @@ object NetworkModule {
     fun provide(): Retrofit {
         val apiClient = ApiClient().apply {
             createDefaultAdapter()
+            setLocalDateFormat(DateTimeFormatter.ofPattern(("yyyy-MM-dd")))
         }
         return apiClient.adapterBuilder.build()
     }
