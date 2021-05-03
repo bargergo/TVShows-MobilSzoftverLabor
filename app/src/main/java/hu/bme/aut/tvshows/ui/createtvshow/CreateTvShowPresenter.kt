@@ -3,6 +3,7 @@ package hu.bme.aut.tvshows.ui.createtvshow
 import android.util.Log
 import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.data.Show
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.model.*
@@ -15,11 +16,12 @@ import kotlin.coroutines.CoroutineContext
 class CreateTvShowPresenter @Inject constructor(
     private val view: CreateTvShowContract.View,
     private val dbInteractor: DbInteractor,
-    private val networkInteractor: NetworkInteractor
+    private val networkInteractor: NetworkInteractor,
+    private val dispatcherProvider: DispatcherProvider
 ) : CreateTvShowContract.Presenter, CoroutineScope by MainScope() {
 
     override fun createTvShow(data: ShowData) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
 
             try {
                 networkInteractor.createShow(data)
@@ -31,11 +33,11 @@ class CreateTvShowPresenter @Inject constructor(
                     data.summary,
                     data.image?.original ?: ""
                 ), emptyList(), emptyList(), emptyList())
-                withContext(Dispatchers.Main) {
+                withContext(dispatcherProvider.main()) {
                     view.showMessage("Successfully created TV Show")
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
+                withContext(dispatcherProvider.main()) {
                     Log.d("CreateTVP", "Exception", e)
                     view.showMessage("Something went wrong")
                 }

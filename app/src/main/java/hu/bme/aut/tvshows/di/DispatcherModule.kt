@@ -4,6 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import hu.bme.aut.tvshows.dispatchers.DefaultDispatcherProvider
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
@@ -12,5 +14,5 @@ import kotlinx.coroutines.Dispatchers
 object DispatcherModule {
 
     @Provides
-    fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+    fun providesMainDispatcher(): DispatcherProvider = DefaultDispatcherProvider()
 }

@@ -19,15 +19,11 @@ class SearchTvShowsPresenter @Inject constructor(
     private val view: SearchTvShowsContract.View,
     private val networkInteractor: NetworkInteractor,
     private val dbInteractor: DbInteractor,
-    private val defaultDispatcher: CoroutineDispatcher
-) : SearchTvShowsContract.Presenter, CoroutineScope {
-
-    private val job = Job()
-    override val coroutineContext: CoroutineContext
-        get() = job + defaultDispatcher
+    private val dispatcherProvider: DispatcherProvider
+) : SearchTvShowsContract.Presenter, CoroutineScope by MainScope() {
 
     override fun saveShow(show: hu.bme.aut.tvshows.ui.model.Show) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             val seasons = networkInteractor.getSeasons(show.id)
             val episodes = mutableListOf<Episode>()
             for (season in seasons) {
@@ -66,24 +62,24 @@ class SearchTvShowsPresenter @Inject constructor(
                     )
                 }
             )
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.showMessage("Show successfully saved")
             }
         }
     }
 
     override fun removeShow(show: hu.bme.aut.tvshows.ui.model.Show) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             dbInteractor.removeTvShow(show.toDataModel())
         }
     }
 
     override fun search(keywords: String) {
-        launch(defaultDispatcher) {
+        launch(dispatcherProvider.io()) {
             val searchResult = networkInteractor.searchShows(keywords)
             val favouriteIds = dbInteractor.getFavouriteTvShowIds()
             val result = searchResult.map { it.toUIModel(favouriteIds) }
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.onSearchResults(result)
             }
         }

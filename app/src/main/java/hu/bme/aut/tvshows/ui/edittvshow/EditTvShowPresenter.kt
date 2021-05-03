@@ -1,6 +1,7 @@
 package hu.bme.aut.tvshows.ui.edittvshow
 
 import hu.bme.aut.tvshows.data.Show
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.model.ShowData
@@ -10,20 +11,21 @@ import javax.inject.Inject
 class EditTvShowPresenter @Inject constructor(
     private val view: EditTvShowContract.View,
     private val networkInteractor: NetworkInteractor,
-    private val dbInteractor: DbInteractor
+    private val dbInteractor: DbInteractor,
+    private val dispatcherProvider: DispatcherProvider
 ): EditTvShowContract.Presenter, CoroutineScope by MainScope() {
 
     override fun loadShowData(id: Long) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             val show = dbInteractor.getShow(id)!!
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.onShowDataLoaded(show)
             }
         }
     }
 
     override fun updateShow(id: Long, data: ShowData) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             dbInteractor.updateShow(Show(
                 id,
                 data.name,
@@ -34,7 +36,7 @@ class EditTvShowPresenter @Inject constructor(
             )
             )
             networkInteractor.updateShow(id, data)
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.showMessage("Updated show")
             }
         }

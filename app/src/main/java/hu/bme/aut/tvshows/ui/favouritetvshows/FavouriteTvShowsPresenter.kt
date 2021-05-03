@@ -1,6 +1,7 @@
 package hu.bme.aut.tvshows.ui.favouritetvshows
 
 import android.util.Log
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.ui.model.Show
 import hu.bme.aut.tvshows.ui.model.toDataModel
@@ -11,20 +12,21 @@ import kotlin.coroutines.CoroutineContext
 
 class FavouriteTvShowsPresenter @Inject constructor(
     private val view: FavouriteTvShowsContract.View,
-    private val dbInteractor: DbInteractor
+    private val dbInteractor: DbInteractor,
+    private val dispatcherProvider: DispatcherProvider
 ) : FavouriteTvShowsContract.Presenter, CoroutineScope by MainScope() {
 
     override fun getFavouriteTvShows() {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             try {
                 val favouriteShows = dbInteractor
                     .getFavouriteTvShows()
                     .map { it.toUIModel() }
-                withContext(Dispatchers.Main) {
+                withContext(dispatcherProvider.main()) {
                     view.updateView(favouriteShows)
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
+                withContext(dispatcherProvider.main()) {
                     Log.d("Favourite", "Exception", e)
                     view.showMessage("Something went wrong")
                 }
@@ -34,9 +36,9 @@ class FavouriteTvShowsPresenter @Inject constructor(
     }
 
     override fun removeShow(show: Show) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             dbInteractor.removeTvShow(show.toDataModel())
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.itemRemoved()
             }
         }
