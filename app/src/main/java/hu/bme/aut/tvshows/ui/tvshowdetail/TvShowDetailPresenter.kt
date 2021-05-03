@@ -3,6 +3,7 @@ package hu.bme.aut.tvshows.ui.tvshowdetail
 import hu.bme.aut.tvshows.data.Cast
 import hu.bme.aut.tvshows.data.Episode
 import hu.bme.aut.tvshows.data.Season
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import hu.bme.aut.tvshows.interactor.DbInteractor
 import hu.bme.aut.tvshows.interactor.NetworkInteractor
 import hu.bme.aut.tvshows.ui.model.ShowDetail
@@ -15,15 +16,16 @@ import javax.inject.Inject
 class TvShowDetailPresenter @Inject constructor(
     private val view: TvShowDetailContract.View,
     private val networkInteractor: NetworkInteractor,
-    private val dbInteractor: DbInteractor
+    private val dbInteractor: DbInteractor,
+    private val dispatcherProvider: DispatcherProvider
 ) : TvShowDetailContract.Presenter, CoroutineScope by MainScope() {
     override fun getDetails(id: Long) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             val show = networkInteractor.getShow(id)
             val cast = networkInteractor.getCast(id)
             val seasons = networkInteractor.getSeasons(id)
             val favouriteShowIds = dbInteractor.getFavouriteTvShowIds()
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 val uiModels = show.toUIModel(favouriteShowIds, cast, seasons)
                 view.onResultsReady(uiModels)
             }
@@ -31,9 +33,9 @@ class TvShowDetailPresenter @Inject constructor(
     }
 
     override fun getDetailsFromDb(id: Long) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             val show = dbInteractor.getShow(id)
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 val uiModels = show!!.toUIModel()
                 view.onResultsReady(uiModels)
             }
@@ -41,7 +43,7 @@ class TvShowDetailPresenter @Inject constructor(
     }
 
     override fun saveShow(show: ShowDetail) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             val episodes = mutableListOf<Episode>()
             for (season in show.seasons) {
                 val seasonId = season.id!!
@@ -56,14 +58,14 @@ class TvShowDetailPresenter @Inject constructor(
                 episodes,
                 show.cast.map { it.toDataModel(show.id) }
             )
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.onShowAddedToFavourites()
             }
         }
     }
 
     override fun saveShowIfNotSavedYet(show: ShowDetail) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             if (dbInteractor.getShow(show.id) == null) {
                 val episodes = mutableListOf<Episode>()
                 for (season in show.seasons) {
@@ -80,26 +82,26 @@ class TvShowDetailPresenter @Inject constructor(
                     show.cast.map { it.toDataModel(show.id) }
                 )
             }
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.onShowReadyForEdit()
             }
         }
     }
 
     override fun removeShow(show: ShowDetail) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             dbInteractor.removeTvShow(show.toDataModel())
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.onShowRemovedFromFavourites()
             }
         }
     }
 
     override fun deleteShow(show: ShowDetail) {
-        launch(Dispatchers.IO) {
+        launch(dispatcherProvider.io()) {
             networkInteractor.deleteShow(show.id)
             dbInteractor.removeTvShow(show.toDataModel())
-            withContext(Dispatchers.Main) {
+            withContext(dispatcherProvider.main()) {
                 view.onShowDeleted()
             }
         }
