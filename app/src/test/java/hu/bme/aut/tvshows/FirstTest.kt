@@ -44,7 +44,7 @@ import javax.inject.Singleton
 @RunWith(RobolectricTestRunner::class)
 @HiltAndroidTest
 @Config(application = HiltTestApplication::class, manifest=Config.NONE)
-@UninstallModules(ProductionModule::class, SearchTvShowsModule::class, NetworkInteractorModule::class, DbInteractorModule::class)
+@UninstallModules(SearchTvShowsModule::class, NetworkInteractorModule::class, DbInteractorModule::class)
 class FirstTest {
 
     @get:Rule
@@ -52,9 +52,6 @@ class FirstTest {
 
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()
-
-    @Inject
-    lateinit var someString: String
 
     @Inject
     lateinit var dbInteractor: DbInteractor
@@ -70,12 +67,6 @@ class FirstTest {
     fun init() {
         hiltRule.inject()
         searchTvShowsView = mock()
-    }
-
-
-    @Test
-    fun hiltTest(){
-        assertThat(someString, containsString("TEST string"))
     }
 
     @Test
@@ -110,20 +101,5 @@ class FirstTest {
         @Singleton
         @Provides
         fun provideView(): SearchTvShowsContract.View = mock()
-    }
-
-
-
-
-    @Module
-    @InstallIn(SingletonComponent::class)
-    object ProductionModule {
-
-
-        @Singleton
-        @Provides
-        fun provideString(): String{
-            return "This is a TEST string I'm providing for injection"
-        }
     }
 }
