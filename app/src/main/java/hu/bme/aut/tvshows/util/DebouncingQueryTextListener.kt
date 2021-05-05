@@ -3,13 +3,12 @@ package hu.bme.aut.tvshows.util
 import android.widget.SearchView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.coroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
+import kotlinx.coroutines.*
 
 internal class DebouncingQueryTextListener(
     lifecycle: Lifecycle,
+    val dispatcherProvider: DispatcherProvider,
     private val onDebouncingQueryTextChange: (String?) -> Unit
 ) : SearchView.OnQueryTextListener {
     var debouncePeriod: Long = 500
@@ -24,10 +23,12 @@ internal class DebouncingQueryTextListener(
 
     override fun onQueryTextChange(newText: String?): Boolean {
         searchJob?.cancel()
-        searchJob = coroutineScope.launch(Dispatchers.IO) {
+        searchJob = coroutineScope.launch(dispatcherProvider.io()) {
             newText?.let {
                 delay(debouncePeriod)
-                onDebouncingQueryTextChange(newText)
+                withContext(dispatcherProvider.main()) {
+                    onDebouncingQueryTextChange(newText)
+                }
             }
         }
         return false
