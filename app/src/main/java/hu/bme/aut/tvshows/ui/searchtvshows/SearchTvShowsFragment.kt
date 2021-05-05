@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
+import hu.bme.aut.tvshows.dispatchers.DispatcherProvider
 import hu.bme.aut.tvshows.ui.model.Show
 import hu.bme.aut.tvshows.util.DebouncingQueryTextListener
 import javax.inject.Inject
@@ -18,6 +19,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
 
     @Inject
     lateinit var presenter: SearchTvShowsContract.Presenter
+
+    @Inject
+    lateinit var dispatcherProvider: DispatcherProvider
 
     private var _binding: FragmentSearchtvshowsBinding? = null
     // This property is only valid between onCreateView and
@@ -64,7 +68,8 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
 
 
         searchView.setOnQueryTextListener(DebouncingQueryTextListener(
-                this@SearchTvShowsFragment.lifecycle
+                this@SearchTvShowsFragment.lifecycle,
+                dispatcherProvider
         ) { searchText ->
                 searchText?.let {
                     if (it.isEmpty()) {
