@@ -7,38 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:327284086512:android:c780005dcf2aeed5329435",
+        "mobilesdk_app_id": "1:327284086512:android:b857cc7dee9c84c5329435",
         "android_client_info": {
-          "package_name": "hu.bme.aut.tvshows.RealOrm"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "327284086512-79qtauekm1990r8kgig342n0tu9s4lcv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCPee5ZHCUJ1D-lxL_OS-kGXrK-cvhYLQ8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "327284086512-79qtauekm1990r8kgig342n0tu9s4lcv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:327284086512:android:5f171e7e48747727329435",
-        "android_client_info": {
-          "package_name": "hu.bme.aut.tvshows.mockedOrm"
+          "package_name": "hu.bme.aut.tvshows.allOperation"
         }
       },
       "oauth_client": [
