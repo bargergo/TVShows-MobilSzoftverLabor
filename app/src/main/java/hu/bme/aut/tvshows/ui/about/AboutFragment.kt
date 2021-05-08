@@ -30,9 +30,11 @@ class AboutFragment : Fragment() {
         firebaseAnalytics = Firebase.analytics
 
         firebaseAnalytics.run {
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, AboutFragment::class.java.simpleName);
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, AboutFragment::class.java.name);
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, AboutFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, AboutFragment::class.java.name)
+            }
+
             logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
 

@@ -50,9 +50,10 @@ class EpisodeDetailFragment: Fragment(), EpisodeDetailContract.View {
         firebaseAnalytics = Firebase.analytics
 
         firebaseAnalytics.run {
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, EpisodeDetailFragment::class.java.simpleName);
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, EpisodeDetailFragment::class.java.name);
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, EpisodeDetailFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, EpisodeDetailFragment::class.java.name)
+            }
             logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
 

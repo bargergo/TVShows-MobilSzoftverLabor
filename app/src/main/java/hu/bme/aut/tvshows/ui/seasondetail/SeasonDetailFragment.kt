@@ -66,9 +66,10 @@ class SeasonDetailFragment : Fragment(), SeasonDetailContract.View {
         firebaseAnalytics = Firebase.analytics
 
         firebaseAnalytics.run {
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, SeasonDetailFragment::class.java.simpleName);
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, SeasonDetailFragment::class.java.name);
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, SeasonDetailFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, SeasonDetailFragment::class.java.name)
+            }
             logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
 

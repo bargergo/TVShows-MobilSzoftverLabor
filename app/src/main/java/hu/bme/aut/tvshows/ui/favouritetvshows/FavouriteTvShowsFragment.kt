@@ -47,9 +47,10 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
         firebaseAnalytics = Firebase.analytics
 
         firebaseAnalytics.run {
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, FavouriteTvShowsFragment::class.java.simpleName);
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, FavouriteTvShowsFragment::class.java.name);
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, FavouriteTvShowsFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, FavouriteTvShowsFragment::class.java.name)
+            }
             logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
 

@@ -41,9 +41,10 @@ class MainActivity : AppCompatActivity() {
         firebaseAnalytics = Firebase.analytics
 
         firebaseAnalytics.run {
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, MainActivity::class.java.simpleName);
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, MainActivity::class.java.name);
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, MainActivity::class.java.name)
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, MainActivity::class.java.simpleName)
+            }
             logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
     }
