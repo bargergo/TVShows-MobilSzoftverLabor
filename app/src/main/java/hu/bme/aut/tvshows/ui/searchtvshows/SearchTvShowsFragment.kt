@@ -94,8 +94,9 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
                         binding.noDataView.visibility = View.GONE
                         binding.recyclerview.visibility = View.GONE
                     } else {
-                        if (it == "crash")
-                            throw Exception("Hello Crashlytics!")
+                        // Uncomment to try out Crashlytics
+                        /*if (it == "crash")
+                            throw Exception("Hello Crashlytics!")*/
                         keywords = it
                         presenter.search(it)
                         firebaseAnalytics.run {
