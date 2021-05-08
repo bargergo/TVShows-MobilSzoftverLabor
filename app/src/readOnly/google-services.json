@@ -62,6 +62,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327284086512:android:7a521d8a0539b9e8329435",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.tvshows.readOnly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "327284086512-79qtauekm1990r8kgig342n0tu9s4lcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPee5ZHCUJ1D-lxL_OS-kGXrK-cvhYLQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "327284086512-79qtauekm1990r8kgig342n0tu9s4lcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

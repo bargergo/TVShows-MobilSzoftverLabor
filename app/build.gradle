@@ -27,18 +27,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions "orm-type"
+    flavorDimensions "network-api-type"
     productFlavors {
-        mockedOrm {
-            dimension "orm-type"
-            applicationIdSuffix ".mockedOrm"
-            versionNameSuffix "-mockedOrm"
+        readOnly {
+            dimension "network-api-type"
+            applicationIdSuffix ".readOnly"
+            versionNameSuffix "-readOnly"
         }
 
-        realOrm {
-            dimension "orm-type"
-            applicationIdSuffix ".RealOrm"
-            versionNameSuffix "-RealOrm"
+        allOperation {
+            dimension "network-api-type"
+            applicationIdSuffix ".allOperation"
+            versionNameSuffix "-allOperation"
         }
     }
 
