@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.databinding.FragmentFavouritetvshowsBinding
 import hu.bme.aut.tvshows.ui.model.Show
@@ -25,6 +28,8 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
     lateinit var adapter: TvShowListAdapter
     var showList: MutableList<Show> = mutableListOf()
 
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +43,16 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
         adapter = TvShowListAdapter(this, showList)
         recyclerView.adapter = adapter
         presenter.getFavouriteTvShows()
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, FavouriteTvShowsFragment::class.java.simpleName);
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, FavouriteTvShowsFragment::class.java.name);
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        }
+
         return view
     }
 

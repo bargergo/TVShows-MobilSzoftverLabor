@@ -6,6 +6,9 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentSearchtvshowsBinding
@@ -32,6 +35,8 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
 
     private var keywords = ""
 
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
     init {
         setHasOptionsMenu(true);
     }
@@ -48,6 +53,15 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         recyclerView.layoutManager = LinearLayoutManager(view.getContext())
         adapter = TvShowListAdapter(this, showSearchResults)
         recyclerView.adapter = adapter
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, SearchTvShowsFragment::class.java.simpleName);
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, SearchTvShowsFragment::class.java.name);
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        }
 
         return view
     }

@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.data.ShowWithSeasonsAndEpisodesAndCast
 import hu.bme.aut.tvshows.databinding.FragmentEdittvshowBinding
@@ -26,6 +29,8 @@ class EditTvShowFragment: Fragment(), EditTvShowContract.View {
     var showId: Long by Delegates.notNull<Long>()
 
     lateinit var showData: ShowData
+
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     private var _binding: FragmentEdittvshowBinding? = null
     // This property is only valid between onCreateView and
@@ -102,6 +107,16 @@ class EditTvShowFragment: Fragment(), EditTvShowContract.View {
             }
         }
         presenter.loadShowData(showId)
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, EditTvShowFragment::class.java.simpleName);
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, EditTvShowFragment::class.java.name);
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        }
+
         return view
     }
 

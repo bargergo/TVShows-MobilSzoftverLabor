@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:327284086512:android:32221d71752b8196329435",
+        "mobilesdk_app_id": "1:327284086512:android:5f171e7e48747727329435",
         "android_client_info": {
-          "package_name": "hu.bme.aut.tvshows"
+          "package_name": "hu.bme.aut.tvshows.mockedOrm"
         }
       },
       "oauth_client": [
