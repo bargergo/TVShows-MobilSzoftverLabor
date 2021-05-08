@@ -57,9 +57,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
         firebaseAnalytics = Firebase.analytics
 
         firebaseAnalytics.run {
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, SearchTvShowsFragment::class.java.simpleName);
-            bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, SearchTvShowsFragment::class.java.name);
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, SearchTvShowsFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, SearchTvShowsFragment::class.java.name)
+            }
             logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
 
@@ -95,6 +96,14 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
                     } else {
                         keywords = it
                         presenter.search(it)
+                        firebaseAnalytics.run {
+                            val bundle = Bundle().apply {
+                                putString(FirebaseAnalytics.Param.SCREEN_NAME, SearchTvShowsFragment::class.java.simpleName)
+                                putString(FirebaseAnalytics.Param.SCREEN_CLASS, SearchTvShowsFragment::class.java.name)
+                                putString(FirebaseAnalytics.Param.SEARCH_TERM, it)
+                            }
+                            logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
+                        }
                     }
 
                 }
