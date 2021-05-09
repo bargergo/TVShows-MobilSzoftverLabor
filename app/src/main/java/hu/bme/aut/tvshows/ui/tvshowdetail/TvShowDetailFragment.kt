@@ -9,6 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.R
 import hu.bme.aut.tvshows.databinding.FragmentTvshowdetailBinding
@@ -36,6 +39,8 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
 
     lateinit var model: ShowDetail
     lateinit var addOrRemoveFavourites: MenuItem
+
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     init {
         setHasOptionsMenu(true);
@@ -74,6 +79,17 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
                 presenter.getDetails(it)
             }
         }
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, TvShowDetailFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, TvShowDetailFragment::class.java.name)
+            }
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        }
+
         return view
     }
 

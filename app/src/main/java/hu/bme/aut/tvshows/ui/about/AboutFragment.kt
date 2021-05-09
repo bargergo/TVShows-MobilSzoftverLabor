@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import hu.bme.aut.tvshows.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
@@ -14,6 +17,8 @@ class AboutFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,6 +26,18 @@ class AboutFragment : Fragment() {
     ): View {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, AboutFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, AboutFragment::class.java.name)
+            }
+
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        }
+
         return view
     }
 }
