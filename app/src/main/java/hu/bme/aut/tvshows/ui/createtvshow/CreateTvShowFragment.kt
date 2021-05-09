@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-import hu.bme.aut.tvshows.data.Season
 import hu.bme.aut.tvshows.databinding.FragmentCreatetvshowBinding
-import hu.bme.aut.tvshows.model.*
+import hu.bme.aut.tvshows.model.Image
+import hu.bme.aut.tvshows.model.ShowData
 import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,6 +28,8 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -92,6 +96,18 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 showMessage("There are some validation errors!")
             }
         }
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, CreateTvShowFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, CreateTvShowFragment::class.java.name)
+            }
+
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        }
+
         return view
     }
 

@@ -3,15 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'jacoco'
-}
-
-jacoco {
-    toolVersion = '0.8.6'
-}
-
-tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -29,26 +22,23 @@ android {
     }
 
     buildTypes {
-        debug {
-            testCoverageEnabled = true
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions "orm-type"
+    flavorDimensions "network-api-type"
     productFlavors {
-        mockedOrm {
-            dimension "orm-type"
-            applicationIdSuffix ".mockedOrm"
-            versionNameSuffix "-mockedOrm"
+        readOnly {
+            dimension "network-api-type"
+            applicationIdSuffix ".readOnly"
+            versionNameSuffix "-readOnly"
         }
 
-        realOrm {
-            dimension "orm-type"
-            applicationIdSuffix ".RealOrm"
-            versionNameSuffix "-RealOrm"
+        allOperation {
+            dimension "network-api-type"
+            applicationIdSuffix ".allOperation"
+            versionNameSuffix "-allOperation"
         }
     }
 
@@ -78,6 +68,7 @@ ext {
     room_version = "2.2.6"
     lifecycle_version = "2.3.1"
     nav_version = "2.3.5"
+    firebase_bom_version = "27.1.0"
 }
 
 dependencies {
@@ -119,6 +110,10 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
 
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    implementation "com.google.firebase:firebase-crashlytics-ktx"
+
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     // For instrumentation tests
     androidTestImplementation  "com.google.dagger:hilt-android-testing:2.34-beta"
@@ -140,22 +135,4 @@ dependencies {
 
 kapt {
     correctErrorTypes true
-}
-
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
-
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-    def debugTree = fileTree(dir: "$project.buildDir/intermediates/classes/debug", excludes: fileFilter)
-    def mainSrc = "$project.projectDir/src/main/java"
-
-    sourceDirectories.setFrom(files([mainSrc]))
-    classDirectories.setFrom(files([debugTree]))
-    executionData.setFrom(fileTree(dir: project.buildDir, includes: [
-            'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
-    ]))
 }

@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import hu.bme.aut.tvshows.databinding.FragmentSeasondetailBinding
 import hu.bme.aut.tvshows.ui.model.Episode
@@ -24,6 +27,8 @@ class SeasonDetailFragment : Fragment(), SeasonDetailContract.View {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -56,6 +61,16 @@ class SeasonDetailFragment : Fragment(), SeasonDetailContract.View {
         }
         seasonNumber?.let {
             binding.tvTitle.text = "Season $it"
+        }
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.run {
+            val bundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.SCREEN_NAME, SeasonDetailFragment::class.java.simpleName)
+                putString(FirebaseAnalytics.Param.SCREEN_CLASS, SeasonDetailFragment::class.java.name)
+            }
+            logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
         }
 
         return view
