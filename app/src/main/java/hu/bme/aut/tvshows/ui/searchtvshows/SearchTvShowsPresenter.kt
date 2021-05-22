@@ -12,6 +12,7 @@ import hu.bme.aut.tvshows.ui.model.toDataModel
 import hu.bme.aut.tvshows.ui.model.toUIModel
 import hu.bme.aut.tvshows.util.stripHtml
 import kotlinx.coroutines.*
+import java.net.UnknownHostException
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -75,15 +76,20 @@ class SearchTvShowsPresenter @Inject constructor(
     }
 
     override fun search(keywords: String) {
-        launch(dispatcherProvider.io()) {
-            val searchResult = networkInteractor.searchShows(keywords)
-            val favouriteIds = dbInteractor.getFavouriteTvShowIds()
-            val result = searchResult.map { it.toUIModel(favouriteIds) }
-            withContext(dispatcherProvider.main()) {
-                view.onSearchResults(result)
+            launch(dispatcherProvider.io()) {
+                try {
+                    val searchResult = networkInteractor.searchShows(keywords)
+                    val favouriteIds = dbInteractor.getFavouriteTvShowIds()
+                    val result = searchResult.map { it.toUIModel(favouriteIds) }
+                    withContext(dispatcherProvider.main()) {
+                        view.onSearchResults(result)
+                    }
+                } catch (exception: UnknownHostException) {
+                    withContext(dispatcherProvider.main()) {
+                        view.showMessage("Network error")
+                    }
+                }
             }
-        }
-
     }
 
     override fun cleanup() {
