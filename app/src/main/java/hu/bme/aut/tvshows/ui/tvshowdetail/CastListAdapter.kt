@@ -31,12 +31,10 @@ class CastListAdapter(val context: Context, val cast: List<Cast>) : RecyclerView
         holder.tvActor.text = castElement.actorName
 
         val image = castElement.imageUrl
-        image?.let {
-            val options: RequestOptions = RequestOptions()
-                    .error(R.drawable.ic_broken_image)
-                    .placeholder(R.drawable.loading_animation)
-            Glide.with(context).load(it).apply(options).into(holder.ivActor)
-        }
+        val options: RequestOptions = RequestOptions()
+                .error(R.drawable.ic_broken_image)
+                .placeholder(R.drawable.loading_animation)
+        Glide.with(context).load(image).apply(options).into(holder.ivActor)
 
     }
 

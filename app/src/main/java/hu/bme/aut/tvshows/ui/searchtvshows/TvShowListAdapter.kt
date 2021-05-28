@@ -44,12 +44,10 @@ class TvShowListAdapter(val fragment: SearchTvShowsFragment, var tvShows: List<S
         holder.tvSummary.text = tvShow.summary?.stripHtml() ?: "N/A"
 
         val image = tvShow.imageUrl
-        image?.let {
-            val options: RequestOptions = RequestOptions()
-                .error(R.drawable.ic_broken_image)
-                .placeholder(R.drawable.loading_animation)
-            Glide.with(context).load(it).apply(options).into(holder.imageView)
-        }
+        val options: RequestOptions = RequestOptions()
+            .error(R.drawable.ic_broken_image)
+            .placeholder(R.drawable.loading_animation)
+        Glide.with(context).load(image).apply(options).into(holder.imageView)
 
         holder.itemView.setOnClickListener {
             fragment.activity?.hideKeyboard()
