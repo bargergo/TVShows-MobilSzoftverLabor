@@ -127,4 +127,10 @@ class CreateTvShowFragment : Fragment(), CreateTvShowContract.View {
                 && binding.etSummary.error == null && (binding.etSummary.text?.length ?: 0) > 0
                 && binding.etTitle.error == null && (binding.etTitle.text?.length ?: 0) > 0
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

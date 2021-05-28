@@ -80,4 +80,10 @@ class FavouriteTvShowsFragment : Fragment(), FavouriteTvShowsContract.View {
         presenter.removeShow(tvShow)
         showList.remove(tvShow)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

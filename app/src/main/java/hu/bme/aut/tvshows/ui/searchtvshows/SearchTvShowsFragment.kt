@@ -148,4 +148,10 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
     fun removeShow(show: Show) {
         presenter.removeShow(show)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

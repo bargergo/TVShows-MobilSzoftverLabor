@@ -87,4 +87,10 @@ class SeasonDetailFragment : Fragment(), SeasonDetailContract.View {
             episodeListAdapter.notifyDataSetChanged()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

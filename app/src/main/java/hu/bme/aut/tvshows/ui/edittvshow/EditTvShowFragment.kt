@@ -147,4 +147,10 @@ class EditTvShowFragment: Fragment(), EditTvShowContract.View {
     override fun showMessage(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

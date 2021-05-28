@@ -179,4 +179,10 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
         presenter.cleanup()
         super.onDestroy()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
