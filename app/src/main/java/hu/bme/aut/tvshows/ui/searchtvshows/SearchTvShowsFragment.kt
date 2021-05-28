@@ -86,7 +86,7 @@ class SearchTvShowsFragment : Fragment(), SearchTvShowsContract.View {
                 this@SearchTvShowsFragment.lifecycle,
                 dispatcherProvider
         ) { searchText ->
-                searchText?.let {
+                searchText.let {
                     if (it.isEmpty()) {
                         showSearchResults.clear()
                         adapter.notifyDataSetChanged()

@@ -9,7 +9,7 @@ import kotlinx.coroutines.*
 internal class DebouncingQueryTextListener(
     lifecycle: Lifecycle,
     val dispatcherProvider: DispatcherProvider,
-    private val onDebouncingQueryTextChange: (String?) -> Unit
+    private val onDebouncingQueryTextChange: (String) -> Unit
 ) : SearchView.OnQueryTextListener {
     var debouncePeriod: Long = 500
 
@@ -23,12 +23,10 @@ internal class DebouncingQueryTextListener(
 
     override fun onQueryTextChange(newText: String?): Boolean {
         searchJob?.cancel()
-        searchJob = coroutineScope.launch(dispatcherProvider.io()) {
+        searchJob = coroutineScope.launch(dispatcherProvider.main()) {
             newText?.let {
                 delay(debouncePeriod)
-                withContext(dispatcherProvider.main()) {
-                    onDebouncingQueryTextChange(newText)
-                }
+                onDebouncingQueryTextChange(newText)
             }
         }
         return false
