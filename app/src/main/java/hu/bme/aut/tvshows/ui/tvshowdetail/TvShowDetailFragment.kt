@@ -174,4 +174,9 @@ class TvShowDetailFragment: Fragment(), TvShowDetailContract.View {
 
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+    override fun onDestroy() {
+        presenter.cleanup()
+        super.onDestroy()
+    }
 }

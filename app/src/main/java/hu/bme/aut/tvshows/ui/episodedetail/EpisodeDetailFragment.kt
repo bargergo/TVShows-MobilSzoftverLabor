@@ -64,4 +64,9 @@ class EpisodeDetailFragment: Fragment(), EpisodeDetailContract.View {
         binding.tvTitle.text = "S${result.season}E${result.number} ${result.name}"
         binding.tvSummary.text = result.summary?.stripHtml() ?: "No summary added yet"
     }
+
+    override fun onDestroy() {
+        presenter.cleanup()
+        super.onDestroy()
+    }
 }
