@@ -14,21 +14,25 @@ import javax.inject.Singleton
 object DbModule {
 
     @Provides
+    @Singleton
     fun provideEpisodeDao(appDatabase: AppDatabase): EpisodeDAO {
         return appDatabase.episodeDao()
     }
 
     @Provides
+    @Singleton
     fun provideCastDao(appDatabase: AppDatabase): CastDao {
         return appDatabase.castDao()
     }
 
     @Provides
+    @Singleton
     fun provideShowDao(appDatabase: AppDatabase): ShowDAO {
         return appDatabase.showDao()
     }
 
     @Provides
+    @Singleton
     fun provideSeasonDao(appDatabase: AppDatabase): SeasonDAO {
         return appDatabase.seasonDao()
     }
